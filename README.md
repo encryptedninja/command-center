@@ -11,11 +11,8 @@
   <img src"images/003_hacker-hoodie.jpg">
   <p>The way it works is that you use your browser's search function to quickly find commands for a tool you need. In Firefox for example this is done by using <code>CTRL+F</code></p>
   <p>Let's try it! Let's use the search phrase "click". Hit <code>CTRL+F</code> and then type in the search bar <code>click</code></p>
-  <p>Alternatively you can just browse through these commands using your slider in your browser or your mouse wheel in the middle</p>
-  <pre>
-                       _)  |         |      |                                                                 |       
-  _` | \ \   /  _` |  |  |   _` |  __ \   |   _ \       __|   _ \   __ `__ \   __ `__ \    _` |  __ \    _` |   __| 
- (   |  \ \ /  (   |  |  |  (   |  |   |  |   __/      (     (   |  |   |   |  |   |   |  (   |  |   |  (   | \__ \ 
-\__,_|   \_/  \__,_| _| _| \__,_| _.__/  _| \___|     \___| \___/  _|  _|  _| _|  _|  _| \__,_| _|  _| \__,_| ____/ 
-  </pre>
+  <p>Alternatively you can just browse through these commands using your slider in your browser or your mouse wheel in the middle.</p>
+  <img src"images/005_available_commands.png">
   <p>commands and text here</p>
+  </body>
+</html>
