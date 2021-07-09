@@ -13,6 +13,14 @@
 
 <p align="justify">Alternatively you can just browse through these commands using your slider in your browser or your mouse wheel in the middle. Anyways, I hope this repo can serve you well, let me know if you have any comments or suggestions, you can reach me here or on LinkedIn or Twitter @codetorok thanks for checking out the Command-Center!</p>
 
-<img src="images/005_available_commands.png">
+<img src="images/003_available_commands.png">
 
 <p align="justify">commands and text here</p>
+
+<p align="justify">This is the end of the list, remember, it's not the commands, it's what you do with those commands and how do you use the information you get out of theses swites, that's all that matters. This repo is for educational purposes only, anything you do with this is on you, so be responsable.</p>
+
+<h2 align="center">The world is at your fingertips 💯</h2>
+
+<img src="images/004_hacker_hoodie.jpg">
+
+**Github, Twitter, LinkedIn:** @codetorok
