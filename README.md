@@ -25,11 +25,11 @@
 
 <img src="images/binwalk_steghide_stegonography.png">
 
-<p align="justify">If you wan't full anonimity (as much as you can get, don't go crazy here) you need to know how to change your dns. If you combine this with <code>proxychains</code> using tor, you're pretty much good to go.</p>
+<p align="justify">If you wan't full anonimity (as much as you can get, don't go crazy here) you need to know how to change dns. If you combine this with <code>proxychains</code> using tor, you're pretty much good to go.</p>
 
 <img src="images/change_dns.png">
 
-<p align="justify">These are not commands, I just thought it might come in handy if you need a quick refresher.</p>
+<p align="justify">These are not commands, I just thought it might come in handy if you need a quick refresher to find a port or ports.</p>
 
 <img src="images/common_ports.png">
 
@@ -37,7 +37,7 @@
 
 <img src="images/curl_checking_login_page_form_method.png">
 
-<p align="justify">So let's say you have to crack a password that's from a website that uses just a 4 characters long passphrase. To save up time you can just make a copy of your rockyou.txt or whatever monstrous passlist your using and then filter the copy into a new file that has only the 4 characters long entries from your rockyou-copy.txt. Copy is needed to not to mess up the original one, you can never be cautious enough ;)</p>
+<p align="justify">So let's say you have to crack a password that's from a website that uses just a 4 characters long passphrase. To save up time you can just make a copy of your rockyou.txt or whatever monstrous passlist your using and then filter the copy into a new file that has only the 4 characters long entries (hence this grep one liner) from your rockyou-copy.txt. Copy is needed to not to mess up the original one, you can never be cautious enough ;)</p>
 
 <img src="images/filtering_rockyou_to_4_characters_long_entries_only.png">
   
@@ -59,7 +59,7 @@
 
 <img src="images/gobuster.png">
   
-<p align="justify">To simplify things this is for the symmetric type of encryption, but you can check out the man page and find a lot more options to encrypt/decrypt.</p>
+<p align="justify">To simplify things this gpg example is for the symmetric type of encryption, but you can check out the man page and discover a lot more options to encrypt/decrypt.</p>
 
 <img src="images/gpg_symmetric_encrypt_decrypt.png">
   
@@ -67,11 +67,11 @@
 
 <img src="images/hashcat.png">
   
-  <p align="justify">Where to find the <code>hashcat.potfile</code> where the cracked hashes are stored.</p>
+  <p align="justify">How to locate the <code>hashcat.potfile</code> where the cracked hashes are stored.</p>
 
 <img src="images/hashcat_potfile.png">
   
-<p align="justify">I mainly created this image for the web login crack part only. Sometimes it's hard to remember how it's done.</p>
+<p align="justify">I mainly created this image for the web login crack part only. Sometimes it's hard to remember how it's done using hydra.</p>
 
 <img src="images/hydra.png">
   
@@ -87,7 +87,7 @@
 
 <img src="images/md5_hash_generate.png">
 
-<p align="justify"><code<msfvenom</code> reverse shell, <code>-p</code> for payload and <code>-f</code> for the format in this case it's raw so I can send the output into a <code>.php</code> file.</p>
+<p align="justify"><code>msfvenom</code> reverse shell, <code>-p</code> for payload and <code>-f</code> for the format in this case it's raw so I can send the output into a <code>.php</code> file.</p>
 
 <img src="images/msfvenom_reverse_shell_php.png">
 
@@ -120,11 +120,11 @@
 
 <img src="images/ssh_local_port_fowarding.png">
 
-<p align="justify">Extract a file from a picture.</p>
+<p align="justify">Extract a file from a picture with steghide.</p>
 
 <img src="images/steghide.png">
 
-<p align="justify">Subdomain enumeration tool, quite good actually.</p>
+<p align="justify">sublist3r is a subdomain enumeration tool, quite good actually.</p>
 
 <img src="images/sublist3r_subdomain_enumeration.png">
 
@@ -132,15 +132,15 @@
 
 <img src="images/tar_extract.png">
 
-<p align="justify">You can add an IP to your /etc/hosts file but this simple one liner is easier than opening it up in nano every time you need it.</p>
+<p align="justify">You can add an IP to your /etc/hosts file but this simple one liner using the command <code>tee</code> is easier than opening it up in nano every time you need it.</p>
 
 <img src="images/tee_append.png">
 
-<p align="justify">Quite good for subdomain enumeration, you can even choose your preferred search engine!</p>
+<p align="justify">Quite good for subdomain enumeration, with theharvester you can even choose your preferred search engine!</p>
 
 <img src="images/theharvester_subdomain_enumeration.png">
 
-<p align="justify">Classic! You popped a shell, now it's time to upgrade it and this is how you do it the proper way so you'll have autocomplete with TAB etc etc... :)</p>
+<p align="justify">Classic! You popped a shell, now it's time to upgrade it and this is how to upgrade reverse shell the proper way so you'll have autocomplete with TAB etc etc... :)</p>
 
 <img src="images/upgrade_shell.png">
 
@@ -148,17 +148,17 @@
 
 <img src="images/windows_bypass_applocker.png">
 
-<p align="justify">Checking the history of commands in Windows PowerShell, it's like bash_history in Linux.</p>
+<p align="justify">Checking Windows PowerShell history of commmands, it's like bash_history in Linux.</p>
 
 <img src="images/windows_powershell_command_history.png">
 
-<p align="justify">Whenever you find a juicy WordPress blog :) The first pic shows how to enumerate users, the second one takes the user names, saves it in a text file and use it with the wordlist fasttrack.txt against the website's login.</p>
+<p align="justify">Whenever you encounter a juicy WordPress blog wpscan is there for you :) The first pic shows how to enumerate users, the second one takes the user names, saves it in a text file and use it with the wordlist fasttrack.txt against the website's login.</p>
 
-<p>Enumerating users</p>
+<p>Enumerating users with wpscan:</p>
 
 <img src="images/wpscan_enumerate_users.png">
 
-<p align="justify">Using a wordlist to find vulnerable passwords.</p>
+<p align="justify">Using a wordlist to find vulnerable passwords with wpscan:</p>
 
 <img src="images/wpscan_password_spaying.png">
 
@@ -166,7 +166,7 @@
 
 <img src="images/xfreerdp_remote_desktop_connect.png">
 
-<p align="justify">Prepping a zip file to crack it with john.</p>
+<p align="justify">Prepping a zip file with zip2john to crack it with john.</p>
 
 <img src="images/zip2john.png">
 
