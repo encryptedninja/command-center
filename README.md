@@ -1,7 +1,7 @@
 
 <h1 align="center">Welcome to the Command-Center!</h1>
 
-<h2 align="center">There are so many tools, commands and switches... it's easy to forget them! I made this repo so you can quickly search for the right ones when needed.</h2>
+<h2 align="center">There are so many tools, commands and switches... it's easy to confuse them! I made this repo so you can quickly search for the right ones when needed.</h2>
 
 <h3 align="center">Let's exit the outside world and enter cyber space. (We have cookies... 😎)</h3>
 
