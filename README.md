@@ -83,67 +83,90 @@
 
 <img src="images/john2.png">
   
-<p align="justify">commands and text here</p>
+<p align="justify">Decoding MD5 hashes, just don't forget to use <code>echo</code> with the <code>-n</code> switch.</p>
 
 <img src="images/md5_hash_generate.png">
-<p align="justify">commands and text here</p>
+
+<p align="justify"><code<msfvenom</code> reverse shell, <code>-p</code> for payload and <code>-f</code> for the format in this case it's raw so I can send the output into a <code>.php</code> file.</p>
 
 <img src="images/msfvenom_reverse_shell_php.png">
-<p align="justify">commands and text here</p>
+
+<p align="justify">How to connect and display info from <code>mysql</code> database.</p>
+
 
 <img src="images/mysql.png">
-<p align="justify">commands and text here</p>
+
+<p align="justify">The most used switches with <code>nmap</code>, also you can use the <code>-A</code> switch to get all the services and their version number at once. If working on a network, not just a single IP, I prefer to know what's what before starting to focus on one machine or the other as it saves up time.</p>
 
 <img src="images/nmap.png">
-<p align="justify">commands and text here</p>
+
+<p align="justify">Extract the email address from a public key.</p>
 
 <img src="images/public_key_gpg_extract_email.png">
-<p align="justify">commands and text here</p>
+
+<p align="justify">When I started out I got confused a lot in how to use smbclient and smbmap so I made these screenshots, one is to connect and the second one is to list the available services.</p>
 
 <img src="images/smbclient_conneting_to_share.png">
-<p align="justify">commands and text here</p>
+
+<p>List services with smbclient.</p>
 
 <img src="images/smbclient_listing_shares.png">
-<p align="justify">commands and text here</p>
+
+<p align="justify">How to add your generated ssh key to your known hosts. It helps with Github also.</p>
 
 <img src="images/ssh_key_add.png">
-<p align="justify">commands and text here</p>
+
+<p align="justify">SSH port forwarding.</p>
 
 <img src="images/ssh_local_port_fowarding.png">
-<p align="justify">commands and text here</p>
+
+<p align="justify">Extract a file from a picture.</p>
 
 <img src="images/steghide.png">
-<p align="justify">commands and text here</p>
+
+<p align="justify">Subdomain enumeration tool, quite good actually.</p>
 
 <img src="images/sublist3r_subdomain_enumeration.png">
-<p align="justify">commands and text here</p>
+
+<p align="justify">No big deal, just had to remember how to extract a .tar.gz package at the beginning. Hope this helps you too!</p>
 
 <img src="images/tar_extract.png">
-<p align="justify">commands and text here</p>
+
+<p align="justify">You can add an IP to your /etc/hosts file but this simple one liner is easier than opening it up in nano every time you need it.</p>
 
 <img src="images/tee_append.png">
-<p align="justify">commands and text here</p>
+
+<p align="justify">Quite good for subdomain enumeration, you can even choose your preferred search engine!</p>
 
 <img src="images/theharvester_subdomain_enumeration.png">
-<p align="justify">commands and text here</p>
+
+<p align="justify">Classic! You popped a shell, now it's time to upgrade it and this is how you do it the proper way so you'll have autocomplete with TAB etc etc... :)</p>
 
 <img src="images/upgrade_shell.png">
-<p align="justify">commands and text here</p>
+
+<p align="justify">In case you have to bypass AppLocker in Windows.</p>
 
 <img src="images/windows_bypass_applocker.png">
-<p align="justify">commands and text here</p>
+
+<p align="justify">Checking the history of commands in Windows PowerShell, it's like bash_history in Linux.</p>
 
 <img src="images/windows_powershell_command_history.png">
-<p align="justify">commands and text here</p>
+
+<p align="justify">Whenever you find a juicy WordPress blog :) The first pic shows how to enumerate users, the second one takes the user names, saves it in a text file and use it with the wordlist fasttrack.txt against the website's login.</p>
+
+<p>Enumerating users</p>
 
 <img src="images/wpscan_enumerate_users.png">
-<p align="justify">commands and text here</p>
+
+<p align="justify">Using a wordlist to find vulnerable passwords.</p>
 
 <img src="images/wpscan_password_spaying.png">
-<p align="justify">commands and text here</p>
+
+<p align="justify">How to connect to a remote desktop via xfreedp</p>
 
 <img src="images/xfreerdp_remote_desktop_connect.png">
-<p align="justify">commands and text here</p>
+
+<p align="justify">Prepping a zip file to crack it with john.</p>
 
 <img src="images/zip2john.png">
 
