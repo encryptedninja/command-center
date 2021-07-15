@@ -136,7 +136,7 @@
 
 <img src="images/tar_extract.png">
 
-<p align="justify">You can add an IP to your /etc/hosts file but this simple one liner using the command <code>tee</code> is easier than opening it up in nano every time you need it.</p>
+<p align="justify">You can append an IP to your /etc/hosts file but this simple one liner using the command <code>tee</code> is easier than opening it up in nano every time you need it.</p>
 
 <img src="images/tee_append.png">
 
