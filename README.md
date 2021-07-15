@@ -47,9 +47,13 @@
 
 <img src="images/find_binary_permissions.png">
   
-  <p align="justify"><code>fping</code> helps you to ping a range of IP addresses.</p>
+<p align="justify"><code>fping</code> helps you to ping a range of IP addresses.</p>
 
 <img src="images/fping.png">
+
+<p align="justify">Find file in Windows.</p>
+
+<img src="images/how_to_find_a_file_in_windows_terminal.png">
   
 <p align="justify">I wanted to share this one too as at first I couldn't get the binary from the ftp server. First I have to use the command <code>binary</code> and then I can get it like I normally would.</p>
 
@@ -103,6 +107,10 @@
 <p align="justify">Extract the email address from a public key.</p>
 
 <img src="images/public_key_gpg_extract_email.png">
+
+<p align="justify">Python3 webserver and ftpserver set up commands.</p>
+
+<img src="images/python3_webserver_ftpserver.png">
 
 <p align="justify">When I started out I got confused a lot in how to use smbclient and smbmap so I made these screenshots, one is to connect and the second one is to list the available services.</p>
 
