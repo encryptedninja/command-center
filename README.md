@@ -112,6 +112,10 @@
 
 <img src="images/smbclient_listing_shares.png">
 
+<p>smbclient <code>prompt</code> is to not to ask me for a prompt every time I download something, it is important because in the next command I turn <code>recursive</code> on which will download everything recursiveley (without having to prompt) and the third command is just to get everything from the share we can.</p>
+
+<img src="images/smbclient_prompt_recursive_mget.png">
+
 <p align="justify">How to add your generated ssh key to your known hosts. It helps with Github also.</p>
 
 <img src="images/ssh_key_add.png">
