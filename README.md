@@ -37,6 +37,10 @@
 
 <img src="images/curl_checking_login_page_form_method.png">
 
+<p align="justify">This is how you install Docker on Kali for whatever you need, I run my Juice Shop app to test for the OWASP Top10 on Docker.</p>
+
+<img src="images/docker_installing.png">
+
 <p align="justify">So let's say you have to crack a password that's from a website that uses just a 4 characters long passphrase. To save up time you can just make a copy of your rockyou.txt or whatever monstrous passlist your using and then filter the copy into a new file that has only the 4 characters long entries (hence this grep one liner) from your rockyou-copy.txt. Copy is needed to not to mess up the original one, you can never be cautious enough ;)</p>
 
 <img src="images/filtering_rockyou_to_4_characters_long_entries_only.png">
@@ -83,9 +87,15 @@
 
 <img src="images/john.png">
   
-  <p align="justify">Passing a private key to <code>gpg2john</code> to prep it and then passing the output file to john to crack it :) once it's done you can use the cracked password and the private key to try to log in to the target's system via ssh: <code>ssh -i id_rsa username@IP</code></p>
+<p align="justify">Passing a private key to <code>gpg2john</code> to prep it and then passing the output file to john to crack it :) once it's done you can use the cracked password and the private key to try to log in to the target's system via ssh: <code>ssh -i id_rsa username@IP</code></p>
 
 <img src="images/john2.png">
+
+<p align="justify">Installing Juice Shop to practice the OWASPtop10, great resource! I installed it on a Docker instance, if you need it you can find how to install it on your system just look for it on this page.</p>
+
+<p>Here's the link for reference: https://github.com/bkimminich/juice-shop</p>
+
+<img src="images/juice_shop_installing.png">
   
 <p align="justify">Decoding MD5 hashes, just don't forget to use <code>echo</code> with the <code>-n</code> switch.</p>
 
