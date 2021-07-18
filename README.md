@@ -41,6 +41,10 @@
 
 <img src="images/docker_installing.png">
 
+<p align="justify">Once you installed Juice Shop and want to run it in different ocasions, it's hard to remember that docker command so I made this little shell script, now I only have to type in the name of my script file and I'm runnig the shop.</p>
+
+<img src="images/juice_shop_run.png">
+
 <p align="justify">So let's say you have to crack a password that's from a website that uses just a 4 characters long passphrase. To save up time you can just make a copy of your rockyou.txt or whatever monstrous passlist your using and then filter the copy into a new file that has only the 4 characters long entries (hence this grep one liner) from your rockyou-copy.txt. Copy is needed to not to mess up the original one, you can never be cautious enough ;)</p>
 
 <img src="images/filtering_rockyou_to_4_characters_long_entries_only.png">
