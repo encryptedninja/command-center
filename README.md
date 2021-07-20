@@ -116,7 +116,7 @@
 
 <p align="justify">The most used switches with <code>nmap</code>, also you can use the <code>-A</code> switch to get all the services and their version number at once. If working on a network, not just a single IP, I prefer to know what's what before starting to focus on one machine or the other as it saves up time.</p>
 
-<img src="images/nmap.png">
+<img src="images/nmap_scans.png">
 
 <p align="justify">Extract the email address from a public key.</p>
 
