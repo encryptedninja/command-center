@@ -7,6 +7,8 @@
 * Second: this information is for eductational purposes, all actions you take with it is on you! In other words,
 please don't be stupid :)
 
+* [Back to Command-Center](https://github.com/codetorok/command-center/blob/master/README.md)
+
 * With that said, let's dive into it. There is no explication needed for this one, just follow the steps provided below, it's easy!
 
 <img src="images/0_install_tor_service.png">
