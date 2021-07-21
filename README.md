@@ -25,7 +25,7 @@
 
 <img src="images/binwalk_steghide_stegonography.png">
 
-<p align="justify">If you wan't full anonimity (as much as you can get, don't go crazy here) you need to know how to change dns. If you combine this with <code>proxychains</code> using tor, you're pretty much good to go.</p>
+<p align="justify">If you wan't full anonimity (as much as you can get, don't go crazy here) you need to know how to change dns. If you combine this with <code>proxychains</code> using TOR (link to setup: https://github.com/codetorok/command-center/blob/master/TOR-SERVICE/tor_service_setup_and_use.md), you're pretty much good to go.</p>
 
 <img src="images/change_dns.png">
 
@@ -165,6 +165,9 @@
 <p align="justify">Quite good for subdomain enumeration, with theharvester you can even choose your preferred search engine!</p>
 
 <img src="images/theharvester_subdomain_enumeration.png">
+
+<p align="justify">If you're looking for setting up and using TOR services you can find everything here:
+https://github.com/codetorok/command-center/blob/master/TOR-SERVICE/tor_service_setup_and_use.md</p>
 
 <p align="justify">Classic! You popped a shell, now it's time to upgrade it and this is how to upgrade reverse shell the proper way so you'll have autocomplete with TAB etc etc... :)</p>
 
