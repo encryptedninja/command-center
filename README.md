@@ -173,6 +173,10 @@ https://github.com/codetorok/command-center/blob/master/TOR-SERVICE/tor_service_
 
 <img src="images/upgrade_shell.png">
 
+<p align="justify">You need this configuration if you want to make Virtualbox work with both type of network connections at the same time: NAT and Bridge</p>
+
+<img src="images/virtualbox_bridge_and_nat_same_time.png">
+
 <p align="justify">In case you have to bypass AppLocker in Windows.</p>
 
 <img src="images/windows_bypass_applocker.png">
