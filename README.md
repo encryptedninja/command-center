@@ -118,6 +118,10 @@
 
 <img src="images/nmap_scans.png">
 
+<p align="justify">I include this one as well in case you want to generate an html report based on your nmap scan file.</p>
+
+<img src="images/nmap_scans_report.png">
+
 <p align="justify">Extract the email address from a public key.</p>
 
 <img src="images/public_key_gpg_extract_email.png">
