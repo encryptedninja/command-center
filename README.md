@@ -33,9 +33,13 @@
 
 <img src="images/common_ports.png">
 
-  <p align="justify">You can do some great things with <code>curl</code>, it's worth going through it's man page, this is one of the great techniques I use quite often.</p>
+<p align="justify">You can do some great things with <code>curl</code>, it's worth going through it's man page, this is one of the great techniques I use quite often.</p>
 
 <img src="images/curl_checking_login_page_form_method.png">
+
+<p align="justify">Directory discovery with dirb when username and password is known.</p>
+
+<img src="images/dirb.png">
 
 <p align="justify">This is how you install Docker on Kali for whatever you need, I run my Juice Shop app to test for the OWASP Top10 on Docker.</p>
 
