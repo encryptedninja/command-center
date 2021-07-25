@@ -122,7 +122,11 @@
 
 <img src="images/nmap_scans.png">
 
-<p align="justify">I include this one as well in case you want to generate an html report based on your nmap scan file.</p>
+<p align="justify">This is real life scenario, first I would suggest if you're dropped in an enviroment without anything, check your IP address on the network, then run these scans to identify other machines, their purpose and services, version numbers, open ports etc with nmap.</p>
+
+<img src="images/nmap_scans_real_life.png">
+
+<p align="justify">I include xsltproc one as well in case you want to generate an html report based on your nmap scan file.</p>
 
 <img src="images/nmap_scans_report.png">
 
