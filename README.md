@@ -134,6 +134,10 @@
 
 <img src="images/public_key_gpg_extract_email.png">
 
+<p align="justify">Python but it can be used in Python3 as well to spawn a terminal.</p>
+
+<img src="images/spawn_terminal_in_python.png">
+
 <p align="justify">Python3 webserver and ftpserver set up commands.</p>
 
 <img src="images/python3_webserver_ftpserver.png">
