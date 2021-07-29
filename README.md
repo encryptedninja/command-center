@@ -41,6 +41,10 @@
 
 <img src="images/dirb.png">
 
+<p align="justify">If you need help with taking the eJPT exam, I made a cheat-sheet and you can reach it here: https://github.com/codetorok/command-center/blob/master/eJPT-cheatsheet/ejpt-cheatsheet.md.</p>
+
+<img src="images/ejpt_000.png">
+
 <p align="justify">This is how you install Docker on Kali for whatever you need, I run my Juice Shop app to test for the OWASP Top10 on Docker.</p>
 
 <img src="images/docker_installing.png">
