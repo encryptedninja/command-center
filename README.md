@@ -41,6 +41,10 @@
 
 <img src="images/dirb.png">
 
+<p align="justify">Directory search, dirsearch is great if you have to find directories on a webapp.</p>
+
+<img src="images/dirsearch_directory_enumeration.png">
+
 <p align="justify">This is how you install Docker on Kali for whatever you need, I run my Juice Shop app to test for the OWASP Top10 on Docker.</p>
 
 <img src="images/docker_installing.png">
