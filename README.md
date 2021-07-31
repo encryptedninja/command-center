@@ -193,6 +193,10 @@ https://github.com/codetorok/command-center/blob/master/TOR-SERVICE/tor_service_
 
 <img src="images/virtualbox_bridge_and_nat_same_time.png">
 
+<p align="justify">wfuzz is built into kali and it's an excellent subdomain enumeration tool.</p>
+
+<img src="images/wfuzz_subdomain_enumeration.png">
+
 <p align="justify">In case you have to bypass AppLocker in Windows.</p>
 
 <img src="images/windows_bypass_applocker.png">
