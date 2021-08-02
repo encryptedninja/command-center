@@ -205,6 +205,10 @@ https://github.com/codetorok/command-center/blob/master/TOR-SERVICE/tor_service_
 
 <img src="images/windows_bypass_applocker.png">
 
+<p align="justify">Windows file transfer, in case you have to bring a file over to the compromised Windows machine. The last piece of information is how do you want to name the file that your bring over.</p>
+
+<img src="images/windows_file_transfer.png">
+
 <p align="justify">Checking Windows PowerShell history of commmands, it's like bash_history in Linux.</p>
 
 <img src="images/windows_powershell_command_history.png">
