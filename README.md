@@ -138,6 +138,10 @@
 
 <img src="images/psexec_py.png">
 
+<p align="justify">Pass the hash Windows pth-winexe.</p>
+
+<img src="images/pth_winexe_pass_the_hash.png">
+
 <p align="justify">Extract the email address from a public key.</p>
 
 <img src="images/public_key_gpg_extract_email.png">
