@@ -134,6 +134,10 @@
 
 <img src="images/nmap_scans_report.png">
 
+<p align="justify">psexec.py from Impacket.</p>
+
+<img src="images/psexec_py.png">
+
 <p align="justify">Extract the email address from a public key.</p>
 
 <img src="images/public_key_gpg_extract_email.png">
