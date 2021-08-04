@@ -154,6 +154,10 @@
 
 <img src="images/python3_webserver_ftpserver.png">
 
+<p align="justify">Python3 anonymous writable ftp server.</p>
+
+<img src="images/python3_anonymous_ftp_writable.png">
+
 <p align="justify">When I started out I got confused a lot in how to use smbclient and smbmap so I made these screenshots, one is to connect and the second one is to list the available services.</p>
 
 <img src="images/smbclient_conneting_to_share.png">
