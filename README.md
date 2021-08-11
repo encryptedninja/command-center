@@ -170,6 +170,10 @@
 
 <img src="images/smbclient_prompt_recursive_mget.png">
 
+<p>sqlmap usage</p>
+
+<img src="images/sqlmap.png">
+
 <p align="justify">How to add your generated ssh key to your known hosts. It helps with Github also.</p>
 
 <img src="images/ssh_key_add.png">
