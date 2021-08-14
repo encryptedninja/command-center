@@ -55,7 +55,69 @@
 
 ##### Responder:
 
-* `python Responder.py -l tun0 -rdw`
+* `python Responder.py -I tun0 -rdwv`
+* **-I** is for interface
+* **-rdwv** is the different types we're listening on, ***-w*** is for wpad
+* ***-v*** is for verbose to see the hash more than once if it happens
+* look at the ***--help*** for more info
 
 
+### LLMNR poisoning Defenses
 
+* the best defense is to disable LLMNR and NBT-NS
+* if that's not possible tell them to enable Network Access Control (it's going to look for a specific MAC address and if it's not allowed then it will shut it down, the port. There are methods to bypass that too but that's another subject.)
+* long and strong passwords, longer than 14 characters, mixed case characters and symbols, numbers
+
+### SMB Relay Attack
+
+#### Requierements
+
+* SMB signing has to be disabled on the target
+* relayed user credentials must be an admin on machine
+
+#### Use Responder to capture and ntlmrelayx to relay
+
+* in Responder HTTP and SMB server must be off so we can relay the request instead of responding to it
+* configrue ***ntlmrelayx*** like this: `python ntlmrelayx.py -tf targets.txt -smb2support`
+* all this does is identifying, it takes the relay and takes it to the target.txt file and smb2support tells it where to relay it to
+* if SMB signing if off or it's on but ***not required*** and user is an admin on the relayed machine **ntlmrelayx.py will dump the SAM hashes**
+
+#### Discover if SMB signing is disabled
+
+* can search for a tool on github
+* or with nmap: `nmap --script=smb2-security-mode.nse -p 445 IP/24`
+
+#### If trying to get an interactive shell with ntlmrelayx
+
+* append ***-i*** to `ntlmrelayx.py -tf targets.txt -smb2support -i
+* ***-tf*** stands for ***target file***
+* when running interactive see in feeds where an whic port is the one where ntlmrelayx created the interactive shell, I'll use port 11000 as an example here
+* then on another tab in tty open up: `nc 127.0.0.1 11000`
+* we are in an SMB shell essentially, type in `help` for available commands
+* we can do many thing here, we can look at the shares, change password of current user, moving files, directories, create a mount point, upload file, etc.
+* `shares` shows the available shares, then `use C$` once in, list it out `ls` and we've got access to the C: drive
+* similary we can ls out the admin folder as well
+
+#### Additionally with ntlmrelayx.py
+
+* we can generate a payload with ***msfvenom*** like ***payload.exe*** as an example and execute it on the target machine and then set up a meterpreter listener in ***metasploit*** and get a shell on the target machine
+* `ntlmrelayx.py -tf targets.txt -smb2support -e payload.exe
+* or we can execute commands with the ***-c*** option
+* it can be from somehting simple as `ntlmrelayx.py -tf targets.txt -c "whoami"` to a more complex reverse shell or powershell command
+
+#### Mitigation strategies
+
+* **ENABLE SMB SINGIN ON ALL DEVICES**
+* **PRO:** completely stops the attack
+* **CON:** can cause performance issues with file copies
+* **DISABLE NTLM AUTHENTICATION ON NETWORK**
+* **PRO:** completely stops the attack
+* **CON:** if Kerberos stops working, Windows defaults back to NTLM
+* **ACCOUNT TIERING**
+* **PRO:** limits domain admins to specific tasks
+* **CON:** enforcing the policy may be difficult
+* **LOCAL ADMIN RESTRICTIONS**
+* **PRO:** can prevent a lot of lateral movement
+* **CON:** potential increase in the amount of service desk tickets
+
+# CONTINUE FROM 17/118
