@@ -19,6 +19,7 @@
 * **[TOR Service / Anonymity](https://github.com/codetorok/command-center/blob/master/TOR-SERVICE/tor_service_setup_and_use.md)**
 * **[Linux Privilege Escalation (privesc)](https://github.com/codetorok/command-center/blob/master/Linux-Privesc/linux-privesc.md)**
 * **[Windows Privilege Escalation (privesc)](https://github.com/codetorok/command-center/blob/master/Windows-Privesc/windows-privesc.md)**
+* **[Windows Active Directory](https://github.com/codetorok/command-center/blob/master/Windows_AD/windows-active-directory.md)**
 
 <img src="images/003_available_commands.png">
 
