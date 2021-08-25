@@ -293,5 +293,13 @@
 * The key was accidentally released. (oops!)
 * Patched in MS14-025 but it doesn't prevent previous uses
 
+#### Checking for GPP in Metasploit
+
+* background shell and run from auxilary `smb_enum_gpp`
+
+### For Practice
+
+* HTB:Active machine is excellent!
+
 
 
