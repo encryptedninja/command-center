@@ -12,7 +12,7 @@
 * `hostname` get hostname
 **Windows Managment Instrumentation Command Line** `wmic`
 * `wmic qfe` **quick fix engeneering** shows what's available, what's been patched and when
-* `wmic qfe Caption,Description,HotFixID,InstalledOn` looking for specific information
+* `wmic qfe get Caption,Description,HotFixID,InstalledOn` looking for specific information
 * `wmic logicaldisk` output is a little dirty
 * `wmic logicaldisk get caption, description, providername` much cleaner
 * `wmic logicaldisk get caption` fast and simple, less details
