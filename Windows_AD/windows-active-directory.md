@@ -297,9 +297,14 @@
 
 * background shell and run from auxilary `smb_enum_gpp`
 
-### For Practice
+#### Decrypting GPP in Kali
+
+* `gpp-decrypt <cPassword from Group Policy xml file>`
+
+#### For Practice
 
 * HTB:Active machine is excellent!
 
+### Mimikatz
 
-
+* adding notes here... 19/143
