@@ -271,13 +271,27 @@
 * Account tiering
 * Local Admind restriction
 
-
-
-# finish section 19/132
-
 ### Kerberoasting
 
 ![kerberoasting](images/kerberoasting.png)
 
-* additional notes here...
+* After presenting username and password we get a TGT (Ticket Granting Ticket) which ends with a hash.
+* After requesting TGS (Ticket Granting Service) to the service we want to access, we recieve a TGS which has the Application Server's hash in it.
+* To retrieve the hash we use a tool from Impacket: `python GetUserSPNs.py MARVEL.local/fcastle:Password1 -dc-ip <IP of DC> -request`
+* We can now try to crack the hash with ***hashcat:*** `hashcat -m 13100 kerberoast.txt rockyou.txt`
+
+#### Mitigation
+
+* using strong passwords (>14 characters, avoid dictionary words)
+* least privilege
+
+### GPP (Group Policy Preferences) attack
+
+* Aka **MS14-025**
+* GPP allowed admins to create policies using embedded credentials
+* these credentials were encrypted in XML and placed into a ***"cPassword"***
+* The key was accidentally released. (oops!)
+* Patched in MS14-025 but it doesn't prevent previous uses
+
+
 
