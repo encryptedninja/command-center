@@ -1,8 +1,8 @@
-# How to setup and check ssh status
+# How to setup and check ssh status on Win 10
 
 * these are my short notes on how to set up ssh on Win10 but if you need a more in detail description check out this repo's scource blog **[here](https://www.pugetsystems.com/labs/hpc/How-To-Use-SSH-Client-and-Server-on-Windows-10-1470/)**
 
-## To check the name and state of the ssh service on Win 10 use
+## To check the name and state of the ssh service:
 
 `Get-WindowsCapability -Online | ? Name -like 'OpenSSH*'`
 
