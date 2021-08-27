@@ -214,7 +214,10 @@
 * usage `crackmapexec --help` to get help, typically we provide a username, domain and password for now
 * `crackmapexec smb <target network IP/24> -u username -d domain.local -p password`
 * `crackmapexec smb <target network IP/24> -u username -d domain.local -p password --sam` it will try to dump the SAM file (short for SAM=Security Account Manager)
-* trying to get a shell with psexec.py: `psexec.py domain/username:password@<domain_target_IP>`
+
+### Getting a shell with psexec.py
+
+* getting a shell: `psexec.py domain/username:password@<domain_target_IP>`
 * password spraying is NOT recommended on Domains becaue if you get many failed login attempts you can lock this user out of the Domain, on local accounts it's OK
 
 ### Dumping hashes with secretsdump
