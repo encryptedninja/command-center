@@ -32,4 +32,4 @@ The last thing to check is the firewall setting for sshd. It by default uses the
 
 `Get-NetFirewallRule -Name *ssh*`
 
-![check firewall settings](images/firewall-settings.png)
+![check firewall settings](images/4-firewall-settings.png)
