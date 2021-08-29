@@ -278,8 +278,9 @@
 
 ![kerberoasting](images/kerberoasting.png)
 
-* After presenting username and password we get a TGT (Ticket Granting Ticket) which ends with a hash.
-* After requesting TGS (Ticket Granting Service) to the service we want to access, we recieve a TGS which has the Application Server's hash in it.
+* After presenting username and password we get a TGT (Ticket Granting Ticket) which ends with a hash. How did we get a TGT? We supplied an NTLM hash. Any user can do this. Now let's say we have a service we want to access, that service has an SPN (Service Principal Name). In order to access that service we have to request a TGS. We present our TGT and request the TGS from the server. The KDC (Key Distribution Center aka Domain Controller) has the server account hash (Application Service Server's hash) and it's going to ecrypt it and send it back.The KDC does not know if we have acces to the Server (Application Service Server) or not. It's just going to provide us the TGS with the Application Service Server's hash.
+* We then present the TGS to the Application Service Server and then it will decrypt it using it's own server hash and then it's going to send back a yes or no to us. (Authrozied or not).
+* **However, we don't need to send that out! The important thing is that we have a valid account which gives us a TGT. With that ticket we can request a TGS. That TGS will be encrypted with the KDC's server account hash. So we can decrypt that hash, try to crack it.**
 * To retrieve the hash we use a tool from Impacket: `python GetUserSPNs.py MARVEL.local/fcastle:Password1 -dc-ip <IP of DC> -request`
 * We can now try to crack the hash with ***hashcat:*** `hashcat -m 13100 kerberoast.txt rockyou.txt`
 
