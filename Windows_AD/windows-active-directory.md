@@ -321,4 +321,13 @@
 
 ### Mimikatz
 
-* adding notes here... 19/143
+* Mimikatz is a tool to view and steal credentials.
+* Dumps credentials that are stored in memory, pass the hash, golden ticket etc.
+* git clone repo from **[here](https://github.com/gentilkiwi/mimikatz)**
+* If you don't want to build it, binaries are availables **[here](https://github.com/gentilkiwi/mimikatz/releases)**
+* it's a cat and mouse game with Windows and Mimikatz, Windows patches, Mimikatz updates...
+* download it directly to your Domain Controller (assuming that you already compromised it)
+
+#### Golden Ticket Attack
+
+* 19/145 continue from here...
