@@ -321,13 +321,46 @@
 
 ### Mimikatz
 
+#### What is Mimikatz?
+
 * Mimikatz is a tool to view and steal credentials.
 * Dumps credentials that are stored in memory, pass the hash, golden ticket etc.
 * git clone repo from **[here](https://github.com/gentilkiwi/mimikatz)**
 * If you don't want to build it, binaries are availables **[here](https://github.com/gentilkiwi/mimikatz/releases)**
 * it's a cat and mouse game with Windows and Mimikatz, Windows patches, Mimikatz updates...
 * download it directly to your Domain Controller (assuming that you already compromised it)
+* check out the Wiki on the Mimikatz github repo for more information on the different things it can do
 
-#### Golden Ticket Attack
+#### Credential Dumping with Mimikatz
 
-* 19/145 continue from here...
+* run ***mimikatz.exe*** on the Domain Controller
+* first command: `privilege::debug` 
+* response should be: ***privilege '20' OK***
+* if you don't run the above command first you won't be able to execute the attacks and the memory protection, speccially for the ***lsass.exe*** 
+* `sekurlsa::logonpasswords` 
+* not only we are compromising the Domain Controller but even as the regular computer. It dumps any user that has logged on and we dump their NTLM hash. We are taking advantage of this stored in memory.
+* **because this hash is an NTLM it can be passed around with Mimikatz**
+* it also shows the wdigest which is a feature in Windows 7 and previous versions, it stored the password in clear text
+* from Windows 8 on they patched it, they turned it off, but we can turn it on and then wait for someone to log in :)
+* this is a registry feature, turn it on and wait for someone to log in
+* **dumping the SAM:** `lsadump::sam` sometimes it doesn't work but it's worth a try
+* another way of dumping the SAM: `lsadump::sam /patch`
+* ***if it doesn't work we can try to use metasploit and or secretsdump.py and dump the SAM***
+* `lsadump::lsa /patch` the ***patch*** allows us to get to the infromations
+* **lsa** is the LOCAL SECURITY AUTHORITY, it's a protected subsystem in Windows Authentication, it creates and authenticates login sessions through the local computer
+* what we are looking for in the output is usernames and NTLM hashes, we could take those hashes offline and try to crack them and if we can crack them we need to know what % of those hashes we are able to crack and relay those numbers back to a client to report to them about their password policy, if it's strong or weak. If we're cracking 50% of those hashes their policy is weak, on the other hand if we're cracking only 10% of them that suggests a strong password policy.
+* we can also try to download the ***ntds.dit*** which will contain all the credentials as well
+
+#### Golden Ticket Attack and Pass The Ticket Attack
+
+##### What is a Golden Ticket and why do we care?
+
+* we dumped the KDC's TGT account, that's the Kerberos Ticet Granting Ticket account that allows us to generate tickets
+* what is we have the hash of that account, guess who's got to generate Kerberos Ticket Granting Tickets? We are :)
+* With that we will have complete access to the entire Domain, all the machines!
+
+### Golden Ticket Attack with Mimikatz
+
+* `mimikatz.exe`
+* `privilege::debug`
+* `lsadump::lsa /inject /name:krbtgt`
