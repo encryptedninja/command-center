@@ -373,3 +373,10 @@
 * **presistence:** once you own a Golden Ticket you can create a new user, make it a domain admin, most systems are picking it up, try better with a ***silver ticket***
 
 ![Golden Ticket Attack](images/golden_ticket_attack.png)
+
+## Additional Resoursec
+
+* **![AD Security](https://adsecurity.org/)** (free)
+* **![Harmj0y](https://blog.harmj0y.net/)** (free)
+* **![Pentester Academy Active Directory Labs](https://www.pentesteracademy.com/activedirectorylab)** (paid)
+* **![Pentester Academy RedTeam Labs](https://www.pentesteracademy.com/redteamlab)** (paid)
