@@ -374,9 +374,13 @@
 
 ![Golden Ticket Attack](images/golden_ticket_attack.png)
 
-## Additional Resoursec
+### Additional Resoursec
 
 * **![AD Security](https://adsecurity.org/)** (free)
 * **![Harmj0y](https://blog.harmj0y.net/)** (free)
 * **![Pentester Academy Active Directory Labs](https://www.pentesteracademy.com/activedirectorylab)** (paid)
 * **![Pentester Academy RedTeam Labs](https://www.pentesteracademy.com/redteamlab)** (paid)
+
+## Post Exploitation
+
+### 20/148...
