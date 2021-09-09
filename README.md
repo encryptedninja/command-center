@@ -39,6 +39,11 @@
 
 <p align="justify">These are not commands, I just thought it might come in handy if you need a quick refresher to find a port or ports.</p>
 
+<p>Check your public IP from terminal.</p>
+
+<p>dig +short myip.opendns.com @resolver1.opendns.com</p>
+
+
 <img src="images/common_ports.png">
 
 <p align="justify">You can do some great things with <code>curl</code>, it's worth going through it's man page, this is one of the great techniques I use quite often.</p>
