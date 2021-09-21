@@ -165,7 +165,7 @@
 
 * get PowerView from this **[github link](https://gist.github.com/HarmJ0y/184f9822b195c52dd50c379ed3117993)**
 * bring PowerView over to target Windwos machine
-* first cun PowerShell from terminal: `powershell -ep bypass` this bypasses the execution policy, not for security, it stops us from accidentally executing a script, so we need to bypass it
+* first run PowerShell from terminal: `powershell -ep bypass` this bypasses the execution policy, not for security, it stops us from accidentally executing a script, so we need to bypass it
 * `. .\PowerView.ps1` to initiate it
 * `Get-NetDomain` information about the Domain Controller, if the system has multiple controllers then run `Get NetDomainController`
 * `Get-DomainPolicy` to see all the different policies of the Domain
