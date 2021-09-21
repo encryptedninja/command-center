@@ -401,9 +401,9 @@
 
 #### Maintaining access with Metasploit
 
-* `run presistence -h`
-* `exploit/windows/local/presistence`
-* `exploit/windows/local/registry_presistence`
+* `run persistence -h`
+* `exploit/windows/local/persistence`
+* `exploit/windows/local/registry_persistence`
 
 #### Run scheduled tasks with Metasploit
 
