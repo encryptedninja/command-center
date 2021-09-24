@@ -1,4 +1,4 @@
-# Windows Privilege Escalation
+# Linux Privilege Escalation
 ## //cheat-sheet
 
 **[Back to Command-Center](https://github.com/codetorok/command-center/blob/master/README.md)**
