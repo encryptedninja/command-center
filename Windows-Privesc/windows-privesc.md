@@ -99,7 +99,7 @@
 
 #### Windows subsystem for Linux
 
-* where /R c:\windows bash.exe
+* `where /R c:\windows bash.exe`
 
 ### Impersonation and Potato Attack
 
@@ -190,7 +190,7 @@
 
 ##### Detection:
 
-* `C:\Users\User\Desktop\Tools\Accesschk\accesschk64.exe -wvu "C:\Program Files\File Permissions Service"
+* `C:\Users\User\Desktop\Tools\Accesschk\accesschk64.exe -wvu "C:\Program Files\File Permissions Service"`
 * who has permission set to: **FILE_ALL_ACCESS** on filepermservice.exe file
 
 ##### Exploitation:
@@ -204,7 +204,7 @@
 ##### Detection:
 
 * Open command prompt and type: `icacls.exe "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup"`
-* From the output notice that the “BUILTIN\Users” group has full access ‘(F)’ to the directory.
+* From the output notice that the **`BUILTIN\Users`** group has full access **`(F)`** to the directory.
 
 ##### Exploitation:
 
@@ -288,6 +288,6 @@
 * you'll get an error message, just ignore it
 * in the save file as window for file name type in: `C:\Windows\System32\*.*` this will take you to the file system within that window
 * what we want to find is the ***cmd.exe*** right click on it, open
-* in prompt: `whoami` and we'll see that we are AUTHORITY\SYSTEM
+* in prompt: `whoami` and we'll see that we are `AUTHORITY\SYSTEM`
 
 
