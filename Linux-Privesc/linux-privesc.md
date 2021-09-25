@@ -143,7 +143,7 @@ like delete it, if there's no placeholder we can just switch to root user withou
 ### Upgrade your shell on target machine
 
 * `python 'import pty;pty.spawn("/bin/bash")'`
-* `export TERM=xterm
+* `export TERM=xterm`
 * background your shell with **CTRL+Z**
 * `ptty raw -echo; fg`
 
