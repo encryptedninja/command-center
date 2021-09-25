@@ -90,7 +90,7 @@
 
 #### If trying to get an interactive shell with ntlmrelayx
 
-* append ***-i*** to `ntlmrelayx.py -tf targets.txt -smb2support -i
+* append ***-i*** to `ntlmrelayx.py -tf targets.txt -smb2support -i`
 * ***-tf*** stands for ***target file***
 * when running interactive see in feeds where an whic port is the one where ntlmrelayx created the interactive shell, I'll use port 11000 as an example here
 * then on another tab in tty open up: `nc 127.0.0.1 11000`
@@ -403,7 +403,7 @@
 ### Maintaining Access
 
 * If something happens to the machine we are on (target) we can gain access back.
-* This can be accomplished via a C2 (Command & Conquer) framework such as **Covenant**.
+* This can be accomplished via a C2 (Command & Control) framework such as **Covenant**.
 * Adding a User (this will add a user via an unauthenticated port)
 
 #### Maintaining access with Metasploit
