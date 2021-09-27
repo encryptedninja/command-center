@@ -194,6 +194,8 @@
 
 <img src="images/sqlmap.png">
 
+<p>Additionally to sqplmap: capture a login request with Burp and save it in a file ex. login.req, than in sqplmap: sqplmap -r login.req --level 5 --risk 3</p>
+
 <p align="justify">How to add your generated ssh key to your known hosts. It helps with Github also.</p>
 
 <img src="images/ssh_key_add.png">
