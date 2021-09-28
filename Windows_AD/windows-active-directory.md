@@ -136,7 +136,7 @@
 
 * start mitm6: `mitm6 -d domain.local` let it run
 * we also need to setup a relay attack: `netlmrelayx.py -6 -t ldaps://<domain contorller's IP> -wh fakewpad.domaincontoller.local -l lootme`
-* **-6** is for IPv6 IPs, **ladps** attack via LDAP Securte, **-l** for loot, create a loot file used to store information mitm6 dumps out on target
+* **-6** is for IPv6 IPs, **ldaps** attack via LDAP Securte, **-l** for loot, create a loot file used to store information mitm6 dumps out on target
 * IPv6 is sending out: who's got my DNS? it sends it out in about every 30 minutes, mitm6 is trying to relay credentials and dump out everything it can into the ***lootme*** file we set up for it
 
 * when an admin logs in, mitm6 tries to relay the DNS through IPv6 targeting ldap and creates a new user for us
