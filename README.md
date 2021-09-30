@@ -13,7 +13,7 @@
 
 <img src="images/002_hydra.png">
 
-<p align="justify">Alternatively you can just browse through these commands using your slider in your browser or your mouse wheel in the middle. Anyways, I hope this repo can serve you well, let me know if you have any comments or suggestions, you can reach me here or on LinkedIn or Twitter @codetorok thanks for checking out the Command-Center!</p>
+<p align="justify">Alternatively you can just browse through these commands using your slider in your browser or your mouse wheel in the middle. Anyways, I hope this repo can serve you well, let me know if you have any comments or suggestions, you can reach me here or on LinkedIn @codetorok thanks for checking out the Command-Center!</p>
 
 * Go here if you are looking for:
 * **[TOR Service / Anonymity](https://github.com/codetorok/command-center/blob/master/TOR-SERVICE/tor_service_setup_and_use.md)**
