@@ -68,6 +68,7 @@ $_string_variable("0");
 ### fuzzing.py
 
 * ⚠️ This script is a bit different from what was shown during the course, but it's more up to date and is for Python3
+* change: **prefix** to TRUN /.:/ (in this example) and IP, PORT of Vulnserver
 
 ```
 #!/usr/bin/env python3
@@ -97,3 +98,29 @@ while True:
   string += 100 * "A"
   time.sleep(1)
 ```
+
+* don't forget to `chmod +x fuzzing.py`
+* once we run this script we'll know the program crashes at what bytes (in this example it crashes at 2700 bytes)
+* we round it up, we crashed at around 3000 bytes
+* let's find the **EIP** value
+
+## Finding The Offset
+
+* using metasploit pattern create with -l (for length) and our rounded up bytes where the server crashed which was 3000
+* `/usr/share/metasploit-framework/tools/exploit/patter_create.rb -l 3000`
+
+The following output will be sent to Vulnserver:
+
+![5-pattern_create](5-pattern_create.png)
+
+* copy the output and modify the script where `string = prefix + "A" * 100` to `string = prefix + "<metasploit output>"`
+* this time when the server crashes we'll see the value on the **EIP** and we'll use metasploit again with that specific patter offset value
+* for the sake of example let's say the EIP value is: `368F4337`
+* in metasploit:
+* `/user/share/metasploit-framework/tools/exploit/patter_create.rb -l 3000 -q 368F4337`
+* output will show the exact match for offset (in this example it's 2003 bytes)
+* it tells us the at the exactly 2003 bytes we can control the EIP, now let's overwrite it
+
+## Overwriting the EIP
+
+* continue from here...
