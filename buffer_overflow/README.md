@@ -12,4 +12,13 @@
 * kali of course
 * scripts from the **`./scripts`** folder
 
+## Quick Visual Recap
+
+* In the Stack we are overflowing the buffer space to reach the **EIP**
+* We can use the **EIP** to point into directions that we instruct
+
+![1-anathomy-of-the-memory](images/1-anatomy_of_the_memory.png)
+![2-anatomy_of_the_stack](images/2-anatomy_of_the_stack.png)
+![3-overflow](images/3-overflow.png)
+
 ## Spike and Fuzzing
