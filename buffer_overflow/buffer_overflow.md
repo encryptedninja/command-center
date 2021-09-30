@@ -111,7 +111,7 @@ while True:
 
 The following output will be sent to Vulnserver:
 
-![5-pattern_create](5-pattern_create.png)
+![5-pattern_create](images/5-pattern_create.png)
 
 * copy the output and modify the script where `string = prefix + "A" * 100` to `string = prefix + "<metasploit output>"`
 * this time when the server crashes we'll see the value on the **EIP** and we'll use metasploit again with that specific patter offset value
