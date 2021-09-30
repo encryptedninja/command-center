@@ -3,6 +3,10 @@
 
 **[Back to Command-Center](https://github.com/codetorok/command-center/blob/master/README.md)**
 
+⚠️ IMPORTANT NOTE: This is not a tutorial write-up on how to use the different tools and commands, these are quick notes on how to privesc in Linux.
+
+**For the full tutorial and lectures it is highly recommended to take the LINUX PRIVESC course from [TCM-SECURITY](https://academy.tcm-sec.com/).**
+
 ### Resources:
 
 * **[g0tm1lk](https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/)**
