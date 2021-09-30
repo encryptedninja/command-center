@@ -3,6 +3,9 @@
 
 **[Back to Command-Center](https://github.com/codetorok/command-center/blob/master/README.md)**
 
+⚠️ **IMPORTANT NOTE:** This is not a tutorial write-up on how to use the different tools and commands, these are quick notes on how to exploit AD in Windows.
+
+**For the full tutorial and lectures it is highly recommended to take the PEH course from [TCM-SECURITY](https://academy.tcm-sec.com/).**
 
 ### What is AD?
 
