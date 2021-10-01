@@ -155,7 +155,7 @@ The following output will be sent to Vulnserver:
 * in Immunity Debugger in the command bar on the bottom: `!mona modules`
 * in the popup window we want to check for all false in protection settings in something that is attached to Vulnserver
 
-![10-checking-modules](10-checking-modules.png)
+![10-checking-modules](images/10-checking-modules.png)
 
 ### Generating the Jump Code
 
@@ -166,7 +166,7 @@ The following output will be sent to Vulnserver:
 * back to mona: `!mona find -s "\xffe4" -m essfunc.dll`
 * we're looking for the return addresses
 
-![11-return-addresses](11-return-addresses.png)
+![11-return-addresses](images/11-return-addresses.png)
 
 * our found return address is **625011af**
 * modify in exploit.py: `overflow = "A" * offset
@@ -177,11 +177,11 @@ The following output will be sent to Vulnserver:
 
 ### Catching The Jump Code
 
-![12-catching-the-jump-code](12-catching-the-jump-code.png)
+![12-catching-the-jump-code](images/12-catching-the-jump-code.png)
 
 * we should see the following output, meaning that we actually jumped to the ESP
 
-![13-finding-ESP](13-finding-ESP.png)
+![13-finding-ESP](images/13-finding-ESP.png)
 
 * select it and hit **F2** (it will turn it blue)
 * with that we just set a break point so it will not execute any further, it will break and wait for further instructions from us and that's what we want
@@ -189,7 +189,7 @@ The following output will be sent to Vulnserver:
 * to test it hit play in Immunity Debugger and run the exploit.py script. The program will stop and break at our break point
 * we control the EIP now, we need to generate some shell code and point directly to it and we're in the home run!
 
-![14-control-the-EIP](14-control-the-EIP.png)
+![14-control-the-EIP](images/14-control-the-EIP.png)
 
 ## Gaining Shell Code And Gaining Root
 
