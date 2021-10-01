@@ -146,7 +146,7 @@ The following output will be sent to Vulnserver:
 
 ![8-ID-bad-characters](images/8-ID-bad-characters.png)
 
-* we are looking for a ***.dll*** or something similar inside of the program that has no memory protections, meaning no DEP no ASLR no SAVE SEH
+* we are looking for a ***.dll*** or something similar inside of the program that has no memory protections, meaning no DEP no ASLR no SEH
 * **[mona modules](https://github.com/corelan/mona)** helps us to achieve this
 * copy ***mona modules*** into `This PC: Program Files: Program (x86): Immunity INC: Immunity Debugger: PyCommands`
 
