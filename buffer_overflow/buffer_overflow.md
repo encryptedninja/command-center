@@ -212,7 +212,7 @@ The following output will be sent to Vulnserver:
 
 * you may need to do byte encoding
 
-![17-byte-encoding](images/17-byte-encoding.png)
+![17-byte-encoding](images/16-byte-encoding.png)
 
 ## Updated Fuzz script
 
@@ -297,7 +297,7 @@ except:
 * you can copy it and paste it into your script, don't need to go out and look for bad chars on websites
 * mona also creates a .bin file which is handy when we compare this array to find bad chars
 
-![18-mona-bad-chars-byte-array](images/18-mona-bad-chars-byte-array.png)
+![18-mona-bad-chars-byte-array](images/17-mona-bad-chars-byte-array.png)
 
 
 ## Update Bad Chars
@@ -342,18 +342,18 @@ except:
 * now you don't have to review the bad chars manually, instead:
 * `!mona compare -f c:\mona\bytearray.bin -a 010AF9C8` where  ***010AF9C8*** is the ***ESP*** address
 
-![19-mona-compare-byte-arrays](images/19-mona-compare-byte-arrays.png)
+![19-mona-compare-byte-arrays](images/18-mona-compare-byte-arrays.png)
 
 * you'll see the results in a pop up window
 
-![20-mona-results](images/20-mona-results.png)
+![20-mona-results](images/19-mona-results.png)
 
 ## Updated The Jump Address With Mona
 
 * `!mona modules` when we idenitfied the modules that had their values set to False, instead we could just find the jump address with mona
 * `!mona jmp -r ESP -m "essfunc.dll"`
 
-![21-mona-found-jump-address](images/21-mona-found-jump-address.png)
+![21-mona-found-jump-address](images/20-mona-found-jump-address.png)
 
 ## SOMETIMES the Payload Encoder in python3 does not work as we wanted to
 
