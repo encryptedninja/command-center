@@ -123,4 +123,24 @@ The following output will be sent to Vulnserver:
 
 ## Overwriting the EIP
 
-* continue from here...
+* continuing with the ***exploit.py*** script
+* `offset = 2003`
+* `payload = "A" * offset + "B" * 4` after running the script we should see that the value for the EIP as 424242 which is "B" in hex code
+
+![6-controlling-the-EIP](images/6-controlling-the-EIP.png)
+
+## Finding Bad Chars
+
+**[Bad Char Generator](https://github.com/cytopia/badchars)**
+(Just copy the bad chars and paste it into the script)
+
+* paste bad chars to `retn = "<bad chars here>"`
+* by default `\x00` the null byte acts up so remove from  `retn`
+* check **ESP hexdump**
+
+![7-check-ESP-hexdump](images/7-check-ESP-hexdump.png)
+
+* identify bad characters, everything that's out of order is a bad char
+* **every time you have consecutive bad chars** we only care for the first one, **however** I would take out both since the exploit will still work (at least on this basic level)
+
+![8-ID-bad-characters](images/8-ID-bad-characters.png)
