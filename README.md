@@ -163,6 +163,9 @@
 
 <img src="images/pth_winexe_pass_the_hash.png">
 
+<p align="justify">Public IP address form Linux termnal.</p>
+<p>dig +short myip.opendns.com @resolver1.opendns.com</p>
+
 <p align="justify">Extract the email address from a public key.</p>
 
 <img src="images/public_key_gpg_extract_email.png">
