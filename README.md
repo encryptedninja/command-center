@@ -34,7 +34,7 @@
 
 <img src="images/binwalk_steghide_stegonography.png">
 
-<p align="justify">If you wan't full anonimity (as much as you can get, don't go crazy here) you need to know how to change dns. If you combine this with <code>proxychains</code> using TOR (link to setup: https://github.com/codetorok/command-center/blob/master/TOR-SERVICE/tor_service_setup_and_use.md), you're pretty much good to go.</p>
+<p align="justify">If you wan't full anonimity (as much as you can get, don't go crazy here) you need to know how to change dns. If you combine this with <code>proxychains</code> using TOR (link to setup: https://github.com/codetorok/command-center/blob/master/TOR-SERVICE/tor_service_setup_and_use.md), you're pretty much good to go as long as you also have WebRTC disabled (link to setup: https://support.avast.com/en-us/article/Prevent-WebRTC-IP-leak/).</p>
 
 <img src="images/change_dns.png">
 
