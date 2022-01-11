@@ -136,7 +136,7 @@
 
 <p>msfvenom Windows add user</p>
 
-<img src="images/msfvenom_windows_add_user.png>
+<img src="images/msfvenom_windows_add_user.png">
 
 <p align="justify"><code>msfvenom</code> reverse shell, <code>-p</code> for payload and <code>-f</code> for the format in this case it's raw so I can send the output into a <code>.php</code> file.</p>
 
