@@ -169,6 +169,7 @@
 
 <p align="justify">Public IP address form Linux termnal.</p>
 <p>dig +short myip.opendns.com @resolver1.opendns.com</p>
+<p>An even shorter comand to get the public IP is: curl ifconfig.me</p>
 
 <p align="justify">Extract the email address from a public key.</p>
 
