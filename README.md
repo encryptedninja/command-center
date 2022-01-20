@@ -85,6 +85,11 @@
 
 <img src="images/how_to_find_a_file_in_windows_terminal.png">
 
+<p>Erase history when using zsh for example from bash, create a function and then call it: </p>
+
+<p>function erase_history { local HISTSIZE=0; }</p>
+<p>erase_history</p>
+
 <p>Persistence via RDP
 
 * enabling Remote Desktop via powershell: `powershell reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f; Enable-NetFirewallRule -DisplayGroup "Remote Desktop"`
