@@ -7,13 +7,9 @@
 
 <img src="images/001_metal-door.jpg">
 
-<p align="justify">The way it works is that you use your browser's search function to quickly find commands for a tool you need. In Firefox for example this is done by using <code>CTRL+F</code></p>
+<p align="justify">Use your browser's search function to quickly find commands for a tool you need. In Firefox for example this is done by using <code>CTRL+F</code></p>
 
-<p align="justify">Let's try it! Let's use the search phrase "hydra". Hit <code>CTRL+F</code> and then type in the search bar <code>hydra</code> you'll see that the first result will be this very line because that's the first occurence for that word but if you use your up and down arrows next to the search bar you can quickly jump to the next occurence where you'll find the most commonly used switches and a little explanation about the program.</p>
-
-<img src="images/002_hydra.png">
-
-<p align="justify">Alternatively you can just browse through these commands using your slider in your browser or your mouse wheel in the middle. Anyways, I hope this repo can serve you well, let me know if you have any comments or suggestions, you can reach me here or on LinkedIn @codetorok thanks for checking out the Command-Center!</p>
+<p align="justify">Alternatively you can just browse through these commands using your browser's slider or your mouse wheel in the middle. Anyways, I hope this repo can serve you well, let me know if you have any comments or suggestions, you can reach me here or on LinkedIn @codetorok thanks for checking out the Command-Center!</p>
 
 * Go here if you are looking for:
 * **[TOR Service / Anonymity](https://github.com/codetorok/command-center/blob/master/TOR-SERVICE/tor_service_setup_and_use.md)**
