@@ -11,6 +11,7 @@ please don't be stupid :)
 
 * With that said, let's dive into it. There is no explication needed for this one, just follow the steps provided below, it's easy!
 
+<img src="images/change_dns.png">
 <img src="images/0_install_tor_service.png">
 <img src="images/1_install_tor_proxychains.png">
 <img src="images/2_edit_proxychains_conf.png">
