@@ -11,12 +11,12 @@ please don't be stupid :)
 
 * With that said, let's dive into it. There is no explication needed for this one, just follow the steps provided below, it's easy!
 
-<img src="images/change_dns.png">
-<img src="images/0_install_tor_service.png">
-<img src="images/1_install_tor_proxychains.png">
-<img src="images/2_edit_proxychains_conf.png">
-<img src="images/3_edit_proxychains_chains.png">
-<img src="images/4_edit_proxychains_chains.png">
-<img src="images/5_enable_start_tor_service.png">
-<img src="images/6_checking_for_dns_leak.png">
-<img src="images/7_testing_results.png">
+![change_dns](images/change_dns.png)
+![install_tor_service](images/0_install_tor_service.png)
+![install_tor_proxychains1](images/1_install_tor_proxychains.png)
+![edit_proxychains2](images/2_edit_proxychains_conf.png)
+![edit_proxychains3](images/3_edit_proxychains_chains.png)
+![edit_proxychains4](images/4_edit_proxychains_chains.png)
+![edit_proxychains5](images/5_enable_start_tor_service.png)
+![edit_proxychains6](images/6_checking_for_dns_leak.png)
+![edit_proxchains7](images/7_testing_results.png)
