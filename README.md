@@ -19,7 +19,7 @@ Alternatively you can just browse through these commands using your browser's sl
 * **[Pivoting in Metasploit](https://github.com/codetorok/command-center/blob/master/pivoting_metasploit/pivoting_metasploit.md)**
 * **[Buffer Overflow (Basic)](https://github.com/codetorok/command-center/blob/master/buffer_overflow/buffer_overflow.md)**
 
-![available_commands](images/003_available_commands.png)
+![available_commands](images/002_available_commands.png)
 
 ## Amass
 Really good if you need to enumerate subdomains, just make sure you start it at night before going to bed :)
@@ -397,4 +397,4 @@ The best scanner for Wordpress sites.
 ### This is the end of the list, remember, it's not the commands, it's what you do with those commands and how do you use the information you get out of theses swites, that's all that matters. This repo is for educational purposes only, anything you do with this is on you, so be responsable.
 
 ## The world is at your fingertips 💯
-![world100](images/004_hacker_hoodie.jpg)
+![world100](images/003_hacker_hoodie.jpg)
