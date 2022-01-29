@@ -18,6 +18,8 @@ Alternatively you can just browse through these commands using your browser's sl
 * **[Windows SSH Service Setup](https://github.com/codetorok/command-center/blob/master/Windows-ssh/windows-ssh-setup.md)**
 * **[Pivoting in Metasploit](https://github.com/codetorok/command-center/blob/master/pivoting_metasploit/pivoting_metasploit.md)**
 * **[Buffer Overflow (Basic)](https://github.com/codetorok/command-center/blob/master/buffer_overflow/buffer_overflow.md)**
+* **[GPG](https://github.com/codetorok/command-center/edit/master/gpg/gpg.md)**
+* **[Python3 one liners and scripts](https://github.com/codetorok/command-center/tree/master/python3)**
 
 ![available_commands](images/002_available_commands.png)
 
@@ -130,39 +132,6 @@ There are different ways you can use **_gobuster_** this is the one I use most o
 
 * with the same way but using the `vhost` option one can enumerate subdomains as well just changed the `dir` to `vhost` in the above command and maybe use a different wordlist for that purpose
 
-# gpg
-(The ***SHORT ID*** on the key is the last 8 digits of the fingerprint, the ***LONG ID*** is the last 16 digits.)
-* `gpg --full-generate-key` to generate a key pair
-* `gpg --output ~/revocation.crt --gen-revoke our_email_address` to generate a revocation certificate in case your private key gets compromised
-* `chmod 600 ~/revocation.crt` to remove all permissions from this certificate
-* `gpg --import <someones.key>` importing someone else's public key
-* `gpg --fingerprint someone@email.com` checking someone elses public key's fingerprint for validation
-* `gpg --sign-key someone@email.com` sing someone's public key for trust
-* `gpg --output ~/dave-geek.key --armor --export ouremail@email.com` sharing our public key
-* `gpg --send-keys --keyserver pgp.mit.edu <fingerprint>` sending our public key to a keyserver
-* `gpg --encrypt --sign --armor -r ouremail@email.com <file_to_encrypt>` encrypting a file
-* `gpg --decrypt encrypted.asc > plain.txt` decrypting a recieved encrypted file
-* `gpg --keyserver pgp.mit.edu --refresh-keys` to refresh our public keys against the key server
-* `gpg --keyserver pgp.mit.edu --send-keys <key ID>` sending the revocation of the key to the key server
-* `gpg --keyserver pgp.mit.edu --search-keys <ID or email address for the key your searching for>` searching for public keys on ***pgp.mit.edu***
-* `gpg --search-keys <ID or email address for the key your searching for>` searching for public keys on ***https://keys.openpgp.org:443***
-
-### Addtitionally we can:
-
-****
-* `gpg --list-keys` then `gpg --edit-key <user ID>` in the gpg prompt select the key with the right ID `key 1` follow the instructions to change the expiration date of your key, use `help` for further assitance
-* `gpg --list-keys` to list available keys
-* `gpg --import <key_name>.asc` to import a key
-* `gpg -o message.sig -s <message_file>` to sign a "message file"
-* `gpg --verify message.sig` to verify the signature
-* `gpg -o message.asc --clearsing message` to sign a file with a clear-text signature
-* `gpg --delete-key "User name"` to delete a public key
-* `gpg --delete-secret-key "User name"` to delete a secret key
-* `gpg -o secret.gpg -c somefile` to encrypt a file that no one else has to decrypt use gpg to perform symmetric encryption
-* `gpg -o myfile --decrypt secret.gpg` to decrypt a file encrypted with a symmmetric key
-* `gpg --import <backupkeys.pgp>` import the backup keys
-* `gpg --import <revocation file, ex revoke.asc>` imorting the revocation certificate
-
 # sed
 
 * `sed -i 's/text_to_replace/new_text/g' <file name>` without the `g` parameter at the end sed will only replace the first instance on each line only and without the `-i` switch sed will no overwrite the file we are working with, if we want to save the results as a new file we can just redirect the output to a new file like so: `sed -i 's/test_to_replace/new_text/g' <original file> > <new file>`
@@ -250,51 +219,6 @@ One more thing: if you need to generate a nice html report from the output you c
 
 ### pass the hash
 * pass the hash, Win: `pth-winexe -U Administrator%'<admin hash>' //<target IP> cmd.exe`
-
-## Python3
-### One liners and quick scriptsb 
-(Later on this section will be moved just like AD and the others at the beginning of this repo. This is just to simplify and better organize this space.)
-
-* to spawn a shell: `python3 -c 'import pty;pty.spawn("/bin/bash")'`
-* webservers: `python3 -m http.server 8080`
-* if webserver is picked up by the firewall use ftp server: `python3 -m pyftpdlib -p 21 --write` and if you don't have it get it first with: `pip3 install pyftpdlib` and to log in just use the IP address of your ftp server: `ftp <ftp server IP>`
-
-#### QRCode generator (Python3)
-
-```
-import qrcode
-
-input_data = "https://google.com"
-qr = qrcode.QRCode(version=1, box_size=10, border=5)
-qr.add_data(input_data)
-qr.make(fit=True)
-img = qr.make_image(fill='black', back_color='white')
-img.save('qrcode001.png')
-```
-
-#### progress bar (Python3)
-
-```
-for i in range(0, 51):
-    time.sleep(0.1)
-    sys.stdout.write("{} [{}{}]\r".format(i, '#' * i, "." * (50 - i)))
-    sys.stdout.flush()
-sys.stdout.write("\n")
-
-```
-
-#### printing and checking a usage form and switches (Python3)
-
-```
-if len(sys.argv) == 1:
-    print("USAGE: python3 the_sys_module.py <code name>")
-    print("No arguments, exiting...")
-    sys.exit(9)
-if sys.argv[1] == "tellmemore":
-    print("Code name accepted..., exiting with exit code 0.")
-else:
-    print("Wrong code name, exiting with exit code 3.")
-```
 
 ## smbclient
 Just a couple of things here.
