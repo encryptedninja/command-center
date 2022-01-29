@@ -3,7 +3,6 @@
 **[Back to Command-Center](https://github.com/codetorok/command-center/blob/master/README.md)**
 
 ### One liners and quick scripts
-(Later on this section will be moved just like AD and the others at the beginning of this repo. This is just to simplify and better organize this space.)
 
 * to spawn a shell: `python3 -c 'import pty;pty.spawn("/bin/bash")'`
 * webservers: `python3 -m http.server 8080`
