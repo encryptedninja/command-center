@@ -18,8 +18,8 @@ Alternatively you can just browse through these commands using your browser's sl
 * **[Windows SSH Service Setup](https://github.com/codetorok/command-center/blob/master/Windows-ssh/windows-ssh-setup.md)**
 * **[Pivoting in Metasploit](https://github.com/codetorok/command-center/blob/master/pivoting_metasploit/pivoting_metasploit.md)**
 * **[Buffer Overflow (Basic)](https://github.com/codetorok/command-center/blob/master/buffer_overflow/buffer_overflow.md)**
-* **[GPG](https://github.com/codetorok/command-center/edit/master/gpg/gpg.md)**
-* **[Python3 one liners and scripts](https://github.com/codetorok/command-center/tree/master/python3)**
+* **[GPG](https://github.com/codetorok/command-center/blob/master/gpg/gpg.md)**
+* **[Python3 one liners and scripts](https://github.com/codetorok/command-center/blob/master/python3/python3.md)**
 
 ![available_commands](images/002_available_commands.png)
 
