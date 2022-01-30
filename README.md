@@ -7,7 +7,10 @@ Let's exit the outside world and enter cyber space. (We have cookies... 😎)
 ![metal_door](images/001_metal-door.jpg)
 
 Frequently used commands that are searchable by using your browser's search function. (CTRL+f on Firefox)
-I hope this repo can serve you well, let me know if you have any comments or suggestions, you can reach me here or on **[LinkedIn](https://www.linkedin.com/in/codetorok/)**. Thanks for checking out the Command-Center!
+
+I hope this repo can serve you well, let me know if you have any comments or suggestions, you can reach me here or on **[LinkedIn](https://www.linkedin.com/in/codetorok/)**.
+
+**Thanks for checking out the Command-Center!**
 
 * Go here if you are looking for:
 * **[TOR Service / Anonymity](https://github.com/codetorok/command-center/blob/master/TOR-SERVICE/tor_service_setup_and_use.md)**
