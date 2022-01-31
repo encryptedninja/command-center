@@ -9,9 +9,9 @@ please don't be stupid :)
 
 **[Back to Command-Center](https://github.com/codetorok/command-center/blob/master/README.md)**
 
+* ⚠️ in addition to the below steps make sure you uncomment the **_proxy_dns_** in your **_proxychains.conf_** file. 
 * With that said, let's dive into it. There is no explication needed for this one, just follow the steps provided below, it's easy!
 
-![change_dns](images/change_dns.png)
 ![install_tor_service](images/0_install_tor_service.png)
 ![install_tor_proxychains1](images/1_install_tor_proxychains.png)
 ![edit_proxychains2](images/2_edit_proxychains_conf.png)
