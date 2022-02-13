@@ -245,6 +245,8 @@ If the target is vulnerable for the get request (see above) we can get a shell o
 
 ## ssh
 
+* removing credentials from known_hosts for ssh `ssh-keygen -f "/home/user/.ssh/known_hosts" -R "[<IP>]:<PORT>"`
+
 *_This section is under development_*
 
 ## steghide
