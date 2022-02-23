@@ -152,6 +152,17 @@ I mainly created this part because of the web login attack part. Sometimes it's 
 * `hydra -l <username> -P <full path to the password list> ftp://<IP>` using Hydra against
 * `hydra -L <username list> -p <password> <IP> http-post-form "/wp-login.php:log=^USER^&pwd=^PWD^:Invalid username" -t 30` you can capture the error message (Invalid username) by trying a credential on the target website and replace the one I have in this synthax if needed. This example tests several usernames for the same password, a technique also called password spraying.
 
+## iptables
+
+* This example shows **how to block all connections** from the IP address 10.10.10.10. `This example shows how to block all connections from the IP address 10.10.10.10.`
+* This example shows how to block all of the IP addresses in the 10.10.10.0/24 network range. You can use a netmask or standard slash notation to specify the range of IP addresses. `iptables -A INPUT -s 10.10.10.0/24 -j DROP` or `iptables -A INPUT -s 10.10.10.0/255.255.255.0 -j DROP`
+* **Connections to a specific port:** This example shows how to block SSH connections from 10.10.10.10. `iptables -A INPUT -p tcp --dport ssh -s 10.10.10.10 -j DROP`
+* This example shows how to block SSH connections from any IP address. `iptables -A INPUT -p tcp --dport ssh -j DROP`
+* **Connection States:** the capability you’d need to allow two way communication but only allow one way connections to be established. Take a look at this example, where SSH connections FROM 10.10.10.10 are permitted, but SSH connections TO 10.10.10.10 are not. However, the system is permitted to send back information over SSH as long as the session has already been established, which makes SSH communication possible between these two hosts. 
+  * `iptables -A INPUT -p tcp --dport ssh -s 10.10.10.10 -m state --state NEW,ESTABLISHED -j ACCEPT`
+  * `iptables -A OUTPUT -p tcp --sport 22 -d 10.10.10.10 -m state --state ESTABLISHED -j ACCEPT`
+* **Saving Changes:** The changes that you make to your iptables rules will be scrapped the next time that the iptables service gets restarted unless you execute a command to save the changes.  This command can differ depending on your distribution: `sudo /sbin/iptables-save`
+
 ## John
 Cracking some SHA256 hashes with john, using the rockyou.txt as a wordlist, redirecting the output  into athe johncracked.txt
 
