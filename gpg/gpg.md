@@ -17,6 +17,8 @@
 * `gpg --keyserver pgp.mit.edu --send-keys <key ID>` sending the revocation of the key to the key server
 * `gpg --keyserver pgp.mit.edu --search-keys <ID or email address for the key your searching for>` searching for public keys on ***pgp.mit.edu***
 * `gpg --search-keys <ID or email address for the key your searching for>` searching for public keys on ***https://keys.openpgp.org:443***
+* `gpg --output alice.gpg --export alice@cyb.org` to export the gpg public key
+* `gpg --armor --export alice@cyb.org` to export a public key in an ASCII-armored format similar to unencoded documents. (Good for emails.)
 
 ### Addtitionally we can:
 
