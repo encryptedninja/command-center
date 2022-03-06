@@ -114,6 +114,10 @@ Searching in **_Windows_** using the `dir` command we have the following switche
 * `dir \ /s | find "i" | more` the above command uses vertical bars to pipe the output from dir to the command find, and then to the command more. The result is a list of all files and directories in the root directory of the current drive (\), with extra information. Namely, find also displays the number of files in each directory, and the amount of space occupied by each
 * `dir /s /a:hs /q C:\Windows > myfile.txt` runs the _dir_ command, but redirects the output to the file __myfile.txt__, instead of displaying it on the screen. To view the contents of the file, you can use the `type` command and your file name, if the file is very long try it with `type myfile.txt | more`
 
+## ip add
+
+* `route` and `ip route add 192.168.222.0/24 via 10.175.34.1`
+
 ## zsh
 **_Erase history_** when using **_zsh_** for example from bash, create a function and then call it:
 
