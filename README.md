@@ -146,7 +146,7 @@ There are different ways you can use **_gobuster_** this is the one I use most o
 ### sudo update & upgrade
 
 * If you wish to upgrade only a certain package, ex: firefox:
-  * `sudp apt-get update && sudo apt-get --only upgrade firefox`
+  * `sudp apt-get update && sudo apt-get --only-upgrade firefox`
 * If you wish to list upgradable packages use `sudo apt list --upgradable`
 
 ## hashcat
