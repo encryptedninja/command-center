@@ -312,7 +312,7 @@ Some shells are fuzzy but after an upgrade you can have a proper one with all th
    * save the changes, exit nano then: `sudo ifup eth1` to apply the changes on the running system.
 
 * install **_virtualbox-guest_**: 
-* `sudo apt update && sudo apt install -y --reinstall virtualbox-guest-x11 && sudo reboot -f`
+* it has to be installed on the VM: `sudo apt update && sudo apt install -y --reinstall virtualbox-guest-x11 && sudo reboot -f`
 
 ## wfuzz
 Enlists subdomains based on a wodlist, here using top5000.txt from seclist. `--hw 290` is needed so 404 pages won't show up in the search results.
