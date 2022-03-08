@@ -303,12 +303,16 @@ Some shells are fuzzy but after an upgrade you can have a proper one with all th
 4. `stty raw -echo; fg` I like to add `fg` here to bring the session to the foreground again and don't have to do it as a next command
 
 ## virtualbox
-Need this config to be able to make virtualbox work with both bridged and NAT at the same time.
 
-* `sudo nano /etc/network/interfaces`
-* edit the file: `allow-hotplug eth1` uncomment it
-* edit the file: `iface eth1 inet dhcp` uncomment it
-* save the changes, exit nano then: `sudo ifup eth1` to apply the changes on the running system.
+* Need this config to be able to make virtualbox work with both bridged and NAT at the same time.
+
+   * `sudo nano /etc/network/interfaces`
+   * edit the file: `allow-hotplug eth1` uncomment it
+   * edit the file: `iface eth1 inet dhcp` uncomment it
+   * save the changes, exit nano then: `sudo ifup eth1` to apply the changes on the running system.
+
+* install **_virtualbox-guest_**: 
+* `sudo apt update && sudo apt install -y --reinstall virtualbox-guest-x11 && sudo reboot -f`
 
 ## wfuzz
 Enlists subdomains based on a wodlist, here using top5000.txt from seclist. `--hw 290` is needed so 404 pages won't show up in the search results.
