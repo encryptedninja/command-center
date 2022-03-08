@@ -138,11 +138,16 @@ There are different ways you can use **_gobuster_** this is the one I use most o
 
 * with the same way but using the `vhost` option one can enumerate subdomains as well just changed the `dir` to `vhost` in the above command and maybe use a different wordlist for that purpose
 
-# sed
+## sed
 
 * `sed -i 's/text_to_replace/new_text/g' <file name>` without the `g` parameter at the end sed will only replace the first instance on each line only and without the `-i` switch sed will no overwrite the file we are working with, if we want to save the results as a new file we can just redirect the output to a new file like so: `sed -i 's/test_to_replace/new_text/g' <original file> > <new file>`
 * `sed -n 's/text_to_replace/new_text/pg'` sed `-n` means no output unless there is a match because of the `p` parameter
-### sed is very usefull when comnining it with grep IMO
+
+### sudo update & upgrade
+
+* If you wish to upgrade only a certain package, ex: firefox:
+  * `sudp apt-get update && sudo apt-get --only upgrade firefox`
+* If you wish to list upgradable packages use `sudo apt list --upgradable`
 
 ## hashcat
 Basic synthax. Again this is not a tutorial page, just a quick look up on the different and mostly used switches until you learn it by muscle memory. The _mode number_ can be found **[here](https://hashcat.net/wiki/doku.php?id=example_hashes)**
