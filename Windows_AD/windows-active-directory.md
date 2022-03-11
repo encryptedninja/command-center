@@ -386,10 +386,10 @@
 
 ### Additional Resoursec
 
-* **![AD Security](https://adsecurity.org/)** (free)
-* **![Harmj0y](https://blog.harmj0y.net/)** (free)
-* **![Pentester Academy Active Directory Labs](https://www.pentesteracademy.com/activedirectorylab)** (paid)
-* **![Pentester Academy RedTeam Labs](https://www.pentesteracademy.com/redteamlab)** (paid)
+* **[AD Security](https://adsecurity.org/)** (free)
+* **[Harmj0y](https://blog.harmj0y.net/)** (free)
+* **[Pentester Academy Active Directory Labs](https://www.pentesteracademy.com/activedirectorylab)** (paid)
+* **[Pentester Academy RedTeam Labs](https://www.pentesteracademy.com/redteamlab)** (paid)
 
 ## Post Exploitation
 
