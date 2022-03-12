@@ -95,7 +95,7 @@
 
 * append ***-i*** to `ntlmrelayx.py -tf targets.txt -smb2support -i`
 * ***-tf*** stands for ***target file***
-* when running interactive see in feeds where an whic port is the one where ntlmrelayx created the interactive shell, I'll use port 11000 as an example here
+* when running interactive see in feeds where an which port is the one where ntlmrelayx created the interactive shell, I'll use port 11000 as an example here
 * then on another tab in tty open up: `nc 127.0.0.1 11000`
 * we are in an SMB shell essentially, type in `help` for available commands
 * we can do many thing here, we can look at the shares, change password of current user, moving files, directories, create a mount point, upload file, etc.
