@@ -19,7 +19,7 @@ I hope this repo can serve you well, let me know if you have any comments or sug
 * **[Windows Active Directory](https://github.com/codetorok/command-center/blob/master/Windows_AD/windows-active-directory.md)**
 * **[Windows SSH Service Setup](https://github.com/codetorok/command-center/blob/master/Windows-ssh/windows-ssh-setup.md)**
 * **[Pivoting in Metasploit](https://github.com/codetorok/command-center/blob/master/pivoting_metasploit/pivoting_metasploit.md)**
-* **[Buffer Overflow (Basic)](https://github.com/codetorok/command-center/blob/master/buffer_overflow/buffer_overflow.md)**
+* **[Buffer Overflow (Windows, Basic)](https://github.com/codetorok/command-center/blob/master/buffer_overflow/buffer_overflow.md)**
 * **[GPG](https://github.com/codetorok/command-center/blob/master/gpg/gpg.md)**
 * **[Python3 one liners and scripts](https://github.com/codetorok/command-center/blob/master/python3/python3.md)**
 
