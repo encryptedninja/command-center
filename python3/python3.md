@@ -61,3 +61,6 @@ def on_press(key):
 with Listener(on_press=on_press) as listener:
     listener.join()
 ```
+#### Python3 FTP Server
+
+* Simple to use: `python3 -m pyftpdlib` and just make sure you have pyftpdlib installed with pip3.
