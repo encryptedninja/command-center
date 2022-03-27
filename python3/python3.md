@@ -64,3 +64,7 @@ with Listener(on_press=on_press) as listener:
 #### Python3 FTP Server
 
 * Simple to use: `python3 -m pyftpdlib` and just make sure you have pyftpdlib installed with pip3.
+
+#### SMB Server - Impacket
+
+* `mbserver.py SPITFIRE ./`
