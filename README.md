@@ -124,6 +124,10 @@ Searching in **_Windows_** using the `dir` command we have the following switche
 1. `function erase_history { local HISTSIZE=0; }`
 2. `erase_history`
 
+## RDP with local file share
+
+* `rdesktop -u <username> -d <domain> -p <password> -r disk:local="/home/kali/Desktop/fileshare" <host IP>:<PORT>`
+
 ## Persistence via RDP
 (credit: [Joe Helle aka The Mayor, MPP course](https://academy.tcm-sec.com/p/movement-pivoting-and-persistence-for-pentesters-and-ethical-hackers))
 
