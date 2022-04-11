@@ -41,6 +41,12 @@ Extracts files hidden in pictures, pretty good for stegonograpy.
 
 * `binwalk somepicture.jpg -e`
 
+## Cleaning up
+
+* `sudo apt autoremove && sudo apt autoclean`
+* `sudo du -xh --max-depth=1 /var`
+* `sudo du -xh --max-depth=1 /var/log`
+
 ## public IP from terminal
 
 * `dig +short myip.opendns.com @resolver1.opendns.com`
