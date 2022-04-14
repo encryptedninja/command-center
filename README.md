@@ -312,6 +312,44 @@ Some shells are fuzzy but after an upgrade you can have a proper one with all th
 3. here you want to press `CTRL+z` to background your session
 4. `stty raw -echo; fg` I like to add `fg` here to bring the session to the foreground again and don't have to do it as a next command
 
+## tmux
+
+* new session `tmux new -s <session name>`
+* recursively search throug history `CTRL + R` and start typing
+* default prefix key is `CTRL + B`
+* new window `prefix + c`
+* switch between tabs `prefix + <tab number>`
+* list sessions `tmux ls`
+* attach session `tmux attach -t <session name>`
+* switching back to prev session `CTR + A + 1`
+* detach session `prefix d`
+* rename tab `prefix`
+* join pane from window `prefix j <window number>'`
+* send pane to window `prefix s <pane number>`
+* config `nano ~/.tmux.conf` no default config file, you have to create one, can use a sample file if needed: `/usr/share/doc/tmux/examples`
+* working example .tmux.conf file by ippsec:
+
+```
+# Remap prefix to screens
+set -g prefix C-a
+bind C-a send-prefix
+unbind C-b
+
+# Quality of life stuff
+set -g history-limit 10000
+set -g allow-rename off
+
+## Join windows
+bind-key j command-prompt -p "join pane from:" "join-pane -s '%%'"
+bind-key s command-prompt -p "send pane to:" "join.pane -t '%%'"
+
+# Search Mode VI (default is emac)
+set-window-option -g mode-keys vi
+
+run-shell /opt/tmux-logging/logging.tmux
+
+```
+
 ## virtualbox
 
 * Need this config to be able to make virtualbox work with both bridged and NAT at the same time.
