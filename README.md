@@ -394,6 +394,16 @@ The best scanner for Wordpress sites.
 * `xfreerdp /u:administrator /p:letmein123! /v:<IP> /size:90&`
 
 ****
+```
+#                   __     __                   __  
+#   _________  ____/ /__  / /_____  _________  / /__
+#  / ___/ __ \/ __  / _ \/ __/ __ \/ ___/ __ \/ //_/
+# / /__/ /_/ / /_/ /  __/ /_/ /_/ / /  / /_/ / ,<   
+# \___/\____/\__,_/\___/\__/\____/_/   \____/_/|_|  
+# 
+# # # # # # # # # # # # # # # # # # # # # # # # # #
+```
+
 ### This is the end of the list, remember, it's not the commands, it's what you do with those commands and how do you use the information you get out of theses swites, that's all that matters. This repo is for educational purposes only, anything you do with this is on you, so be responsable.
 
 ## The world is at your fingertips 💯
