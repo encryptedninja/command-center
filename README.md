@@ -327,6 +327,7 @@ Some shells are fuzzy but after an upgrade you can have a proper one with all th
 * join pane from window `prefix j <window number>'`
 * send pane to window `prefix s <pane number>`
 * config `nano ~/.tmux.conf` no default config file, you have to create one, can use a sample file if needed: `/usr/share/doc/tmux/examples`
+* logging `prefix ALT SHIFT P`
 * working example .tmux.conf file by ippsec:
 
 ```
