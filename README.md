@@ -383,6 +383,17 @@ It's just like bash history in Linux.
 
 * `c:\Users\<username>\%userprofile%\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt` this line opens up a notepad with the histroy of commands.
 
+## VMWare fixing after kernel update on Linux Debian
+
+* `openssl req -new -x509 -newkey rsa:2048 -keyout MOK.priv -outform DER -out MOK.der -nodes -days 36500 -subc "/CN=VMWARE/"`
+* `sudo /usr/src/linux-headers-$(uname -r)/scripts/sign-file sha256 ./MOK.priv ./MOK.der $(modinfo -n vmmon)`
+* `sudo /usr/src/linux-headers-$(uname -r)/scripts/sign-file sha256 ./MOK.priv ./MOK.der $(modinfo -n vmnet)`
+* `tail $(modinfo -n vmmon) | grep "Module signature appended"`
+* `sudo mokutil --import MOK.der`
+* `--- reboot ---`
+* `mokutil --test-key MOK.der`
+* UPDATE KEY: `sudo update-secureboot-policy --enroll-key`
+
 ## wpscan
 The best scanner for Wordpress sites.
 
