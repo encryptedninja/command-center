@@ -242,7 +242,7 @@ If you're dropped in an enviroment without anything, check your IP address on th
 
 One more thing: if you need to generate a nice html report from the output you can use *_xsltproc_*:
 
-* `sudo xsltproc final_discovery.nmap -o nmap_DATE_TARGET.html`
+* `sudo xsltproc final_discovery.xml -o nmap_DATE_TARGET.html`
 
 ## Impacket
 
