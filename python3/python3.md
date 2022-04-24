@@ -4,6 +4,7 @@
 
 ### One liners and quick scripts
 
+* install requirements: `sudo python3 -m pip install -r requirements.txt `
 * to spawn a shell: `python3 -c 'import pty;pty.spawn("/bin/bash")'`
 * webservers: `python3 -m http.server 8080`
 * if webserver is picked up by the firewall use ftp server: `python3 -m pyftpdlib -p 21 --write` and if you don't have it get it first with: `pip3 install pyftpdlib` and to log in just use the IP address of your ftp server: `ftp <ftp server IP>`
