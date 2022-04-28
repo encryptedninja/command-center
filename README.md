@@ -331,6 +331,21 @@ Some shells are fuzzy but after an upgrade you can have a proper one with all th
 * working example .tmux.conf file by ippsec:
 
 ```
+#                   __     __                   __  
+#   _________  ____/ /__  / /_____  _________  / /__
+#  / ___/ __ \/ __  / _ \/ __/ __ \/ ___/ __ \/ //_/
+# / /__/ /_/ / /_/ /  __/ /_/ /_/ / /  / /_/ / ,<   
+# \___/\____/\__,_/\___/\__/\____/_/   \____/_/|_|  
+# 
+# # # # # # # # # # # # # # # # # # # # # # # # # #                                                  
+
+#reload the config file if needed
+unbind r
+bind r source-file ~/.tmux.conf \; display "Reloaded ~/.tmux.conf"
+
+#enabling the mouse
+set -g mouse on
+
 # Remap prefix to screens
 set -g prefix C-a
 bind C-a send-prefix
@@ -347,7 +362,16 @@ bind-key s command-prompt -p "send pane to:"  "join-pane -t '%%'"
 # Search Mode VI (default is emac)
 set-window-option -g mode-keys vi
 
-run-shell /opt/tmux-logging/logging.tmux
+run-shell ~/tmux-logging/logging.tmux
+
+# Selection with mouse should copy to clipboard right away, in addition to the default action.
+unbind -n -Tcopy-mode-vi MouseDragEnd1Pane
+bind -Tcopy-mode-vi MouseDragEnd1Pane send -X copy-selection-and-cancel\; run "tmux save-buffer - | xclip -i -sel clipboard > /dev/null"
+
+
+# Middle click to paste from the clipboard
+unbind-key MouseDown2Pane
+bind-key -n MouseDown2Pane run "tmux set-buffer \"$(xclip -o -sel clipboard)\"; tmux paste-buffer"
 
 ```
 
