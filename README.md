@@ -375,6 +375,10 @@ bind-key -n MouseDown2Pane run "tmux set-buffer \"$(xclip -o -sel clipboard)\"; 
 
 ```
 
+## unfurl for searching for login forms
+
+* `cat hosts.txt | httpx -path /login -p 80,443,8080,8443 -mc 401,403 -silent -t 300 | unfurl format %s://%d | httpx -path //login -mc 200 -t 300 -nc -silent`
+
 ## virtualbox
 
 * Need this config to be able to make virtualbox work with both bridged and NAT at the same time.
