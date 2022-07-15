@@ -427,8 +427,9 @@ It's just like bash history in Linux.
 ## VMWare expanding disk (Linux)
 
 * Expand the disk space in VMWare and then follow instructions **[here](https://cybersalih.com/how-to-expand-disk-space-on-kali-linux-vmware/)** to read or **[here](https://www.youtube.com/watch?v=NwpzYlfKnrY)** to watch a quick video about it.
-* 
+ 
 ## wpscan
+
 The best scanner for Wordpress sites.
 
 * `wpscan --url http://<domain.com> -e u` to enumerate users
