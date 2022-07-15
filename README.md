@@ -414,6 +414,7 @@ It's just like bash history in Linux.
 
 ## VMWare fixing after kernel update on Linux Debian
 
+* First clone this repo with `git clone` : `https://github.com/mkubecek/vmware-host-modules` and run within the main directory: `git checkout workstation-16.2.3` and `sudo make` and finally: `sudo make install`
 * `openssl req -new -x509 -newkey rsa:2048 -keyout MOK.priv -outform DER -out MOK.der -nodes -days 36500 -subc "/CN=VMWARE/"`
 * `sudo /usr/src/linux-headers-$(uname -r)/scripts/sign-file sha256 ./MOK.priv ./MOK.der $(modinfo -n vmmon)`
 * `sudo /usr/src/linux-headers-$(uname -r)/scripts/sign-file sha256 ./MOK.priv ./MOK.der $(modinfo -n vmnet)`
