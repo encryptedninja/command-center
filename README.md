@@ -309,6 +309,11 @@ For subdomain enumeration.
 
 `theharvester -d <domain.com> -l 500 -b google` where `-l` is to for how deep to go and `-b` is for the search engine.
 
+## change-login screen Ubuntu 20.04 LTS
+
+* `wget https://github.com/PRATAP-KUMAR/ubuntu-gdm-set-background/archive/main.tar.gz`
+* Then run: `sudo ./ubuntu-gdm-set-background --image ~/Downloads/mywallpapaer.jpg`
+
 ## to upgrade a shell on the target machine
 Some shells are fuzzy but after an upgrade you can have a proper one with all the normal shell functions like TAB, etc...
 
