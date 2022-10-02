@@ -141,6 +141,25 @@ There are different ways you can use **_gobuster_** this is the one I use most o
 * `sed -i 's/text_to_replace/new_text/g' <file name>` without the `g` parameter at the end sed will only replace the first instance on each line only and without the `-i` switch sed will no overwrite the file we are working with, if we want to save the results as a new file we can just redirect the output to a new file like so: `sed -i 's/test_to_replace/new_text/g' <original file> > <new file>`
 * `sed -n 's/text_to_replace/new_text/pg'` sed `-n` means no output unless there is a match because of the `p` parameter
 
+### change color in terminal Ubuntu for user
+
+* Open the file: gedit ~/.bashrc.
+* Look for the line with #force_color_prompt=yes and uncomment (delete the #).
+* Look for the line below if [ "$color_prompt" = yes ]; then that should looks like: `PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '`
+* Pay attention at the part `\u@\h` it is saying `"user@host"` and the number before it `\[\033[01;32m\]` indicates the color. This is what you have to change. For example, lets change the user to purple, the `"@"` to black and host to green. Edit the line so it looks like: `PS1='${debian_chroot:+($debian_chroot)}\[\033[01;35m\]\u\[\033[01;30m\]@\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '`
+* The colors to the numbers are:
+
+```
+Black       0;30     Dark Gray     1;30
+Blue        0;34     Light Blue    1;34
+Green       0;32     Light Green   1;32
+Cyan        0;36     Light Cyan    1;36
+Red         0;31     Light Red     1;31
+Purple      0;35     Light Purple  1;35
+Brown       0;33     Yellow        1;33
+Light Gray  0;37     White         1;37
+```
+
 ### sudo update & upgrade
 
 * If you wish to upgrade only a certain package, ex: firefox:
