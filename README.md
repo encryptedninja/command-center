@@ -141,7 +141,7 @@ There are different ways you can use **_gobuster_** this is the one I use most o
 * `sed -i 's/text_to_replace/new_text/g' <file name>` without the `g` parameter at the end sed will only replace the first instance on each line only and without the `-i` switch sed will no overwrite the file we are working with, if we want to save the results as a new file we can just redirect the output to a new file like so: `sed -i 's/test_to_replace/new_text/g' <original file> > <new file>`
 * `sed -n 's/text_to_replace/new_text/pg'` sed `-n` means no output unless there is a match because of the `p` parameter
 
-### change color in terminal Ubuntu for user
+### how to change the color for the current user in bash terminal, Ubuntu
 
 * Open the file: gedit ~/.bashrc.
 * Look for the line with #force_color_prompt=yes and uncomment (delete the #).
