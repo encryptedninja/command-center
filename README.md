@@ -307,6 +307,26 @@ No big deal here, just had to remember the how to extract a .tar.gz package so I
 
 * `tar -xvf <somefile.tar.gz>`
 
+## checking temperature on CPU 
+* save code as `<file name>.c` and compile is with `gcc <filename.c> -o <filename>`
+
+```
+#include <stdio.h>
+
+int main(int argc, char *argv[]) 
+{
+   FILE *fp;
+
+   int temp = 0;
+   fp = fopen("/sys/class/thermal/thermal_zone0/temp", "r");
+   fscanf(fp, "%d", &temp);
+   printf(">> CPU Temp: %.2f°C\n", temp / 1000.0);
+   fclose(fp);
+
+   return 0;
+}
+```
+
 ## quickly append IP to your /etc/hosts file
 
 * `sudo echo '<192.168.0.23> <retrowerb.htb>' | tee -a /etc/hosts`
