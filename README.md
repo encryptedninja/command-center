@@ -308,7 +308,7 @@ No big deal here, just had to remember the how to extract a .tar.gz package so I
 * `tar -xvf <somefile.tar.gz>`
 
 ## checking temperature on CPU 
-* save code as `<file name>.c` and compile is with `gcc <filename.c> -o <filename>`
+* save code as `<file name>.c` and compile it with `gcc <filename.c> -o <filename>`
 
 ```
 #include <stdio.h>
@@ -368,14 +368,6 @@ Some shells are fuzzy but after an upgrade you can have a proper one with all th
 * working example .tmux.conf file by ippsec:
 
 ```
-#                   __     __                   __  
-#   _________  ____/ /__  / /_____  _________  / /__
-#  / ___/ __ \/ __  / _ \/ __/ __ \/ ___/ __ \/ //_/
-# / /__/ /_/ / /_/ /  __/ /_/ /_/ / /  / /_/ / ,<   
-# \___/\____/\__,_/\___/\__/\____/_/   \____/_/|_|  
-# 
-# # # # # # # # # # # # # # # # # # # # # # # # # #                                                  
-
 #reload the config file if needed
 unbind r
 bind r source-file ~/.tmux.conf \; display "Reloaded ~/.tmux.conf"
@@ -477,15 +469,6 @@ The best scanner for Wordpress sites.
 * `xfreerdp /u:administrator /p:letmein123! /v:<IP> /size:90&`
 
 ****
-```
-#                   __     __                   __  
-#   _________  ____/ /__  / /_____  _________  / /__
-#  / ___/ __ \/ __  / _ \/ __/ __ \/ ___/ __ \/ //_/
-# / /__/ /_/ / /_/ /  __/ /_/ /_/ / /  / /_/ / ,<   
-# \___/\____/\__,_/\___/\__/\____/_/   \____/_/|_|  
-# 
-# # # # # # # # # # # # # # # # # # # # # # # # # #
-```
 
 ### This is the end of the list, remember, it's not the commands, it's what you do with those commands and how do you use the information you get out of theses swites, that's all that matters. This repo is for educational purposes only, anything you do with this is on you, so be responsable.
 
