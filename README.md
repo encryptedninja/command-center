@@ -307,6 +307,90 @@ No big deal here, just had to remember the how to extract a .tar.gz package so I
 
 * `tar -xvf <somefile.tar.gz>`
 
+## Two default gateways on One System - 2 interfaces
+
+* source: [thomas-krenn.com](https://www.thomas-krenn.com/en/wiki/Two_Default_Gateways_on_One_System)
+* We will assume that we have two interfaces: eth0 and eth1. The two networks that should be used are 192.168.0.0/24 and 10.10.0.0/24, whereby the first IP address in each respective network should be the gateway. Under Debian, the initial configuration would appear as follows. /etc/network/interfaces
+
+```
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+# The loopback network interface
+
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+
+allow-hotplug eth0
+iface eth0 inet static
+    address 192.168.0.10
+    netmask 255.255.255.0
+    gateway 192.168.0.1
+
+# The secondary network interface
+allow-hotplug eth1
+iface eth1 inet static
+    address 10.10.0.10
+    netmask 255.255.255.0
+```
+
+* To add a new routing table, the file, /etc/iproute2/rt_tables must be edited. We will call the routing table “rt2” and set its preference to 1. The named file should then appear as follows.
+
+```
+#
+# reserved values
+#
+255     local
+254     main
+253     default
+0       unspec
+#
+# local
+#
+#1      inr.ruhep
+1 rt2
+```
+
+* Configuring the New Routing Table: From this point, four commands are needed to achieve our goal. First, the new routing table needs to be populated, which is done using the following command.
+
+```
+ip route add 10.10.0.0/24 dev eth1 src 10.10.0.10 table rt2
+ip route add default via 10.10.0.1 dev eth1 table rt2
+
+```
+
+* The first command says that the network, 10.10.0.0/24, can be reached through the eth1 interface. The second command sets the default gateway.
+* Routing Rules: So that the system knows when to use our new routing table, two rules must be configured.
+
+```
+ip rule add from 10.10.0.10/32 table rt2
+ip rule add to 10.10.0.10/32 table rt2
+```
+
+* These rules say that both traffic from the IP address, 10.10.0.10, as well as traffic directed to or through this IP address, should use the rt2 routing table.
+* Making the Configuration permanent: The ip rule and ip route commands will become invalid after a re-boot, for which reason they should become part of a script (for example, /etc/rc.local) that will be executed once the network has been started after booting. For Debian, these command can also be written directly into the /etc/network/interfaces file, which would then appear as follows.
+
+```
+iface eth1 inet static
+    address 10.10.0.10
+    netmask 255.255.255.0
+    post-up ip route add 10.10.0.0/24 dev eth1 src 10.10.0.10 table rt2
+    post-up ip route add default via 10.10.0.1 dev eth1 table rt2
+    post-up ip rule add from 10.10.0.10/32 table rt2
+    post-up ip rule add to 10.10.0.10/32 table rt2
+```
+
+* More than Two Network Cards or Gateways: If there are more than two networks, a routing table can be created for each additional network analogous to the example presented above.
+* Testing the Configuration: The following commands can be used to ensure that the rules as well as the routing entries are working as expected.
+
+```
+ip route list table rt2
+ip rule show
+
+```
+
+
 ## checking temperature on CPU 
 * save code as `<file name>.c` and compile it with `gcc <filename.c> -o <filename>`
 
