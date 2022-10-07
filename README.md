@@ -39,7 +39,7 @@ Extracts files hidden in pictures, pretty good for stegonograpy.
 
 * `dig +short myip.opendns.com @resolver1.opendns.com`
 
-* `curl ifconfig.me` an even shorter command which I really love :)
+* `curl ifconfig.me` a simpler way is just wisiting ifconfig.me with curl :)
 
 ## curl
 You can do some great things with **_curl_**, it's worth going through it's man page, this is one of the great techniques I use quite often:
