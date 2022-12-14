@@ -512,6 +512,8 @@ bind-key s command-prompt -p "send pane to:"  "join-pane -t '%%'"
 # Search Mode VI (default is emac)
 set-window-option -g mode-keys vi
 
+#clone github repo to ~ from:
+#https://github.com/tmux-plugins/tmux-logging
 run-shell ~/tmux-logging/logging.tmux
 
 # Selection with mouse should copy to clipboard right away, in addition to the default action.
