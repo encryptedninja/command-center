@@ -117,7 +117,7 @@ The following output will be sent to Vulnserver:
 * this time when the server crashes we'll see the value on the **EIP** and we'll use metasploit again with that specific patter offset value
 * for the sake of example let's say the EIP value is: `368F4337`
 * in metasploit:
-* `/user/share/metasploit-framework/tools/exploit/patter_create.rb -l 3000 -q 368F4337`
+* `/user/share/metasploit-framework/tools/exploit/patter_offset.rb -l 3000 -q 368F4337`
 * output will show the exact match for offset (in this example it's 2003 bytes)
 * it tells us the at the exactly 2003 bytes we can control the EIP, now let's overwrite it
 
