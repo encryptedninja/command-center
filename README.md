@@ -76,6 +76,10 @@ Once you installed **_Juice Shop_** and want to run it on different ocasions the
 sudo docker run --rm -p 3000:3000 bkimminich/juice-shop
 ```
 
+## gcc
+
+* install the cross-architecture C header files with the following command:
+* `sudo apt-get install gcc-multilib -y`
 ## grep
 So let's say you have to crack a password that's from a website that uses just a 4 characters long passphrase. To save up time you can just make a copy of your rockyou.txt or whatever monstrous passlist your using and then filter the copy into a new file that has only the 4 characters long entries (hence this **_grep_** one liner) from your rockyou-copy.txt. Copy is needed to not to mess up the original one, you can never be cautious enough ;)
 
