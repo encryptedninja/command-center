@@ -29,6 +29,11 @@ Extracts files hidden in pictures, pretty good for stegonograpy.
 
 * `binwalk somepicture.jpg -e`
 
+## Burp Suite
+
+* finding subdomains in "target"
+* `.*\.?example\.com$`
+
 ## Cleaning up
 
 * `sudo apt autoremove && sudo apt autoclean`
