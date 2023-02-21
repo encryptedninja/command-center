@@ -125,7 +125,7 @@ sudo docker run --rm -p 3000:3000 bkimminich/juice-shop
 * install the cross-architecture C header files with the following command:
 * `sudo apt-get install gcc-multilib -y`
 
-### gpg2john
+## gpg2john
 Passing a private key to **_gpg2john_** to prep it and then passing the output file to john to crack it :) once it's done you can use the crack password and the private key to try to log in to the target system via ssh with `ssh -i id_rsa <username>@<IP>`
 
 * `gpg2john id_rsa > id_rsa_prepped_for_john.hash` prepping the private key for a format understandable by john
@@ -136,7 +136,7 @@ Basic synthax. Again this is not a tutorial page, just a quick look up on the di
 * `hashcat --force -m <mode number> -a 0 crackthis.txt /usr/share/wordlist/rockyou.txt`
 * to find the _hashcat potfile_: `cat ~/.hashcat/hashcat.potfile`
 
-### how to change the color for the current user in bash terminal, Ubuntu
+## how to change the color for the current user in bash terminal, Ubuntu
 
 * Open the file: gedit ~/.bashrc.
 * Look for the line with #force_color_prompt=yes and uncomment (delete the #).
@@ -164,7 +164,7 @@ I mainly created this part because of the web login attack part. Sometimes it's 
 
 ## Impacket
 
-### psexec
+## psexec
 * `psexec.py <username>:'<password>'@<IP>`
 
 ## Install Python3 on Ubuntu
@@ -202,7 +202,7 @@ If you need to generate a nice html report from the output you can use *_xsltpro
 
 * `sudo xsltproc final_discovery.xml -o nmap_DATE_TARGET.html`
 
-### pass-the-hash
+## pass-the-hash
 * pass-the-hash attack for Win: `pth-winexe -U Administrator%'<admin hash>' //<target IP> cmd.exe`
 
 ## Persistence via RDP
@@ -316,7 +316,7 @@ A great tool for subdomain enumeration.
 * `sublist3r -d <website.com> -t 50`
 * it has a built in brute force modul: `sublist3r -d <domain> -b` which will use a built in list that can be found here: `/usr/share/sublist3r/subrute/names.txt`
 
-### sudo update & upgrade
+## sudo update & upgrade
 
 * If you wish to upgrade only a certain package, ex: firefox:
   * `sudp apt-get update && sudo apt-get --only-upgrade firefox`
@@ -540,7 +540,7 @@ The best scanner for Wordpress sites.
 
 * `xfreerdp /u:administrator /p:letmein123! /v:<IP> /size:90&`
 
-### zip2john
+## zip2john
 Prepping a zip file for using it with _john_.
 
 * `zip2john <zipfile name> > <output file name>`
@@ -557,6 +557,6 @@ With the same fashion there's **_pdf2john_** as well with a very similar synthax
 
 #### This is the end of the list, remember, it's not the commands, it's what you do with those commands and how do you use the information you get out of theses swites, that's all that matters. This repo is for educational purposes only, anything you do with this is on you, so be responsable.
 
-### The world is at your fingertips 💯
+#### The world is at your fingertips 💯
 
 ![world100](images/003_hacker_hoodie.jpg)
