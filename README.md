@@ -224,6 +224,10 @@ I mainly created this part because of the web login attack part. Sometimes it's 
 * `hydra -l <username> -P <full path to the password list> ftp://<IP>` using Hydra against
 * `hydra -L <username list> -p <password> <IP> http-post-form "/wp-login.php:log=^USER^&pwd=^PWD^:Invalid username" -t 30` you can capture the error message (Invalid username) by trying a credential on the target website and replace the one I have in this synthax if needed. This example tests several usernames for the same password, a technique also called password spraying.
 
+## Testing
+
+Adding this line for testing purposes.
+
 ## iptables
 
 * This example shows **how to block all connections** from the IP address 10.10.10.10. `This example shows how to block all connections from the IP address 10.10.10.10.`
