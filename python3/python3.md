@@ -68,4 +68,4 @@ with Listener(on_press=on_press) as listener:
 
 #### SMB Server - Impacket
 
-* `mbserver.py SPITFIRE ./`
+* `smbserver.py SPITFIRE ./`
