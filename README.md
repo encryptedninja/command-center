@@ -23,6 +23,10 @@ Really good if you need to enumerate subdomains, just make sure you start it at 
   * `service snapd start`
   * `snap install amass`
   * `snap run amass`
+  
+## awk
+
+* extracting the first and third field `echo "hello::there::friend" | awk -F "::" '{print $1, $3}'`
 
 ## Binwalk 
 Extracts files hidden in pictures, pretty good for stegonograpy.
