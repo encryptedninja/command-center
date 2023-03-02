@@ -344,6 +344,10 @@ Some shells are fuzzy but after an upgrade you can have a proper one with all th
 3. here you want to press `CTRL+z` to background your session
 4. `stty raw -echo; fg` I like to add `fg` here to bring the session to the foreground again and don't have to do it as a next command
 
+## tr
+
+* to organize vertical output to horizontal by cutting out the new lines `cat <file_name> | tr -d '\n'`
+
 ## tmux
 
 * new session `tmux new -s <session name>`
