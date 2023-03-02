@@ -309,6 +309,7 @@ Host github.com
 	User git
 	IdentityFile ~/.ssh/githubkey
 ```
+* testing for the connection `ssh -T git@github.com`
 
 *_This section is under development_*
 
