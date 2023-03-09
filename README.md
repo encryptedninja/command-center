@@ -68,6 +68,13 @@ int main(int argc, char *argv[])
 }
 ```
 
+## Chisel
+
+* `chisel server --socks5 -p 8000 --reverse`
+* `chisel client <chisel server IP>:<PORT> R:socks`
+* don't forget to add it to your proxychains4.conf file:
+	* `socks5   127.0.0.1 1080`
+
 ## Cleaning up
 
 * `sudo apt autoremove && sudo apt autoclean`
