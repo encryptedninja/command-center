@@ -310,12 +310,13 @@ If the target is vulnerable for the get request (see above) we can get a shell o
 * ALWAYS CHECK: cat etc/ssh/sshd_config | uniq
 * or (if you don't have a config file create one, nano does that automatically for you)
 * `nano ~/.ssh/config`
-* ```
+* Adding ssh key permanently to the ssh config file
 ```
 Host github.com
 	User git
 	IdentityFile ~/.ssh/githubkey
 ```
+* testing for the connection `ssh -T git@github.com`
 
 *_This section is under development_*
 
