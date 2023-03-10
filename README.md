@@ -15,7 +15,7 @@ Frequently used commands that are searchable with your browser's search function
 
 ## Adding and removing users on Linux (including home dir) and adding user to the sudoers group
 
-* to add a user: `sudo adduser <usrename>`
+* to add a user: `sudo adduser <userename>`
 * add the created user to the sudoers group: `sudo usermod -aG sudo <username>`
 * remove a user (incl. deleting home dir): `sudo deluser --remove-home <username>`
 * if the above doesn't work you can also try: `sudo deluser --remove-all-files <username>`
