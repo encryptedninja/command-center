@@ -13,6 +13,13 @@ Frequently used commands that are searchable with your browser's search function
 
 ![available_commands](images/002_available_commands.png)
 
+## Adding and removing users on Linux (including home dir) and adding user to the sudoers group
+
+* to add a user: `sudo adduser <usrename>`
+* add the created user to the sudoers group: `sudo usermod -aG sudo <username>`
+* remove a user (incl. deleting home dir): `sdo deluser --remove-home <username>`
+* if the above doesn't work you can also try: `sudo deluser --remove-all-files <username>`
+
 ## AllwaysInstallElevated / Windows
 
 * check for it:
