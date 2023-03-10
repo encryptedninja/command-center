@@ -17,7 +17,7 @@ Frequently used commands that are searchable with your browser's search function
 
 * to add a user: `sudo adduser <usrename>`
 * add the created user to the sudoers group: `sudo usermod -aG sudo <username>`
-* remove a user (incl. deleting home dir): `sdo deluser --remove-home <username>`
+* remove a user (incl. deleting home dir): `sudo deluser --remove-home <username>`
 * if the above doesn't work you can also try: `sudo deluser --remove-all-files <username>`
 
 ## AllwaysInstallElevated / Windows
