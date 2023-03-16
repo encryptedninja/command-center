@@ -137,10 +137,12 @@ You can do some great things with **_curl_**, it's worth going through it's man 
 
 * `curl -X DELETE <http://IP:PORT>` if you get a 200 OK that means that method is supported, you can try all the others as well like PUT, etc..
 
-Directory discovery with **_dirb_** when username and password is known:
-* `dirb <http://IP or domain/> -u <username>:<password>`
+## dirb
 
-Directory busting with **_dirsearch_** is another great option:
+* when username and password is known: `dirb <http://IP or domain/> -u <username>:<password>`
+
+## dirsearch 
+
 * `dirsearch.py -u <http://IP or domain> -e php, html -x 400, 401, 403` the `-x` is to exclude those type of error response codes.
 
 ## dir (Win)
