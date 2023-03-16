@@ -157,6 +157,7 @@
 ##### Detection:
 
 * open command prompt and: `reg query HKLM\Software\Policies\Microsoft\Windows\Installer`
+* check manually: `reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer` and `reg query HKCU\SOFTWARE\Policies\Microsoft\Windows\Installer`
 * if you find from output that ***AlwaysInstallElevated*** value is set to 1 then
 * `eg query HKCU\Software\Policies\Microsoft\Windows\Installer`
 
