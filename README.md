@@ -22,6 +22,7 @@ Frequently used commands that are searchable with your browser's search function
 
 ## AllwaysInstallElevated / Windows
 
+* this part was also added to the Windows privesc section
 * check for it:
 	* `reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer`
 	* `reg query HKCU\SOFTWARE\Policies\Microsoft\Windows\Installer`
@@ -71,6 +72,11 @@ echo "Done"
 Extracts files hidden in pictures, pretty good for stegonograpy.
 
 * `binwalk somepicture.jpg -e`
+
+## Bloodhound - AD
+
+* `bloodhound-python -u <username> -p <password> -d domain.local -c all`
+* `bloodhound-python -u svc_mssql -p <password> -d example.local -c all -gc example.local -ns <nameserver IP>`
 
 ## Burp Suite
 
@@ -162,7 +168,7 @@ Searching in **_Windows_** using the `dir` command we have the following switche
 
 ## DNS
 
-* `dig axfr master.thinc.local @10.1.1.112`
+* `dig axfr ms01.thinc.local @10.1.1.113`
 * `host www.example.com`
 * `host -t mx example.com`
 * build possible hostnames to list.txt then `for ip in $(cat list.txt);do host $ip.example.com;done` can use seclists as well web-discovery DNS list
@@ -407,6 +413,16 @@ If you are interested in more depth on this matter check out the cyberchef's web
 ## Restricted traffic bypass
 
 * `curl -X POST -H 'X-Forwarded-For: <PIVOT IP>' --data 'data=id' http://<TARGET IP>/cmd.php>`
+
+## RPC  (enum)
+
+* `rpcclient -N -u "" ms01.htb.local`
+* `rpclient -N -U "" <target IP>`
+	* `enumdomusers`
+	* `enumdomgroups`
+	* `queryuser <USERNAME>`
+* `rpcclient -W '' -c querydispinfo -U"%"<target IP>"`
+* can also use rpcdump.py
 
 ## sed
 
