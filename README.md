@@ -1,4 +1,4 @@
-Frequently used commands that are searchable with your browser's search function. (CTRL+f on Firefox)
+**Frequently used commands that are searchable with your browser's search function. (CTRL+f on Firefox)**
 
 * Go here if you are looking for:
 * **[TOR Service / Anonymity](https://github.com/codetorok/command-center/blob/master/TOR-SERVICE/tor_service_setup_and_use.md)**
