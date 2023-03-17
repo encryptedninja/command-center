@@ -429,6 +429,12 @@ If you are interested in more depth on this matter check out the cyberchef's web
 * `sed -i 's/text_to_replace/new_text/g' <file name>` without the `g` parameter at the end sed will only replace the first instance on each line only and without the `-i` switch sed will no overwrite the file we are working with, if we want to save the results as a new file we can just redirect the output to a new file like so: `sed -i 's/test_to_replace/new_text/g' <original file> > <new file>`
 * `sed -n 's/text_to_replace/new_text/pg'` sed `-n` means no output unless there is a match because of the `p` parameter
 
+## SET (social engineering toolkit / Kali)
+
+* change port from 80 in config file so to avoid conflict with gophish:
+	* `sudo nano /et/setoolkit/set.config`
+* `sudo setoolkit`
+
 ## Silver Ticket and Golden Ticket
 
 * **Silver Ticket attack**
