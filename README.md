@@ -431,9 +431,9 @@ If you are interested in more depth on this matter check out the cyberchef's web
 
 ## SET (social engineering toolkit / Kali)
 
+* need to start setoolkit first: `sudo setoolkit` then choose "yes".
 * change port from 80 in config file so to avoid conflict with gophish:
 	* `sudo nano /et/setoolkit/set.config`
-* `sudo setoolkit`
 
 ## Silver Ticket and Golden Ticket
 
