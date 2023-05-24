@@ -131,7 +131,7 @@ int main(int argc, char *argv[])
 * create a batch file and run it with: `rundll32.exe shell32.dll,ShellExec_RunDLL c:\users\<username>\desktop\command.bat`
 * output for the command will be written in output.txt
 * can tweak it to your liking, including cmd=<command> and enter
-* great resource **[here]([url](https://lolbas-project.github.io/lolbas/Libraries/Shell32/))**
+* great resource **[here]([https://lolbas-project.github.io/lolbas/Libraries/Shell32/])**
 
 ```
 @echo off
