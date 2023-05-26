@@ -33,7 +33,10 @@
 * `gpg -o secret.gpg -c somefile` to encrypt a file that no one else has to decrypt use gpg to perform symmetric encryption
 * `gpg -o myfile --decrypt secret.gpg` to decrypt a file encrypted with a symmmetric key
 * `gpg --import <backupkeys.pgp>` import the backup keys
-* `gpg --import <revocation file, ex revoke.asc>` imorting the revocation certificate
+* `gpg --import <revocation file, ex revoke.asc>` importing the revocation certificate
+
+### backing up keys
+* `tar -cvpzf gnupg.tar.gz ~/.gnupg`
 
 ### to revoke a key
 
