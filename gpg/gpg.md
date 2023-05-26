@@ -14,7 +14,6 @@
 * `gpg --encrypt --sign --armor -r ouremail@email.com <file_to_encrypt>` encrypting a file
 * `gpg --decrypt encrypted.asc > plain.txt` decrypting a recieved encrypted file
 * `gpg --keyserver pgp.mit.edu --refresh-keys` to refresh our public keys against the key server
-* `gpg --keyserver pgp.mit.edu --send-keys <key ID>` sending the revocation of the key to the key server
 * `gpg --keyserver pgp.mit.edu --search-keys <ID or email address for the key your searching for>` searching for public keys on ***pgp.mit.edu***
 * `gpg --search-keys <ID or email address for the key your searching for>` searching for public keys on ***https://keys.openpgp.org:443***
 * `gpg --output alice.gpg --export alice@cyb.org` to export the gpg public key
@@ -45,4 +44,5 @@
 * when you export the output go to http://pgp.mit.edu/ and submit it there:
 * `gpg -a --export <fingerprint>`
 * a couple of minutes after submission search for your key on the website and check that your key is indeed revoked
+* alternatively the revocation cert could be sent to the keyserver from gpg: `gpg --keyserver pgp.mit.edu --send-keys <key ID>`
 
