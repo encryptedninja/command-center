@@ -37,6 +37,16 @@
 
 ### backing up keys
 * `tar -cvpzf gnupg.tar.gz ~/.gnupg`
+* another method would be: EXPORT
+* `gpg --export --armor your@id.here > your@id.here.pub.asc`
+* `gpg --export-secret-keys --armor your@id.here > your@id.here.priv.asc`
+* `gpg --export-secret-subkeys --armor your@id.here > your@id.here.sub_priv.asc`
+* `gpg --export-ownertrust > ownertrust.txt`
+* another method would be: IMPORT
+* `gpg --import your@id.here.pub.asc`
+* `gpg --import your@id.here.priv.asc`
+* `gpg --import your@id.here.sub_priv.asc`
+* `gpg --import-ownertrust ownertrust.txt`
 
 ### to revoke a key
 
