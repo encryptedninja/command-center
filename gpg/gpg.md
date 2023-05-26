@@ -35,3 +35,14 @@
 * `gpg -o myfile --decrypt secret.gpg` to decrypt a file encrypted with a symmmetric key
 * `gpg --import <backupkeys.pgp>` import the backup keys
 * `gpg --import <revocation file, ex revoke.asc>` imorting the revocation certificate
+
+### to revoke a key
+
+* list keys first `gpg --list-keys`
+* if you don't have it already generate a revocation certificate `gpg --output revoke.asc --gen-revoke <fingerprint>`
+* import the revocation certificate to your own keychain `gpg --import revoke.asc`
+* if you check `gpg --list-keys` again you will see that the key shows as revoked
+* when you export the output go to http://pgp.mit.edu/ and submit it there:
+* `gpg -a --export <fingerprint>`
+* a couple of minutes after submission search for your key on the website and check that your key is indeed revoked
+
