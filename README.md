@@ -231,6 +231,7 @@ done
 * `docker pull busybox` - to pull down busybox
 * `docker run -it busybox` - to run busybox, the `-it` attaches us to an interactive container
 * `docker ps -a` - to check running docker containers and their ID
+* `docker exec -it <container ID> /bin/bash` - to enter a Docker container
 * `docker rm <container ID>` - to remove a docker container
 * `docker rm $(docker ps -a -q -f status=exited)` - if you have a bunch of containers to delete in one go, copy-pasting IDs can be tedious. In that case, you can simply run this command. The `-q` flag returns only the numeric IDs and the `-f` filters output based on conditions provided.
 * `docker container prune` - in later versions of Docker, this command can be used to remove all stopped containers
