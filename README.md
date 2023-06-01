@@ -223,6 +223,20 @@ for server in $(host -t ns $1 | cut -d " " -f4);do
 done
 ```
 
+## Docker
+
+* test if it's working: `docker run hello-world`
+* `docker run --help` - to list all flags this command supports
+* `docker search <TERM>` - to search for a Docker container
+* `docker pull busybox` - to pull down busybox
+* `docker run -it busybox` - to run busybox, the `-it` attaches us to an interactive container
+* `docker ps -a` - to check running docker containers and their ID
+* `docker rm <container ID>` - to remove a docker container
+* `docker rm $(docker ps -a -q -f status=exited)` - if you have a bunch of containers to delete in one go, copy-pasting IDs can be tedious. In that case, you can simply run this command. The `-q` flag returns only the numeric IDs and the `-f` filters output based on conditions provided.
+* `docker container prune` - in later versions of Docker, this command can be used to remove all stopped containers
+* `docker container ls` - lists all containers
+* `docker network ls` - lists Docker images running on network
+
 ## Docker & Juice Shop
 This is how you install **_Docker_** on Kali for whatever you need, I run my Juice Shop app to test for the OWASP Top10 on Docker:
 
