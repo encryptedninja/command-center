@@ -333,6 +333,13 @@ I mainly created this part because of the web login attack part. Sometimes it's 
   * `iptables -A INPUT -p tcp --dport ssh -s 10.10.10.10 -m state --state NEW,ESTABLISHED -j ACCEPT`
   * `iptables -A OUTPUT -p tcp --sport 22 -d 10.10.10.10 -m state --state ESTABLISHED -j ACCEPT`
 * **Saving Changes:** The changes that you make to your iptables rules will be scrapped the next time that the iptables service gets restarted unless you execute a command to save the changes.  This command can differ depending on your distribution: `sudo /sbin/iptables-save`
+* Drop all incoming traffic from any source IP address except from 192.168.12.12 `iptables -A INPUT -s ! 192.168.12.12 -j DROP`
+* To delete a rule that allows incoming traffic from the IP address 192.168.12.13 `iptables -D INPUT -s 192.168.12.13 -j ACCEPT`
+* iptables set default policy `iptables -P INPUT DROP`
+* To save rules to a file at /etc/iptables/rules.v4 `iptables-save > /path/to/file`
+* To restore rules run `iptables-restore < /path/to/file`
+* To redirect traffice from an incoming connection to 192.168.9.12 on port t51666 tcp to a NAT 10.10.10.10 port tcp 51666: `iptables -t nat -A PREROUTING -p tcp --dport 51666 -j DNAT --to-destination 10.10.10.10:51666
+`
 
 ## John
 Cracking some SHA256 hashes with john, using the rockyou.txt as a wordlist, redirecting the output  into athe johncracked.txt
