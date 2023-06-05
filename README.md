@@ -339,6 +339,8 @@ I mainly created this part because of the web login attack part. Sometimes it's 
 * To save rules to a file at /etc/iptables/rules.v4 `iptables-save > /path/to/file`
 * To restore rules run `iptables-restore < /path/to/file`
 * To redirect traffice from an incoming connection to 192.168.9.12 on port t51666 tcp to a NAT 10.10.10.10 port tcp 51666: `iptables -t nat -A PREROUTING -p tcp --dport 51666 -j DNAT --to-destination 10.10.10.10:51666
+* to list chains with line numbers: `iptables -L INPUT --line-numbers`
+* to delete a rule by it's number: `iptables -D INPUT 3`
 `
 
 ## John
