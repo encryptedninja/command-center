@@ -689,6 +689,9 @@ bind-key -n MouseDown2Pane run "tmux set-buffer \"$(xclip -o -sel clipboard)\"; 
 
 ```
 
+## tmux logging
+* **[See tmux-logging repo](https://github.com/encryptedninja/tmux-logging)**
+
 ## Two default gateways on One System - 2 interfaces
 
 * source: [thomas-krenn.com](https://www.thomas-krenn.com/en/wiki/Two_Default_Gateways_on_One_System)
