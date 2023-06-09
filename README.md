@@ -811,6 +811,13 @@ Enlists subdomains based on a wordlist, here using top5000.txt from seclist. `--
 
 * `wfuzz -c -f sub-fighter -w top5000.txt -u http://<domain> -H "HOST: Fuzz.domain.com" --hw 290`
 
+## wireless adapter (TP-LINK WN722N version 2,3,4) monitor mode
+
+* `apt install -y realtek-rtl8188eus-dkms`
+* `reboot -f`
+* `iwconfig` - check driver it is Realter 8188 
+* `wifite --kill` - now monitor mode is enabled and working
+
 ## Windows file transfer
 In case you have to bring a file over to the compromised Win machine. The last piece of information is how do you want to name the file you bring over.
 
