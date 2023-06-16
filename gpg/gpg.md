@@ -18,6 +18,8 @@
 * `gpg --search-keys <ID or email address for the key your searching for>` searching for public keys on ***https://keys.openpgp.org:443***
 * `gpg --output alice.gpg --export alice@cyb.org` to export the gpg public key
 * `gpg --armor --export alice@cyb.org` to export a public key in an ASCII-armored format similar to unencoded documents. (Good for emails.)
+* `gpg --delete-key <fingerprint>` - delete your or someone else's public key
+* `gpg --delete-secret-key <fingerprint>` - delete a secret key
 
 ### Addtitionally we can:
 
