@@ -576,8 +576,9 @@ If the target is vulnerable for the get request (see above) we can get a shell o
 
 ## ssh
 
-* removing credentials from known_hosts for ssh `ssh-keygen -f "/home/user/.ssh/known_hosts" -R "[<IP>]:<PORT>"`
+* removing credentials from known_hosts for ssh: `ssh-keygen -f "/home/user/.ssh/known_hosts" -R "[<IP>]:<PORT>"`
 * ssh fingerprint `ssh-keygen -l -f id_rsa`
+* exporting public key from private key: `ssh-keygen -f <private_key> -y > exported-pub-key.pub`
 * connecting with ssh key: first make a key pair on kali: `ssh-keygen` then create the authorized-keys on the target machine: `mkdir /root/.ssh` and echo the public key there: `echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQD... kali@kali" >> /root/.ssh/authorized_keys` now we can ssh in to the target system from kali
 * connection timeout set: ssh -o ConnectTimeout=10 gibson@10.11.1.71
 * ALWAYS CHECK: cat etc/ssh/sshd_config | uniq
