@@ -414,6 +414,7 @@ If you need to generate a nice html report from the output you can use *_xsltpro
 ## Pihole ( and Unbound)
 
 * For easy install and setup follow the steps in this blog post at **[Crosstalk Soutions](https://www.crosstalksolutions.com/the-worlds-greatest-pi-hole-and-unbound-tutorial-2023/)**
+* once installed and configured changing wi-fi adapter DNS settings from cmd: `netsh interface ip set dns name="Wi-Fi" static <DNS Server static IP>`
 
 ## playing with encoding and hashes
 If you are interested in more depth on this matter check out the cyberchef's website.
