@@ -236,6 +236,8 @@ done
 * `docker rm $(docker ps -a -q -f status=exited)` - if you have a bunch of containers to delete in one go, copy-pasting IDs can be tedious. In that case, you can simply run this command. The `-q` flag returns only the numeric IDs and the `-f` filters output based on conditions provided.
 * `docker container prune` - in later versions of Docker, this command can be used to remove all stopped containers
 * `docker container ls` - lists all containers
+* `docker image list` - list all pulled images
+* `docker rmi <image ID>` - from the above command get image ID and this command will delete the pulled image
 * `docker network ls` - lists Docker images running on network
 
 ## Docker & Juice Shop
