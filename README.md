@@ -239,7 +239,25 @@ done
 * `docker image list` - list all pulled images
 * `docker rmi <image ID>` - from the above command get image ID and this command will delete the pulled image
 * `docker network ls` - lists Docker images running on network
-* 'docker run -d -p 8123:8123 --privileged --volume "/opt/homeassistant:/config" --name homeassistant --restart unless-stopped <image number>' automatically restart container on boot up
+* see below, create a folder for the docker container then create a docker-compose.yaml with:
+
+```
+---
+services:
+  homeassistant:
+    container_name: homeassistant
+    image: "ghcr.io/home-assistant/home-assistant:2023.6"
+    volumes:
+      - ./config:/config
+      #- /etc/localtime:/etc/localtime:ro
+    # devices:
+    #   - /dev/ttyACMO  # (optional) Add serial devices to the container
+    privileged: true
+    restart: unless-stopped
+```
+
+* run `docker compose up` from this folder. If it fails run `docker run -d -p 8123:8123 --privileged --volume "/opt/homeassistant:/config" --name homeassistant --restart unless-stopped` automatically restart container on boot up
+
 
 ## Docker & Juice Shop
 This is how you install **_Docker_** on Kali for whatever you need, I run my Juice Shop app to test for the OWASP Top10 on Docker:
