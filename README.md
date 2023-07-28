@@ -239,6 +239,7 @@ done
 * `docker image list` - list all pulled images
 * `docker rmi <image ID>` - from the above command get image ID and this command will delete the pulled image
 * `docker network ls` - lists Docker images running on network
+* 'docker run -d -p 8123:8123 --privileged --volume "/opt/homeassistant:/config" --name homeassistant --restart unless-stopped <image number>' automatically restart container on boot up
 
 ## Docker & Juice Shop
 This is how you install **_Docker_** on Kali for whatever you need, I run my Juice Shop app to test for the OWASP Top10 on Docker:
