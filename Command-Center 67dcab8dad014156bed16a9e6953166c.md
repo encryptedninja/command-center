@@ -7,11 +7,11 @@
 - **[Linux Privilege Escalation (privesc)](Command-Center%2067dcab8dad014156bed16a9e6953166c/Linux%20Privilege%20Escalation%20d2d8254359564ac4ab3fd4210975dd46.md)**
 - **[Windows Privilege Escalation (privesc)](Command-Center%2067dcab8dad014156bed16a9e6953166c/Windows%20Privilege%20Escalation%2047e95ef453bc4eea9316516fbf786bab.md)**
 - **[Windows Active Directory](Command-Center%2067dcab8dad014156bed16a9e6953166c/Windows%20Active%20Directory%20d4cc6843b40f40ed9bfcf276cd422ff9.md)**
-- **[Windows SSH Service Setup](https://github.com/codetorok/command-center/blob/master/Windows-ssh/windows-ssh-setup.md)**
-- **[Pivoting in Metasploit](https://github.com/codetorok/command-center/blob/master/pivoting_metasploit/pivoting_metasploit.md)**
-- **[Buffer Overflow (Windows, Basic)](https://github.com/codetorok/command-center/blob/master/buffer_overflow/buffer_overflow.md)**
-- **[GPG](https://github.com/codetorok/command-center/blob/master/gpg/gpg.md)**
-- **[Python3 one liners and scripts](https://github.com/codetorok/command-center/blob/master/python3/python3.md)**
+- **[Windows SSH Service Setup](Command-Center%2067dcab8dad014156bed16a9e6953166c/Windows%20SSH%20Service%20Setup%20714e60d5f36e4c6d8876846af3bfcbf1.md)**
+- **[Pivoting in Metasploit](Command-Center%2067dcab8dad014156bed16a9e6953166c/Pivoting%20in%20Metasploit%20ff26f61766ee441f8ec66d3b8df34e35.md)**
+- **[Buffer Overflow (Windows, Basic)](Command-Center%2067dcab8dad014156bed16a9e6953166c/Buffer%20Overflow%20(Windows%20-%20basic)%20efd60e9f7dfa4bbaa02452286a3f7b70.md)**
+- **[GPG](Command-Center%2067dcab8dad014156bed16a9e6953166c/GPG%2056e2da2a092d4ff68875f08f619f3eb7.md)**
+- **[Python3 one liners and scripts](Command-Center%2067dcab8dad014156bed16a9e6953166c/Python%20One%20Liners%20and%20scripts%2016d88534930e4e75a4729cfd9c6a76d1.md)**
 
 ![https://github.com/encryptedninja/command-center/raw/master/images/002_available_commands.png](https://github.com/encryptedninja/command-center/raw/master/images/002_available_commands.png)
 

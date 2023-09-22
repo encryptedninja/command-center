@@ -11,18 +11,18 @@
 
 - With that said, let's dive into it. There is no explication needed for this one, just follow the steps provided below, it's easy!
 
-![https://github.com/encryptedninja/command-center/raw/master/images/0_install_tor_service.png](https://github.com/encryptedninja/command-center/raw/master/images/0_install_tor_service.png)
+![https://github.com/encryptedninja/command-center/raw/master/TOR-SERVICE/images/0_install_tor_service.png](https://github.com/encryptedninja/command-center/raw/master/TOR-SERVICE/images/0_install_tor_service.png)
 
-![https://github.com/encryptedninja/command-center/raw/master/images/1_install_tor_proxychains.png](https://github.com/encryptedninja/command-center/raw/master/images/1_install_tor_proxychains.png)
+![https://github.com/encryptedninja/command-center/raw/master/TOR-SERVICE/images/1_install_tor_proxychains.png](https://github.com/encryptedninja/command-center/raw/master/TOR-SERVICE/images/1_install_tor_proxychains.png)
 
-![https://github.com/encryptedninja/command-center/raw/master/images/2_edit_proxychains_conf.png](https://github.com/encryptedninja/command-center/raw/master/images/2_edit_proxychains_conf.png)
+![https://github.com/encryptedninja/command-center/raw/master/TOR-SERVICE/images/2_edit_proxychains_conf.png](https://github.com/encryptedninja/command-center/raw/master/TOR-SERVICE/images/2_edit_proxychains_conf.png)
 
-![https://github.com/encryptedninja/command-center/raw/master/images/3_edit_proxychains_chains.png](https://github.com/encryptedninja/command-center/raw/master/images/3_edit_proxychains_chains.png)
+![https://github.com/encryptedninja/command-center/raw/master/TOR-SERVICE/images/3_edit_proxychains_chains.png](https://github.com/encryptedninja/command-center/raw/master/TOR-SERVICE/images/3_edit_proxychains_chains.png)
 
-![https://github.com/encryptedninja/command-center/raw/master/images/4_edit_proxychains_chains.png](https://github.com/encryptedninja/command-center/raw/master/images/4_edit_proxychains_chains.png)
+![https://github.com/encryptedninja/command-center/raw/master/TOR-SERVICE/images/4_edit_proxychains_chains.png](https://github.com/encryptedninja/command-center/raw/master/TOR-SERVICE/images/4_edit_proxychains_chains.png)
 
-![https://github.com/encryptedninja/command-center/raw/master/images/5_enable_start_tor_service.png](https://github.com/encryptedninja/command-center/raw/master/images/5_enable_start_tor_service.png)
+![https://github.com/encryptedninja/command-center/raw/master/TOR-SERVICE/images/5_enable_start_tor_service.png](https://github.com/encryptedninja/command-center/raw/master/TOR-SERVICE/images/5_enable_start_tor_service.png)
 
-![https://github.com/encryptedninja/command-center/raw/master/images/6_checking_for_dns_leak.png](https://github.com/encryptedninja/command-center/raw/master/images/6_checking_for_dns_leak.png)
+![https://github.com/encryptedninja/command-center/raw/master/TOR-SERVICE/images/6_checking_for_dns_leak.png](https://github.com/encryptedninja/command-center/raw/master/TOR-SERVICE/images/6_checking_for_dns_leak.png)
 
-![https://github.com/encryptedninja/command-center/raw/master/images/7_testing_results.png](https://github.com/encryptedninja/command-center/raw/master/images/7_testing_results.png)
+![https://github.com/encryptedninja/command-center/raw/master/TOR-SERVICE/images/7_testing_results.png](https://github.com/encryptedninja/command-center/raw/master/TOR-SERVICE/images/7_testing_results.png)
