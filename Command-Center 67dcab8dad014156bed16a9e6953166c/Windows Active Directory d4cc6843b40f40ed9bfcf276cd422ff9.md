@@ -277,7 +277,7 @@
 
 ### Kerberoasting
 
-![https://github.com/encryptedninja/command-center/raw/master/Windows_AD/images/kerberoasting.png](https://github.com/encryptedninja/command-center/raw/master/Windows_AD/images/kerberoasting.png)
+![https://github.com/encryptedninja/command-center/raw/master/images/kerberoasting.png](https://github.com/encryptedninja/command-center/raw/master/images/kerberoasting.png)
 
 - After presenting username and password we get a TGT (Ticket Granting Ticket) which ends with a hash. How did we get a TGT? We supplied an NTLM hash. Any user can do this. Now let's say we have a service we want to access, that service has an SPN (Service Principal Name). In order to access that service we have to request a TGS. We present our TGT and request the TGS from the server. The KDC (Key Distribution Center aka Domain Controller) has the server account hash (Application Service Server's hash) and it's going to encrypt it and send it back. The KDC does not know if we have access to the Server (Application Service Server) or not. It's just going to provide us the TGS with the Application Service Server's hash.
 - We then present the TGS to the Application Service Server and then it will decrypt it using it's own server hash and then it's going to send back a yes or no to us. (Authozrized or not).
@@ -380,7 +380,7 @@
 - to take this a step furter we could download ***psexec.py*** to this computer hence this was the whole intent of the creation of psexec, to access computers `psexec.exe \\THEPUNISHER cmd.exe`
 - **persistence:** once you own a Golden Ticket you can create a new user, make it a domain admin, most systems are picking it up, try better with a ***silver ticket***
 
-![https://github.com/encryptedninja/command-center/raw/master/Windows_AD/images/golden_ticket_attack.png](https://github.com/encryptedninja/command-center/raw/master/Windows_AD/images/golden_ticket_attack.png)
+![https://github.com/encryptedninja/command-center/raw/master/images/golden_ticket_attack.png](https://github.com/encryptedninja/command-center/raw/master/images/golden_ticket_attack.png)
 
 ### Additional Recourses
 
