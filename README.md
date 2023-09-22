@@ -1,0 +1,3 @@
+Start here -> [Command-Center](https://github.com/encryptedninja/command-center/blob/master/Command-Center%2067dcab8dad014156bed16a9e6953166c.md)
+
+This repo contains some basic stuff for cheat sheets, configs, quick command lookup, etc...
