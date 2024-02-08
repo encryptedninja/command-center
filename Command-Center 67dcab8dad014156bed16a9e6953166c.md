@@ -30,6 +30,10 @@
     - `reg query HKCU\SOFTWARE\Policies\Microsoft\Windows\Installer`
     - execute .msi payload: `msiexec /i "C:\xampp\htdocs\shenzi\notavirus.msi"`
 
+## Ansible
+The coma after 'localhost' or target IP is needed. Also in playbook: `Hosts: all` and connection is not specified that's why the `--connection=local` is needed for running the playbook on a localhost.
+- running it locally: `ansible-playbook deploy.xml -K -i localhost, --connection=local
+- running it remotely: `ansible-playbook deploy.xml -k -K -i <target IP>,
 ## Amass
 
 Really good if you need to enumerate subdomains, just make sure you start it at night before going to bed :)
