@@ -94,6 +94,13 @@ There are many ways to bypass AppLocker rules, if it's configured with the defau
 
 - `c:\Windows\System32\spool\drivers\color`
 
+## certbot
+
+- list certificates: `certbot certificates`
+- register certificate: `certbot certonly --cert-name exaple.com -d example.com`
+- register certificate without email: `certbot run --register-unsafely-without-email`
+- renew certificate: `certbot renew`
+
 ## change-login screen Ubuntu 20.04 LTS
 
 - `wget https://github.com/PRATAP-KUMAR/ubuntu-gdm-set-background/archive/main.tar.gz`
