@@ -572,7 +572,7 @@ If you are interested in more depth on this matter check out the cyberchef's web
 
 - `socat -d -d TCP-LISTEN:1234 -`
 - `socat -d -d TCP-CONNECT:127.0.0.1:1234 -`
-- **port forwarding:** `socat TCP:LISTEN::80,fork,reuseaddr TCP:<IP>:<PORT>`
+- **as a redirector:** `socat TCP-LISTEN:80,fork,reuseaddr TCP:<IP>:<PORT>`
 - **transferring files:**
     - `socat -d -d TCP-LISTEN:1234 OPEN:filetransfer.txt,create`
     - `socat -d -d TCP-CONNECT:127.0.0.1:1234 FILE:/etc/passwd`
