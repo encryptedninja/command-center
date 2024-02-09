@@ -514,6 +514,10 @@ If you are interested in more depth on this matter check out the cyberchef's web
 
 - if after a fresh OS install, your created user can run sudo commands or switch to the root user without a password prompt, change the `<username> ALL=(ALL) NOPASSWD: ALL` to `<usernmae> ALL=(ALL) ALL` in the /etc/sudoers.d/010_pi-nopasswd file. Switch to the root user and edit the file with: `visudo /etc/sudoers.d/010_pi-nopasswd`
 
+## Rasbperry Pi - Pivpn (OpenVPN)
+
+- Changing the public IP/DNS: `sudo nano /etc/openvpn/easy-rsa/pki/Default.txt` and your .ovpn files if you have already generated them.
+
 ## RDP
 
 - (rdesktop) with local file share:
