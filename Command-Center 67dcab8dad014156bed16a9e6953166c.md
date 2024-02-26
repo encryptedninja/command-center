@@ -916,21 +916,24 @@ It's just like bash history in Linux.
 
 - `c:\Users\<username>\%userprofile%\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt` this line opens up a notepad with the histroy of commands.
 
-## VMWare fixing after kernel update on Linux Debian
+## VMWare
+* **Shrinking .ova file size before export:**
+	* `sudo e4defrag /`
+ 	* `dd if=/dev/zero of=wipefile bs=1M; sync; /bin/rm wipefile`
+  	* `sudo vmware-toolbox-cmd disk shrinkonly`    
+* **Fixing after kernel update on Linux Debian:**
+	- First clone this repo with `git clone` : `https://github.com/mkubecek/vmware-host-modules` and run within the main directory: `git checkout workstation-16.2.3` and `sudo make` and finally: `sudo make install`
+	- `openssl req -new -x509 -newkey rsa:2048 -keyout MOK.priv -outform DER -out MOK.der -nodes -days 36500 -subc "/CN=VMWARE/"`
+	- `sudo /usr/src/linux-headers-$(uname -r)/scripts/sign-file sha256 ./MOK.priv ./MOK.der $(modinfo -n vmmon)`
+	- `sudo /usr/src/linux-headers-$(uname -r)/scripts/sign-file sha256 ./MOK.priv ./MOK.der $(modinfo -n vmnet)`
+	- `tail $(modinfo -n vmmon) | grep "Module signature appended"`
+	- `sudo mokutil --import MOK.der`
+	- `-- reboot ---`
+	- `mokutil --test-key MOK.der`
+	- UPDATE KEY: `sudo update-secureboot-policy --enroll-key`
 
-- First clone this repo with `git clone` : `https://github.com/mkubecek/vmware-host-modules` and run within the main directory: `git checkout workstation-16.2.3` and `sudo make` and finally: `sudo make install`
-- `openssl req -new -x509 -newkey rsa:2048 -keyout MOK.priv -outform DER -out MOK.der -nodes -days 36500 -subc "/CN=VMWARE/"`
-- `sudo /usr/src/linux-headers-$(uname -r)/scripts/sign-file sha256 ./MOK.priv ./MOK.der $(modinfo -n vmmon)`
-- `sudo /usr/src/linux-headers-$(uname -r)/scripts/sign-file sha256 ./MOK.priv ./MOK.der $(modinfo -n vmnet)`
-- `tail $(modinfo -n vmmon) | grep "Module signature appended"`
-- `sudo mokutil --import MOK.der`
-- `-- reboot ---`
-- `mokutil --test-key MOK.der`
-- UPDATE KEY: `sudo update-secureboot-policy --enroll-key`
-
-## VMWare expanding disk (Linux)
-
-- Expand the disk space in VMWare and then follow instructions **[here](https://cybersalih.com/how-to-expand-disk-space-on-kali-linux-vmware/)** to read or **[here](https://www.youtube.com/watch?v=NwpzYlfKnrY)** to watch a quick video about it.
+* **VMWare expanding disk (Linux)**
+	- Expand the disk space in VMWare and then follow instructions **[here](https://cybersalih.com/how-to-expand-disk-space-on-kali-linux-vmware/)** to read or **[here](https://www.youtube.com/watch?v=NwpzYlfKnrY)** to watch a quick video about it.
 
 ## wpscan
 
