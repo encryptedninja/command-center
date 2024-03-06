@@ -698,7 +698,7 @@ For subdomain enumeration.
 Some shells are fuzzy but after an upgrade you can have a proper one with all the normal shell functions like TAB, etc...
 
 1. `python3 -c 'import pty;pty.spawn("/bin/bash")'`
-2. `export TERM=xterm
+2. `export TERM=xterm`
 3. here you want to press `CTRL+z` to background your session
 4. `stty raw -echo; fg` I like to add `fg` here to bring the session to the foreground again and don't have to do it as a next command
 
