@@ -308,6 +308,31 @@ sudo docker run --rm -p 3000:3000 bkimminich/juice-shop
 
 ```
 
+## docker-compose
+* `docker-compose up -d`
+
+```
+version: "3"
+networks:
+  hacked:
+    ipam:
+      driver: default
+      config: 
+        - subnet: "192.168.45.0/24"
+services:
+  kali:
+    image: kalilinux/kali-rolling:latest
+    networks:
+      hacked:
+        ipv4_address: 192.168.45.10
+    tty: true
+  redis:
+    image: redis:5.0.9-alpine
+    networks:
+      hacked:
+        ipv4_address: 192.168.45.50
+```
+
 ## Extract IPs from a text file
 
 - `grep -o ‘[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}’ nmapfile.txt`
