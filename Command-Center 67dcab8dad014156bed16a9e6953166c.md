@@ -11,6 +11,7 @@
 - **[Pivoting in Metasploit](Command-Center%2067dcab8dad014156bed16a9e6953166c/Pivoting%20in%20Metasploit%20ff26f61766ee441f8ec66d3b8df34e35.md)**
 - **[Buffer Overflow (Windows, Basic)](Command-Center%2067dcab8dad014156bed16a9e6953166c/Buffer%20Overflow%20(Windows%20-%20basic)%20efd60e9f7dfa4bbaa02452286a3f7b70.md)**
 - **[GPG](Command-Center%2067dcab8dad014156bed16a9e6953166c/GPG%2056e2da2a092d4ff68875f08f619f3eb7.md)**
+- **[WiFi](Command-Center%2067dcab8dad014156bed16a9e6953166c)**
 - **[Python3 one liners and scripts](Command-Center%2067dcab8dad014156bed16a9e6953166c/Python%20One%20Liners%20and%20scripts%2016d88534930e4e75a4729cfd9c6a76d1.md)**
 
 ![https://github.com/encryptedninja/command-center/raw/master/images/002_available_commands.png](https://github.com/encryptedninja/command-center/raw/master/images/002_available_commands.png)
