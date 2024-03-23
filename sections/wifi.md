@@ -12,6 +12,7 @@
 
 ## wireless adapter (TP-LINK WN722N version 2,3,4) monitor mode
 * `sudo apt update && sudo apt install -y realtek-rtl8188eus-dkms`
+* alternatively: `git clone https://github.com/gglluukk/rtl8188eus`
 * `reboot -f`
 * `iwconfig` - check driver it is Realter 8188
 * `wifite --kill` - now monitor mode is enabled and working
