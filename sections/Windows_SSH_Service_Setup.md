@@ -1,6 +1,6 @@
 # Windows SSH Service Setup
 
-# [Back To Command-Center](../Command-Center%2067dcab8dad014156bed16a9e6953166c.md)
+## [Back To Command-Center](https://github.com/encryptedninja/command-center/blob/dev/README.md)
 
 - short notes on how to set up SSH on Win10 but if you need a more in detail description check out this repo's source blog **[here](https://www.pugetsystems.com/labs/hpc/How-To-Use-SSH-Client-and-Server-on-Windows-10-1470/)**
 
