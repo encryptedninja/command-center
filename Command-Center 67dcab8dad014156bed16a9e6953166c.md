@@ -3,18 +3,18 @@
 **Frequently used commands that are searchable with your browser's search function. (CTRL+f on Firefox)**
 
 - Go here if you are looking for:
-- **[TOR Service / Anonymity](Command-Center%2067dcab8dad014156bed16a9e6953166c/Tor%20Service%20Anonymity%20c64ab6c661d54a7a969743df1f137eab.md)**
-- **[Linux Privilege Escalation (privesc)](Command-Center%2067dcab8dad014156bed16a9e6953166c/Linux%20Privilege%20Escalation%20d2d8254359564ac4ab3fd4210975dd46.md)**
-- **[Windows Privilege Escalation (privesc)](Command-Center%2067dcab8dad014156bed16a9e6953166c/Windows%20Privilege%20Escalation%2047e95ef453bc4eea9316516fbf786bab.md)**
-- **[Windows Active Directory](Command-Center%2067dcab8dad014156bed16a9e6953166c/Windows%20Active%20Directory%20d4cc6843b40f40ed9bfcf276cd422ff9.md)**
-- **[Windows SSH Service Setup](Command-Center%2067dcab8dad014156bed16a9e6953166c/Windows%20SSH%20Service%20Setup%20714e60d5f36e4c6d8876846af3bfcbf1.md)**
-- **[Pivoting in Metasploit](Command-Center%2067dcab8dad014156bed16a9e6953166c/Pivoting%20in%20Metasploit%20ff26f61766ee441f8ec66d3b8df34e35.md)**
-- **[Buffer Overflow (Windows, Basic)](Command-Center%2067dcab8dad014156bed16a9e6953166c/Buffer%20Overflow%20(Windows%20-%20basic)%20efd60e9f7dfa4bbaa02452286a3f7b70.md)**
-- **[GPG](Command-Center%2067dcab8dad014156bed16a9e6953166c/GPG%2056e2da2a092d4ff68875f08f619f3eb7.md)**
-- **[WiFi](Command-Center%2067dcab8dad014156bed16a9e6953166c)**
-- **[Python3 one liners and scripts](Command-Center%2067dcab8dad014156bed16a9e6953166c/Python%20One%20Liners%20and%20scripts%2016d88534930e4e75a4729cfd9c6a76d1.md)**
+- **[TOR Service / Anonymity](sections/Tor_Service_Anonymity.md)**
+- **[Linux Privilege Escalation (privesc)](Command-Center/sections/Linux_Privilege_Escalation.md)**)**
+- **[Windows Privilege Escalation (privesc)](Command-Center/sections/Windows_Privilege_Escalation_.md)**
+- **[Windows Active Directory](Command-Center/sections/Windows_Active_Directory.md)**
+- **[Windows SSH Service Setup](Command-Center/sections/Windows_SSH_Service_Setup.md)**
+- **[Pivoting in Metasploit](Command-Center/sections/Pivoting_in_Metasploit.md)**
+- **[Buffer Overflow (Windows, Basic)](Command-Center/sections/Buffer_Overflow_Windows.md)**
+- **[GPG](Command-Center/sections/GPG.md)**
+- **[WiFi](Command-Center/sections/wifi.md)**
+- **[Python3 one liners and scripts](Command-Center/sections/Python_One_Liners_and_scripts.md)**
 
-![https://github.com/encryptedninja/command-center/raw/master/images/002_available_commands.png](https://github.com/encryptedninja/command-center/raw/master/images/002_available_commands.png)
+![002_available_commands](images/002_available_commands.png)
 
 ## Adding and removing users on Linux (including home dir) and adding user to the sudoers group
 
@@ -994,22 +994,4 @@ With the same fashion there's ***pdf2john*** as well with a very similar synth
 
 ### The world is at your fingertips 💯
 
-![https://github.com/encryptedninja/command-center/raw/master/images/003_hacker_hoodie.jpg](https://github.com/encryptedninja/command-center/raw/master/images/003_hacker_hoodie.jpg)
-
-[Tor Service / Anonymity](Command-Center%2067dcab8dad014156bed16a9e6953166c/Tor%20Service%20Anonymity%20c64ab6c661d54a7a969743df1f137eab.md)
-
-[Linux Privilege Escalation](Command-Center%2067dcab8dad014156bed16a9e6953166c/Linux%20Privilege%20Escalation%20d2d8254359564ac4ab3fd4210975dd46.md)
-
-[Windows Privilege Escalation](Command-Center%2067dcab8dad014156bed16a9e6953166c/Windows%20Privilege%20Escalation%2047e95ef453bc4eea9316516fbf786bab.md)
-
-[Windows Active Directory](Command-Center%2067dcab8dad014156bed16a9e6953166c/Windows%20Active%20Directory%20d4cc6843b40f40ed9bfcf276cd422ff9.md)
-
-[Windows SSH Service Setup](Command-Center%2067dcab8dad014156bed16a9e6953166c/Windows%20SSH%20Service%20Setup%20714e60d5f36e4c6d8876846af3bfcbf1.md)
-
-[Pivoting in Metasploit](Command-Center%2067dcab8dad014156bed16a9e6953166c/Pivoting%20in%20Metasploit%20ff26f61766ee441f8ec66d3b8df34e35.md)
-
-[Buffer Overflow (Windows - basic)](Command-Center%2067dcab8dad014156bed16a9e6953166c/Buffer%20Overflow%20(Windows%20-%20basic)%20efd60e9f7dfa4bbaa02452286a3f7b70.md)
-
-[GPG](Command-Center%2067dcab8dad014156bed16a9e6953166c/GPG%2056e2da2a092d4ff68875f08f619f3eb7.md)
-
-[Python One Liners and scripts](Command-Center%2067dcab8dad014156bed16a9e6953166c/Python%20One%20Liners%20and%20scripts%2016d88534930e4e75a4729cfd9c6a76d1.md)
+![003_hacker_hoodie.jpg](images/003_hacker_hoodie.jpg)
