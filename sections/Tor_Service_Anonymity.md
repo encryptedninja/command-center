@@ -1,6 +1,6 @@
 # Tor Service / Anonymity
 
-## [Back To Command-Center](Command-Center.md)
+## [Back To Command-Center](https://github.com/encryptedninja/command-center/blob/dev/README.md)
 
 ## Before you read on I would like to make two things clear:
 
