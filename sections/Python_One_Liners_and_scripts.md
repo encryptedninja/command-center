@@ -1,6 +1,6 @@
 # Python One Liners and scripts
 
-# [Back To Command-Center](../Command-Center%2067dcab8dad014156bed16a9e6953166c.md)
+## [Back To Command-Center](https://github.com/encryptedninja/command-center/blob/dev/README.md)
 
 - install requirements: `sudo python3 -m pip install -r requirements.txt`
 - to spawn a shell: `python3 -c 'import pty;pty.spawn("/bin/bash")'`
