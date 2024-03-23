@@ -1,7 +1,7 @@
 **Frequently used commands that are searchable with your browser's search function. (CTRL+f on Firefox)**
 
 - Go here if you are looking for:
-- **[TOR Service / Anonymity](Command-Center/sections/Tor_Service_Anonymity.md)**
+- **[TOR Service / Anonymity](sections/Tor_Service_Anonymity.md)**
 - **[Linux Privilege Escalation (privesc)](Command-Center/sections/Linux_Privilege_Escalation.md)**)**
 - **[Windows Privilege Escalation (privesc)](Command-Center/sections/Windows_Privilege_Escalation_.md)**
 - **[Windows Active Directory](Command-Center/sections/Windows_Active_Directory.md)**
