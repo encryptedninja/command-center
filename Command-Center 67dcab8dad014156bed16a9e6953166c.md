@@ -294,13 +294,13 @@ This is how you install ***Docker*** on Kali for whatever you need, I run my J
 4. `apt install docker-ce`
 5. `docker --version`
 
-To install ***Juice Shop***
+To install **Juice Shop**
 
 1. `docker pull bkimminich/juice-shop`
 2. `docker run --rm -p 3000:3000 bkimminich/juice-shop`
-3. browse to *http://localhost:3000* (on macOS and Win browse to *http://192.168.99.100:3000* if you are using docker-machine instead of the native docker installation)
+3. browse to `http://localhost:3000` (on macOS and Win browse to `http://192.168.99.100:3000` if you are using docker-machine instead of the native docker installation)
 
-Once you installed ***Juice Shop*** and want to run it on different occasions there's this simple bash script to help you with. Just make a file with nano, name it as *run_juice_shop.sh* or whatever you want to name it copy/paste the below code in it, save it and make it executable with `chmod +x run_juice_shop.sh`:
+Once you installed **Juice Shop** and want to run it on different occasions there's this simple bash script to help you with. Just make a file with nano, name it as **run_juice_shop.sh** or whatever you want to name it copy/paste the below code in it, save it and make it executable with `chmod +x run_juice_shop.sh`:
 
 ```
 #!/bin/bash
