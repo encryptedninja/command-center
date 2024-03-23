@@ -1,6 +1,6 @@
 # Pivoting in Metasploit
 
-# [Back To Command-Center](../Command-Center%2067dcab8dad014156bed16a9e6953166c.md)
+## [Back To Command-Center](https://github.com/encryptedninja/command-center/blob/dev/README.md)
 
 When on target machine you want to pivot through run in Metasploit:
 

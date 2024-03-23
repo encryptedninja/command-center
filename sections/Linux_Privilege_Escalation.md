@@ -1,6 +1,6 @@
 # Linux Privilege Escalation
 
-# [Back To Command-Center](../Command-Center%2067dcab8dad014156bed16a9e6953166c.md)
+## [Back To Command-Center](https://github.com/encryptedninja/command-center/blob/dev/README.md)
 
 ## //cheat-sheet
 

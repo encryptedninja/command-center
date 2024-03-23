@@ -1,5 +1,3 @@
-# Command-Center
-
 **Frequently used commands that are searchable with your browser's search function. (CTRL+f on Firefox)**
 
 - Go here if you are looking for:
