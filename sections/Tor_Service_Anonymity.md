@@ -1,6 +1,6 @@
 # Tor Service / Anonymity
 
-## [Back To Command-Center](../Command-Center%2067dcab8dad014156bed16a9e6953166c.md)
+## [Back To Command-Center](Command-Center.md)
 
 ## Before you read on I would like to make two things clear:
 
