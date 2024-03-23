@@ -14,7 +14,7 @@
 - **[WiFi](Command-Center%2067dcab8dad014156bed16a9e6953166c)**
 - **[Python3 one liners and scripts](Command-Center%2067dcab8dad014156bed16a9e6953166c/Python%20One%20Liners%20and%20scripts%2016d88534930e4e75a4729cfd9c6a76d1.md)**
 
-![https://github.com/encryptedninja/command-center/raw/master/images/002_available_commands.png](https://github.com/encryptedninja/command-center/raw/master/images/002_available_commands.png)
+![002_available_commands](/images/002_available_commands.png)
 
 ## Adding and removing users on Linux (including home dir) and adding user to the sudoers group
 
@@ -994,4 +994,4 @@ With the same fashion there's ***pdf2john*** as well with a very similar synthax
 
 ### The world is at your fingertips 💯
 
-![https://github.com/encryptedninja/command-center/raw/master/images/003_hacker_hoodie.jpg](https://github.com/encryptedninja/command-center/raw/master/images/003_hacker_hoodie.jpg)
+![003_hacker_hoodie](/images/003_hacker_hoodie.jpg)
