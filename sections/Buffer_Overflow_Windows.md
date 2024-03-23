@@ -1,6 +1,6 @@
 # Buffer Overflow (Windows - basic)
 
-# [Back To Command-Center](../Command-Center%2067dcab8dad014156bed16a9e6953166c.md)
+## [Back To Command-Center](https://github.com/encryptedninja/command-center/blob/dev/README.md)
 
 ⚠️ **IMPORTANT NOTE:** This is not a tutorial write-up on how to use the different tools you'll need to accomplish a **BOF** nor on how to use the needed tools like the ***Immunity Debugger*** and the alikes. These are quick notes to be able to have a quick recap if you get stuck or just want to refresh your Buffer Owerflow knowledge.
 
