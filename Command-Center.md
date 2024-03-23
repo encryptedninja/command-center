@@ -355,7 +355,7 @@ Basic syntax. Again this is not a tutorial page, just a quick look up on the dif
 - `hashcat --force -m <mode number> -a 0 crackthis.txt /usr/share/wordlist/rockyou.txt`
 - to find the *hashcat potfile*: `cat ~/.hashcat/hashcat.potfile`
 
-## [how to change the color for the current user in bash terminal, Ubuntu](https://github.com/encryptedninja/command-center#how-to-change-the-color-for-the-current-user-in-bash-terminal-ubuntu)
+## how to change the color for the current user in bash terminal (Ubuntu)
 
 - Open the file: `gedit ~/.bashrc`.
 - Look for the line with `#force_color_prompt=yes` and uncomment (delete the #).
@@ -549,7 +549,7 @@ If you are interested in more depth on this matter check out the cyberchef's web
 - cracking RDP password (ncrack):
     - `ncrack -vv --user <USERNAME> -P /usr/share/wordlists/rockyou.txt`
 
-## [Restricted traffic bypass](https://github.com/encryptedninja/command-center#restricted-traffic-bypass)
+## restricted traffic bypass
 
 - `curl -X POST -H 'X-Forwarded-For: <PIVOT IP>' --data 'data=id' http://<TARGET IP>/cmd.php>`
 
@@ -568,7 +568,7 @@ If you are interested in more depth on this matter check out the cyberchef's web
 - `sed -i 's/text_to_replace/new_text/g' <file name>` without the `g` parameter at the end sed will only replace the first instance on each line only and without the `i` switch sed will no overwrite the file we are working with, if we want to save the results as a new file we can just redirect the output to a new file like so: `sed -i 's/test_to_replace/new_text/g' <original file> > <new file>`
 - `sed -n 's/text_to_replace/new_text/pg'` sed `-n` means no output unless there is a match because of the `p` parameter
 
-## [SET (social engineering toolkit / Kali)](https://github.com/encryptedninja/command-center#set-social-engineering-toolkit--kali)
+## SET (social engineering toolkit (Kali)
 
 - need to start setoolkit first: `sudo setoolkit` then choose "yes".
 - change port from 80 in config file so to avoid conflict with gophish:
@@ -988,7 +988,7 @@ With the same fashion there's ***pdf2john*** as well with a very similar synth
 
 ---
 
-### This is the end of the list, remember, it's not the commands, it's what you do with those commands and how do you use the information you get out of theses swites, that's all that matters. This repo is for educational purposes only, anything you do with this is on you, so be responsable.
+### This is the end of the list, remember, it's not the commands, it's what you do with those commands and how do you use the information you get out of theses tools and switches, that's all that matters. This repo is for educational purposes only, anything you do with this is on you, so be responsable.
 
 ### The world is at your fingertips 💯
 
