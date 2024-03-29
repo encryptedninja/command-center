@@ -16,3 +16,8 @@
 * `reboot -f`
 * `iwconfig` - check driver it is Realter 8188
 * `wifite --kill` - now monitor mode is enabled and working
+* `sudo airmon-ng check kill`
+* `sudo ip link set <interface> down`
+* `sudo iw dev <interface> set type monitor`
+* `sudo aireplay-ng -9 <interface>`
+* `https://github.com/gglluukk/rtl8188eus`
