@@ -21,3 +21,4 @@
 * `sudo iw dev <interface> set type monitor`
 * `sudo aireplay-ng -9 <interface>`
 * `https://github.com/gglluukk/rtl8188eus`
+* may have to install Linux header: `sudo apt-get install linux-headers-$(uname -r)`
