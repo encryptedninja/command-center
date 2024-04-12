@@ -247,7 +247,9 @@ for server in $(host -t ns $1 | cut -d " " -f4);do
 done
 
 ```
+## dnschef
 
+* `dnschef --fakeip=192.168.1.102 --fakedomains=randomName.com --interface=192.168.1.102`
 ## Docker
 
 - test if it's working: `docker run hello-world`
