@@ -250,7 +250,7 @@ done
 ## dnschef (use it with setoolkit from Kali)
 
 * `dnschef --fakeip=192.168.1.102 --fakedomains=<domain name you want to pretend to be> --interface=192.168.1.102`
-* use setoolkit to serve to cloned site (menu: 1, 2, 2, `<fake IP here>`, http://domain_name_to_clone
+* use setoolkit to serve to cloned site
 
 ## Docker
 
