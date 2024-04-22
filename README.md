@@ -446,7 +446,7 @@ Cracking some SHA256 hashes with john, using the rockyou.txt as a wordlist, redi
 * `apt install mingw-w64`
 * This command works for C files on x86 64-bit architecture. The "-o" determines the name of the compiled binary: `x86_64-w64-mingw32-gcc shell.c -o shell.exe`
 * If we were compiling for 32 bit, we would use a command that looks like this: `i686-w64-mingw32-gcc shell.c -o shell.exe`
-* checking all the differenct versions: `apt-cache search mingw-w64`
+* checking all the different versions: `apt-cache search mingw-w64`
 * [reference](https://null-byte.wonderhowto.com/how-to/use-mingw-compile-windows-exploits-kali-linux-0179461/)
 
 ## mount
