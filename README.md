@@ -441,6 +441,13 @@ Cracking some SHA256 hashes with john, using the rockyou.txt as a wordlist, redi
 
 - port forward: `portfwd add -L 0.0.0.0 -l 8888 -p 8080 -r 127.0.0.1`
 
+## mingw
+
+* `apt install mingw-w64`
+* This command works for C files on x86 64-bit architecture. The "-o" determines the name of the compiled binary: `x86_64-w64-mingw32-gcc shell.c -o shell.exe`
+* If we were compiling for 32 bit, we would use a command that looks like this: `i686-w64-mingw32-gcc shell.c -o shell.exe`
+* [reference](https://null-byte.wonderhowto.com/how-to/use-mingw-compile-windows-exploits-kali-linux-0179461/)
+
 ## mount
 
 - `mount -t nsf Mtarget IP>:/home/username /mnt/folder -nolock`
