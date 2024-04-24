@@ -14,6 +14,8 @@
 - `gpg --send-keys --keyserver pgp.mit.edu <fingerprint>` sending our public key to a key server
 - `gpg --encrypt --sign --armor -r ouremail@email.com <file_to_encrypt>` encrypting a file
 - `gpg --decrypt encrypted.asc > plain.txt` decrypting a received encrypted file
+- `echo 'testing gpg encryption' | gpg -e --armor -r <recipient email or key ID>`
+- `echo '<copy / paste message to decrypt here>' | gpg -d --armor`
 - `gpg --keyserver pgp.mit.edu --refresh-keys` to refresh our public keys against the key server
 - `gpg --keyserver pgp.mit.edu --search-keys <ID or email address for the key your searching for>` searching for public keys on ***pgp.mit.edu***
 - `gpg --search-keys <ID or email address for the key your searching for>` searching for public keys on ***[https://keys.openpgp.org:443](https://keys.openpgp.org/)***
