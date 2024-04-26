@@ -10,8 +10,10 @@
 - `gpg --import <someones.key>` importing someone else's public key
 - `gpg --fingerprint someone@email.com` checking someone else’s public key's fingerprint for validation
 - `gpg --sign-key someone@email.com` sing someone's public key for trust
+- `gpg --export --ownertrust [key-ID] > signed_key.asc` share the signed public key. This exported file (signed_key.asc) will include the public key data and a section indicating you've signed the key and trust its authenticity. Send the exported signed_key.asc file to the third party. They can import the key using the standard gpg --import command and see your signature attached when viewing the key details.
 - `gpg --output ~/dave-geek.key --armor --export ouremail@email.com` sharing our public key
 - `gpg --send-keys --keyserver pgp.mit.edu <fingerprint>` sending our public key to a key server
+- `gpg -c --encrypt-to your_name@email.com filename` encrypt a file for self using private key
 - `gpg --encrypt --sign --armor -r ouremail@email.com <file_to_encrypt>` encrypting a file
 - `gpg --decrypt encrypted.asc > plain.txt` decrypting a received encrypted file
 - `echo 'testing gpg encryption' | gpg -e --armor -r <recipient email or key ID>`
