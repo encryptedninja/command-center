@@ -5,6 +5,7 @@
 (The ***SHORT ID*** on the key is the last 8 digits of the fingerprint, the ***LONG ID*** is the last 16 digits.)
 
 - `gpg --full-generate-key` to generate a key pair
+- `gpg --full-generate-key --expire-date 5d` to generate a short-lived key after expiration list keys `gpg --list-keys` and remove the exired one to declutter the keychain `gpg --delete-key [key-ID]`
 - `gpg --output ~/revocation.crt --gen-revoke our_email_address` to generate a revocation certificate in case your private key gets compromised
 - `chmod 600 ~/revocation.crt` to remove all permissions from this certificate
 - `gpg --import <someones.key>` importing someone else's public key
