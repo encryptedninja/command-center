@@ -14,8 +14,8 @@
 - `gpg --export --ownertrust [key-ID] > signed_key.asc` share the signed public key. This exported file (signed_key.asc) will include the public key data and a section indicating you've signed the key and trust its authenticity. Send the exported signed_key.asc file to the third party. They can import the key using the standard `gpg --import` command and see your signature attached when viewing the key details. METHOD: import the received gpg key, check the signaute with `gpg --list-sigs` and if you don't trust the signature delete the key with `gpg --delete-key [key-ID]` to change the trust level on a gpg key use `gpg --edit-key [key-ID]` and edit the key information by entering: `trust`.
 - `gpg --output ~/dave-geek.key --armor --export ouremail@email.com` sharing our public key
 - `gpg --send-keys --keyserver pgp.mit.edu <fingerprint>` sending our public key to a key server
-- `gpg -c --encrypt-to your_name@email.com filename` encrypt a file for self using private key
-- `gpg --encrypt --sign --armor -r ouremail@email.com <file_to_encrypt>` encrypting a file
+- `gpg -c --encrypt-to your_name@email.com filename` encrypt a file using symmetric encryption (passwd protected)
+- `gpg --encrypt --sign --armor -r ouremail@email.com <file_to_encrypt>` asymetric encryption, file can only be read with the private key
 - `gpg --decrypt encrypted.asc > plain.txt` decrypting a received encrypted file
 - `echo 'testing gpg encryption' | gpg -e --armor -r <recipient email or key ID>`
 - `echo '<copy / paste message to decrypt here>' | gpg -d --armor`
