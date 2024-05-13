@@ -26,6 +26,8 @@
 - `gpg --armor --export alice@cyb.org` to export a public key in an ASCII-armored format similar to unencoded documents. (Good for emails.)
 - `gpg --delete-key <fingerprint>` - delete your or someone else's public key
 - `gpg --delete-secret-key <fingerprint>` - delete a secret key
+- This method creates two separate files: the original file and a detached signature file. `gpg --detach-sig document.txt` To sign a file with a specific key from your keyring, use the --local-user option followed by the key ID, name, or email address.
+- Verify file's signature: `gpg --verify signature_file original_file`
 
 ### Addtitionally we can:
 
