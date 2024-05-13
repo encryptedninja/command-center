@@ -16,6 +16,7 @@
 - `gpg --send-keys --keyserver pgp.mit.edu <fingerprint>` sending our public key to a key server
 - `gpg -c --encrypt-to your_name@email.com filename` encrypt a file using symmetric encryption (passwd protected)
 - `gpg --encrypt --sign --armor -r ouremail@email.com <file_to_encrypt>` asymetric encryption, file can only be read with the private key
+- `gpg --verify encrypted.asc` verifying gpg signature before decrypting the received file
 - `gpg --decrypt encrypted.asc > plain.txt` decrypting a received encrypted file
 - `echo 'testing gpg encryption' | gpg -e --armor -r <recipient email or key ID>`
 - `echo '<copy / paste message to decrypt here>' | gpg -d --armor`
