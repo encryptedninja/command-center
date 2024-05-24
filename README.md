@@ -426,6 +426,24 @@ I mainly created this part because of the web login attack part. Sometimes it's 
 - to delete a rule by it's number: `iptables -D INPUT 3`
 - to edit a rule by it's number: `iptables -R INPUT 6 <type out the new rule here>` `
 
+### IPtables example:
+* `sudo apt install iptables-persistent`
+* `sudo netfilter-persistent save` - to save the created rules
+```
+sudo iptables -A INPUT -i lo -j ACCEPT
+sudo iptables -A OUTPUT -o lo -j ACCEPT
+sudo iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+sudo iptables -A OUTPUT -m conntrack --ctstate ESTABLISHED -j ACCEPT
+sudo iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
+sudo iptables -A INPUT -p tcp --dport 22 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+sudo iptables -A OUTPUT -p tcp --sport 22 -m conntrack --ctstate ESTABLISHED -j ACCEPT
+sudo iptables -A INPUT -p tcp -s <IP or subnet where you want to connect from> -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 1337 -j ACCETP # leaving port 1337 open for rev shell, no service is running on it until you start nc or something else
+sudo iptables -P INPUT DROP
+```
+* `sudo iptables -A FORWARD -i eth1 -o eth0 -j ACCEPT` - use this only if you want to allow internal network (eth1) to be able to access external (eth0)
+* If your firewall OUTPUT policy is not set to ACCEPT, and you want to allow outgoing SSH connections—your server initiating an SSH connection to another server—you can run these commands: `sudo iptables -A OUTPUT -p tcp --dport 22 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT` and `sudo iptables -A INPUT -p tcp --sport 22 -m conntrack --ctstate ESTABLISHED -j ACCEPT`
+
 ## John
 
 Cracking some SHA256 hashes with john, using the rockyou.txt as a wordlist, redirecting the output into athe johncracked.txt
