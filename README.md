@@ -989,6 +989,27 @@ It's just like bash history in Linux.
 * **VMWare expanding disk (Linux)**
 	- Expand the disk space in VMWare and then follow instructions **[here](https://cybersalih.com/how-to-expand-disk-space-on-kali-linux-vmware/)** to read or **[here](https://www.youtube.com/watch?v=NwpzYlfKnrY)** to watch a quick video about it.
 
+## wireguard
+
+* generate private / public key on client in /etc/wireguard: `wg genkey | tee private.key | wg pubkey > public.key`
+* create client configuration file `nano /etc/wireguard/wg0.conf`:
+
+```
+[Interface]
+PrivateKey = <contents-of-your-private-key-file>
+Address = 10.0.0.2/24 (Replace with a desired IP address in the server's allowed range)
+
+# Optional: Configure routing for traffic through the VPN
+# PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+# PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
+
+ListenPort = 51820 (Change if needed, avoid common port conflicts)
+
+[Peer]
+PublicKey = <server's public key>
+Endpoint = <server's public IP address>:51820 (Replace with the server's IP and port)
+AllowedIPs = 0.0.0.0/0 (Allow all traffic through the tunnel, adjust for specific needs)
+```
 ## wpscan
 
 The best scanner for WordPress sites.
