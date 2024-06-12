@@ -463,6 +463,7 @@ Cracking some SHA256 hashes with john, using the rockyou.txt as a wordlist, redi
 \l
 sudo -u postgres psql
 ALTER DATABASE msf REFRESH COLLATION VERSION;
+ALTER DATABASE postgres REFRESH COLLATION VERSION;
 \q
 ```
 
