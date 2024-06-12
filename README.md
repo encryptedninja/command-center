@@ -458,6 +458,12 @@ Cracking some SHA256 hashes with john, using the rockyou.txt as a wordlist, redi
 ## metasploit
 
 - port forward: `portfwd add -L 0.0.0.0 -l 8888 -p 8080 -r 127.0.0.1`
+- database "msf" collation version mismatch:
+```
+sudo -u postgresql psql
+ALTER DATABASE msf REFRESH COLLATION VERSION;
+\q
+```
 
 ## mingw
 
