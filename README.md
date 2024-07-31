@@ -582,6 +582,15 @@ If you are interested in more depth on this matter check out the cyberchef's web
 
 - Changing the public IP/DNS: `sudo nano /etc/openvpn/easy-rsa/pki/Default.txt` and your .ovpn files if you have already generated them.
 
+## Raspberry Pi - install and config user for xrdp
+
+* `sudo apt update`
+* `sudo apt install xrdp`
+* `sudo systemctl start xrdp`
+* `sudo systemctl enable xrdp`
+* `sudo systemctl status xrdp`
+* `sudo usermod -a -G ssl-cert <username>`
+
 ## RDP
 
 - (rdesktop) with local file share:
