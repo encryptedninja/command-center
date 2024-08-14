@@ -192,6 +192,22 @@ You can do some great things with ***curl***, it's worth going through it's man 
 - `curl -X DELETE <http://IP:PORT>` if you get a 200 OK that means that method is supported, you can try all the others as well like PUT, etc..
 - generating QR code of a website: `curl qrenco.de/https://google.com`
 
+## Digitalocean
+Use anchor IP to have your Reserved IP when `curl ifconfig.me`
+1. Find anchor IP `curl -s http://169.254.169.254/metadata/v1/interfaces/public/0/anchor_ipv4/gateway`
+2. Temporal solution for testing if it works: `sudo sh -c "ip route del 0/0; ip route add default via <anchor-gateway-IP-address>"` and `curl ifconfig.me`
+3. Permanent solution (persistent): `nano /etc/network/interfaces`
+```
+auto eth0
+iface eth0 inet static
+        address 203.0.113.0
+        netmask 255.255.252.0
+        gateway 162.243.184.1
+        up ip addr add use_your_anchor_ip/16 dev eth0 #use your anchor IP address
+        dns-nameservers 8.8.8.8 8.8.4.4 
+```
+* `sudo reboot`
+
 ## dirb
 
 - when username and password is known: `dirb <http://IP or domain/> -u <username>:<password>`
