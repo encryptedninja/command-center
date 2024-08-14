@@ -1027,6 +1027,7 @@ PublicKey = <server's public key>
 Endpoint = <server's public IP address>:51820 (Replace with the server's IP and port)
 AllowedIPs = 0.0.0.0/0 (Allow all traffic through the tunnel, adjust for specific needs)
 ```
+* on server: `wg set wg0 peer <peer's pub key> allowed-ips <client's tunnel interface>`
 ## wpscan
 
 The best scanner for WordPress sites.
