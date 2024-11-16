@@ -478,7 +478,7 @@ Cracking some SHA256 hashes with john, using the rockyou.txt as a wordlist, redi
 `openssl pkcs12 -export -out cert.pfx -inkey key.pem -in cert.pem`
 - import it into your browser as trusted certificate
 - start python3 web server based on below script: `python3 https_server.py`
-"""
+```
 import http.server
 import ssl
 
@@ -497,7 +497,7 @@ httpd.socket = ssl.wrap_socket(httpd.socket,
 
 print("Serving on https://0.0.0.0:443")
 httpd.serve_forever()
-"""
+```
 
 ## metasploit
 
