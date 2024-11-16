@@ -471,6 +471,34 @@ Cracking some SHA256 hashes with john, using the rockyou.txt as a wordlist, redi
 - ldapsearch (can also add -v for verbosity): `ldapsearch -x -H ldap://192.168.111.121 -D '' -w '' -b "DC=hank,DC=offs"`
 - ldapsearch (when password is known): `ldapsearch -v -x -D fmcsorley@HUTCH.OFFSEC -w <PASSWORD HERE> -b "DC=hutch,DC=offsec" -H ldap://192.168.111.109 "(ms-MCS-AdmPwd=*)" ms-MCS-AdmPwd`
 
+## Local https server with certificates and python3
+- generate certificates
+`openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes`
+- generate cert.pfx file
+`openssl pkcs12 -export -out cert.pfx -inkey key.pem -in cert.pem`
+- import it into your browser as trusted certificate
+- start python3 web server based on below script: `python3 https_server.py`
+"""
+import http.server
+import ssl
+
+# Define the server handler
+handler = http.server.SimpleHTTPRequestHandler
+
+# Start the server
+httpd = http.server.HTTPServer(('0.0.0.0', 443), handler)
+
+# Wrap the server with SSL
+httpd.socket = ssl.wrap_socket(httpd.socket,
+                               server_side=True,
+                               certfile='cert.pem',
+                               keyfile='key.pem',
+                               ssl_version=ssl.PROTOCOL_TLS)
+
+print("Serving on https://0.0.0.0:443")
+httpd.serve_forever()
+"""
+
 ## metasploit
 
 - port forward: `portfwd add -L 0.0.0.0 -l 8888 -p 8080 -r 127.0.0.1`
