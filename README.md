@@ -545,6 +545,20 @@ If you need to generate a nice html report from the output you can use *xsltproc
 
 - `sudo xsltproc final_discovery.xml -o nmap_DATE_TARGET.html`
 
+## Open WebUI with ollama in docker
+
+- if needed wsl, remember to enable it on Windows, enable virtualization and enable WSL (Windows Subsystem for Linux), then install it from powershell and make wsl 2 to be the default. (Windows Features) In powershell `wsl -install`
+- install Kernel Update Package from Microsoft: [Kernel Update Package](https://learn.microsoft.com/en-us/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package)
+- `wsl --set-default-version 2`
+- `wsl --install -d Ubuntu`
+- install ollama from WSL with curl: `curl -fsSL https://ollama.com/install.sh | sh`
+- start ollama server: `ollama serve`
+- pull the llama3.2:latest: `ollama pull llama3.2:latest`
+- list available models: `ollama list`
+- run model: `ollama run llama.3.2:latest`
+- need docker: [install docker]([url](https://docs.docker.com/engine/install/ubuntu/))
+- docker command line for running webui from docker with autorestart: `docker run -d -p 3000:8080 --gpus=all -v ollama:/root/.ollama -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:ollama`, when first launch it need to create an account for admin. If want to share with others, they will need to create an account as well and admin has to approve it.
+
 ## overpass-the-hash
 
 - get the bill_admin's hash then use it to open up a new PowerShell prompt as him with mimikatz: `sekurlsa::path /user:bill_admin /domain:corp.com /ntlm:<NTLM hash> /run:PowerShell.exe`
