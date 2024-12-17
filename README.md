@@ -560,6 +560,10 @@ If you need to generate a nice html report from the output you can use *xsltproc
 - If you **don't have a GPU**: `docker run -d -p 3000:11434 -v ollama:/root/.ollama -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:ollama`
 - If you have a GPU: docker command line for running webui from docker with autorestart: `docker run -d -p 3000:11434 --gpus=all -v ollama:/root/.ollama -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:ollama`, when first launch it need to create an account for admin. If want to share with others, they will need to create an account as well and admin has to approve it.
 - if need to change local port: `docker stop open-webui` to stop the container, `docker rm open-webui` to remove the existing container, `docker run -d -p 33333:11434 --gpus=all -v ollama:/root/.ollama -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:ollama` to run the container with updated port mapping
+- list models: `docker exec -it open-webui ollama list`
+- download model: `docker exec -it open-webui ollama pull llama2`
+- restart application: `docker restart open-webui` needed after pulling or deleting models
+- delete model: `docker exec -it open-webui ollama delete llama2`
 
 ## overpass-the-hash
 
