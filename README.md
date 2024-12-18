@@ -114,6 +114,7 @@ There are many ways to bypass AppLocker rules, if it's configured with the defau
 ## checking temperature on CPU
 
 - save code as `<file name>.c` and compile it with `gcc <filename.c> -o <filename>`
+- move file: `mv temperature /usr/local/bin`
 
 ```
 #include <stdio.h>
