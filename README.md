@@ -355,6 +355,13 @@ services:
         ipv4_address: 192.168.45.50
 ```
 
+## Exiftool
+
+- clear all metadata (might cause problems if dimensions are removed when viewed on other devices/platforms) `exiftool -all= -o clean_1.jpeg 1.jpeg`
+- clear all metadata but dimensions `exiftool -all= -tagsfromfile @ -exif:ImageWidth -exif:ImageHeight -o photo_clean.jpg photo.jpg`
+- add comment `exiftool -Comment="<type message here>" -o 1_with_message.jpeg 1.jpeg`
+- test results `exiftool <photo file name>`
+
 ## Extract IPs from a text file
 
 - `grep -o ‘[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}’ nmapfile.txt`
