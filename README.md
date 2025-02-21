@@ -310,7 +310,7 @@ services:
 This is how you install ***Docker*** on Kali for whatever you need, I run my Juice Shop app to test for the OWASP Top10 on Docker:
 
 1. `curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/docker-archive-keyring.gpg > /dev/null`
-2. `echo 'deb [arch-amd64 signed-by-/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian buster stable' | sudo tee /etc/apt/sources.list.d/docker.list`
+2. `echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian buster stable' | sudo tee /etc/apt/sources.list.d/docker.list`
 3. `apt update`
 4. `apt install docker-ce`
 5. `docker --version`
