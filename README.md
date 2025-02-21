@@ -331,6 +331,7 @@ sudo docker run --rm -p 3000:3000 bkimminich/juice-shop
 ```
 
 ## docker-compose
+* install docker compose: `sudo apt install docker-compose-plugin -y`
 * `docker-compose up -d`
 
 ```
