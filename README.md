@@ -734,7 +734,7 @@ If you are interested in more depth on this matter check out the cyberchef's web
 
 This will create the key file named `bind.key` and the certificate file named `bind.crt`. In order to be able to use them we just need to convert them to a .pem file which is super easy as we simply have to concatenate them using the following command.
 
-`cat bind.key bind.crt L > bind.pem"`
+`cat bind.key bind.crt L > bind.pem`
 
 ## SSH and Plink
 
