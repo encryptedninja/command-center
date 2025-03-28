@@ -677,7 +677,7 @@ If you are interested in more depth on this matter check out the cyberchef's web
 ## SSH - removing old host key and adding in new
 * `ssh-keygen -R "[127.0.0.1]:1234"]` - removing old host key
 * `ssh-keyscan -p 1234 127.0.0.1 >> ~/.ssh/known_hosts` - adding new hos key
-* 
+
 ## Silver Ticket and Golden Ticket
 
 - **Silver Ticket attack**
