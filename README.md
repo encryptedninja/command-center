@@ -195,9 +195,9 @@ Also to make sure you are connecting to the right server
 
 🔐🔥 crackmapexec
 
-- `crackmapexec -t 20 smb --shares <target> ->
-- `crackmapexec winrm <target IP> -u users -H>
-- `crackmapexec smb -u '' -p '' -d <domain> .>
+- `crackmapexec -t 20 smb --shares <target> -u '' -p '' -d <FQDN>`
+- `crackmapexec winrm <target IP> -u users -H hashes`
+- `crackmapexec smb -u '' -p '' -d <domain> ./smb_hosts.txt --pass-policy`
 
 🌐💨 curl — Because who needs a browser anyway?
 
