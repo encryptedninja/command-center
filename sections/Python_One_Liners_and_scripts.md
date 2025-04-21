@@ -93,4 +93,5 @@ img.save('qrcode001.png')
 
 ## SMB Server - Impacket
 
-- `smbserver.py SPITFIRE ./`
+- install impacket: `sudo apt update && sudo apt install python3-impacket -y`
+- run it: `impacket-smbserver SPITFIRE . -smb2support`
