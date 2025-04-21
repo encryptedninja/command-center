@@ -1,7 +1,22 @@
 # 🧠 Command-Center
 
-Because trying to remember every switch, flag, or obscure syntax is a losing battle.  
-Use your browser's `CTRL+F` like your life depends on it — because it probably does.
+> ⚡ **Heads up, hacker:** This is NOT a copy-paste-for-glory cheat sheet.  
+> It's a fast-access reference for those who actually want to understand what they're doing.  
+> Use it to learn. Use it to troubleshoot. Use it to grow — not to blindly run commands.
+
+🧠 Because trying to remember every switch, flag, or obscure syntax is a losing battle.  
+Use your browser's CTRL+F like your life depends on it — because it probably does.
+
+🧭 ⚠️ Heads up: Syntax changes. Tools evolve. And let’s be honest — I probably made a typo or two in here.
+
+🛠️ This isn’t a place for blind copy-paste. This is a fast-reference pit stop — a tactical cheat sheet when your brain buffer overflows.
+
+📖 Whenever in doubt, **use the tool’s `--help` flag** or check the official docs.  
+Not just because things might’ve changed — but because *knowing* what a tool does is a lot cooler than just running it.
+
+🔍 Understand the tools. Know what they’re doing. Make them work for you.
+
+🚫🧑‍💻 This is for learners, builders, breakers — not button mashers.
 
 ---
 
