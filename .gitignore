@@ -1,1 +1,57 @@
-new-commands/
+# 🐍 Python-related
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.egg
+*.egg-info/
+dist/
+build/
+*.log
+
+# 📦 Virtualenv
+env/
+venv/
+ENV/
+
+# 📁 Dependency cache
+pip-wheel-metadata/
+*.whl
+*.egg-info/
+
+# 🔑 Secrets
+.env
+*.env
+secrets.*
+config.secret.*
+
+# 🛠 Compiled / temp files
+*.tmp
+*.bak
+*.swp
+*.swo
+*.DS_Store
+
+# 🧪 Test / coverage
+.coverage
+htmlcov/
+.tox/
+.pytest_cache/
+*.cover
+
+# 🧳 Packaging / vendor folders (optional)
+vendor/
+
+# 📦 VS Code / IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# 🗃 Others
+*.sqlite3
+*.db
+*.log
+last_update_id.txt
+keywords.txt
